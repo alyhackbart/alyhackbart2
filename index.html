@@ -3,102 +3,144 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0a0a0a">
-  <meta name="description" content="Aly Hackbart is a filmmaker, cinematographer, and editor working across production and post-production.">
-  <meta property="og:title" content="Aly Hackbart | Filmmaker, Cinematographer, Editor">
-  <meta property="og:description" content="Selected film, cinematography, and editing work by Aly Hackbart.">
+  <meta name="theme-color" content="#11110f">
+  <meta name="description" content="Aly Hackbart provides video production, cinematography, editing, and content packages for brands, businesses, and creative teams.">
+  <meta property="og:title" content="Aly Hackbart | Video Production & Editing">
+  <meta property="og:description" content="Browse video services, sample packages, and selected work by Aly Hackbart.">
   <meta property="og:type" content="website">
-  <title>Aly Hackbart | Filmmaker, Cinematographer, Editor</title>
+  <title>Aly Hackbart | Video Production & Editing</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" aria-label="Primary navigation">
-    <a class="brand" href="#top" aria-label="Aly Hackbart, back to top">Aly Hackbart</a>
-    <nav>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Aly Hackbart home">Aly Hackbart</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary navigation">
       <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="header-cta" href="#contact">Start a project</a>
   </header>
 
   <main id="main">
-    <section id="top" class="hero" aria-labelledby="hero-title">
-      <div class="hero-kicker">Filmmaker · Cinematographer · Editor</div>
-      <h1 id="hero-title">Aly<br>Hackbart</h1>
-      <div class="hero-footer">
-        <p>I shoot and shape visual stories from production through final edit.</p>
-        <a class="text-link" href="#work">Selected work <span aria-hidden="true">↓</span></a>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Video production · Cinematography · Editing</p>
+        <h1 id="hero-title">Video built to feel clear, intentional, and worth watching.</h1>
+        <p class="hero-intro">Aly Hackbart helps brands, businesses, and creative teams turn ideas and raw footage into polished visual stories.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#packages">Browse packages</a>
+          <a class="button button-secondary" href="#work">View selected work</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Showreel placeholder">
+        <div class="frame frame-hero">
+          <span class="frame-label">Showreel placeholder</span>
+          <span class="frame-cue">Replace with 15–30 sec reel</span>
+        </div>
+      </div>
+      <div class="hero-proof" aria-label="Service summary">
+        <div><strong>Production</strong><span>Planning through capture</span></div>
+        <div><strong>Post</strong><span>Edit, color, sound</span></div>
+        <div><strong>Delivery</strong><span>Web and social formats</span></div>
       </div>
     </section>
 
-    <section id="work" class="work-section" aria-labelledby="work-title">
-      <div class="section-intro">
-        <p class="section-label">Selected work</p>
-        <h2 id="work-title">The work should do the talking.</h2>
-        <p class="section-copy">This portfolio is built around finished footage. Real projects can drop into these media slots without changing the page structure.</p>
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <p class="eyebrow">Selected work</p>
+        <h2 id="work-title">A portfolio designed around the finished image.</h2>
+        <p>These are structured placeholders for Aly’s real projects. Each can become a case study with a film, project summary, role, and deliverables.</p>
       </div>
-
-      <div class="work-list" aria-label="Portfolio media slots">
-        <article class="work-item feature-work">
-          <div class="media-slot" role="img" aria-label="Showreel media slot ready for Aly Hackbart's footage">
-            <span class="media-label">Showreel</span>
-            <span class="media-note">Media ready</span>
-          </div>
-          <div class="work-meta">
-            <h3>Showreel</h3>
-            <p>Replace this frame with the strongest 15 to 30 seconds of moving image work.</p>
-          </div>
+      <div class="project-grid">
+        <article class="project project-featured">
+          <div class="frame frame-a"><span class="frame-label">Featured brand film</span><span class="frame-cue">16:9 video or still</span></div>
+          <div class="project-meta"><div><h3>[Project / Client Name]</h3><p>[Brand film, campaign, or commercial]</p></div><p>[Role: production, camera, edit]</p></div>
         </article>
-
-        <article class="work-item work-item-left">
-          <div class="media-slot media-slot-tall" role="img" aria-label="Portfolio project media slot ready for real project footage">
-            <span class="media-label">Project film</span>
-            <span class="media-note">Media ready</span>
-          </div>
-          <div class="work-meta">
-            <h3>Featured project</h3>
-            <p>Client, title, year, and Aly's exact role will live here once the project is selected.</p>
-          </div>
+        <article class="project">
+          <div class="frame frame-b"><span class="frame-label">Documentary / interview</span><span class="frame-cue">4:5 or 3:2 image</span></div>
+          <div class="project-meta"><div><h3>[Project / Client Name]</h3><p>[Documentary, interview, or profile]</p></div><p>[Role]</p></div>
         </article>
-
-        <article class="work-item work-item-right">
-          <div class="media-slot media-slot-wide" role="img" aria-label="Second portfolio project media slot ready for real project footage">
-            <span class="media-label">Project film</span>
-            <span class="media-note">Media ready</span>
-          </div>
-          <div class="work-meta">
-            <h3>Featured project</h3>
-            <p>A second project can emphasize a different strength such as camera, edit, production, color, or sound.</p>
-          </div>
+        <article class="project">
+          <div class="frame frame-c"><span class="frame-label">Social / campaign</span><span class="frame-cue">Vertical or mixed media</span></div>
+          <div class="project-meta"><div><h3>[Project / Client Name]</h3><p>[Social campaign or content series]</p></div><p>[Role]</p></div>
         </article>
       </div>
     </section>
 
-    <section id="about" class="about-section" aria-labelledby="about-title">
-      <div>
-        <p class="section-label">About</p>
-        <h2 id="about-title">From capture to final cut.</h2>
+    <section class="services-section" id="services" aria-labelledby="services-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">Hire Aly for one piece of the process or the whole thing.</h2>
+        <p>Final scope and pricing depend on location, crew, equipment, usage, turnaround, and revision needs.</p>
       </div>
-      <div class="about-copy">
-        <p>I’m Aly Hackbart. I work across production, cinematography, and editing, with a focus on composition, pacing, and clear visual storytelling.</p>
-        <p class="capabilities" aria-label="Capabilities">Production · Cinematography · Editing · Color · Sound</p>
+      <div class="service-grid">
+        <article class="service-card"><h3>Brand & business video</h3><p>Concept-to-delivery video for websites, campaigns, launches, recruiting, and company storytelling.</p><div class="service-bottom"><span>Typical market project</span><strong>$1,500–$5,000+</strong></div></article>
+        <article class="service-card"><h3>Social content production</h3><p>Short-form content built for Reels, TikTok, Shorts, paid social, and ongoing content calendars.</p><div class="service-bottom"><span>Typical market project</span><strong>$300–$1,500+</strong></div></article>
+        <article class="service-card"><h3>Event coverage</h3><p>On-site capture for launches, conferences, performances, community events, and branded activations.</p><div class="service-bottom"><span>Typical market project</span><strong>$900–$1,500+</strong></div></article>
+        <article class="service-card"><h3>Editing & post-production</h3><p>Story edit, pacing, cleanup, music, graphics, color, audio polish, captions, and exports.</p><div class="service-bottom"><span>Typical market project</span><strong>$500–$3,000+</strong></div></article>
+        <article class="service-card"><h3>Interviews & profiles</h3><p>Thoughtful interview capture and editing for founder stories, testimonials, mini-docs, and profiles.</p><div class="service-bottom"><span>Sample starting point</span><strong>$1,500+</strong></div></article>
+        <article class="service-card"><h3>Ongoing content support</h3><p>Recurring production and editing support for teams that need a reliable monthly content rhythm.</p><div class="service-bottom"><span>Typical market retainer</span><strong>$2,000–$5,000+</strong></div></article>
+      </div>
+      <p class="pricing-note">Market ranges are planning benchmarks based on current U.S. freelance marketplace data. Aly’s final rate card should be confirmed before these are treated as quoted prices.</p>
+    </section>
+
+    <section class="packages-section" id="packages" aria-labelledby="packages-title">
+      <div class="section-heading compact light-heading">
+        <p class="eyebrow">Sample packages</p>
+        <h2 id="packages-title">A simpler way to start the conversation.</h2>
+        <p>These packages are placeholders based on common industry scopes. We can rename, re-price, or remove them after Aly confirms how she wants to sell her work.</p>
+      </div>
+      <div class="package-grid">
+        <article class="package-card">
+          <div class="package-top"><p class="package-name">Content Session</p><p class="package-price">Starting at <strong>$950</strong></p></div>
+          <p>For a small business, creator, or team that needs fresh short-form content from one focused shoot.</p>
+          <ul><li>Up to 2 hours of filming</li><li>One local location</li><li>3 short-form edited videos</li><li>Basic color and audio polish</li><li>1 revision round</li></ul>
+          <a href="#contact">Ask about this package</a>
+        </article>
+        <article class="package-card featured-package">
+          <div class="package-top"><p class="package-name">Brand Story</p><p class="package-price">Starting at <strong>$2,500</strong></p></div>
+          <p>For a company that needs one polished hero video plus supporting cuts for social and web.</p>
+          <ul><li>Pre-production planning call</li><li>Up to a half-day shoot</li><li>60–90 second hero edit</li><li>3 short cutdowns</li><li>Color, audio, music, captions</li><li>2 revision rounds</li></ul>
+          <a href="#contact">Ask about this package</a>
+        </article>
+        <article class="package-card">
+          <div class="package-top"><p class="package-name">Monthly Content</p><p class="package-price">Starting at <strong>$2,400/mo</strong></p></div>
+          <p>For a brand that wants consistent video without rebuilding the workflow every month.</p>
+          <ul><li>Monthly planning session</li><li>One half-day content shoot</li><li>Up to 8 short edits</li><li>Platform-ready exports</li><li>Priority editing queue</li><li>Monthly scope review</li></ul>
+          <a href="#contact">Ask about this package</a>
+        </article>
+      </div>
+      <div class="custom-quote"><div><p class="eyebrow">Need something else?</p><h3>Custom production is expected.</h3></div><p>Commercial campaigns, travel, multi-day shoots, extra crew, motion graphics, raw footage handoff, rush delivery, and licensing should be quoted separately.</p><a class="button button-dark" href="#contact">Request a custom quote</a></div>
+    </section>
+
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="section-heading compact"><p class="eyebrow">How it works</p><h2 id="process-title">Clear scope. Good communication. Strong finish.</h2></div>
+      <div class="process-list">
+        <article><h3>Discovery</h3><p>We define the audience, goal, deliverables, timeline, and what success needs to look like.</p></article>
+        <article><h3>Plan</h3><p>For production work, we align on creative direction, logistics, shot needs, and schedule before the camera rolls.</p></article>
+        <article><h3>Create</h3><p>Aly handles the approved production or post-production scope and keeps feedback organized around clear review rounds.</p></article>
+        <article><h3>Deliver</h3><p>Final assets are prepared for the agreed platforms, aspect ratios, and use cases.</p></article>
       </div>
     </section>
 
-    <section id="contact" class="contact-section" aria-labelledby="contact-title">
-      <p class="section-label">Contact</p>
-      <h2 id="contact-title">Have something worth making?</h2>
-      <a class="contact-link" href="mailto:hello@alyhackbart.com">hello@alyhackbart.com</a>
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="about-visual"><div class="frame frame-portrait"><span class="frame-label">Portrait / on-set photo</span><span class="frame-cue">Replace with Aly</span></div></div>
+      <div class="about-copy"><p class="eyebrow">About Aly</p><h2 id="about-title">A hands-on creative partner from camera through final cut.</h2><p>Aly works across production, cinematography, and editing with an emphasis on strong composition, useful collaboration, and pacing that serves the story.</p><p class="placeholder-copy"><strong>Still needed:</strong> Aly’s location, years of experience, industries served, favorite types of projects, notable clients, equipment strengths, travel availability, and a more personal bio.</p></div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div><p class="eyebrow">Start a project</p><h2 id="contact-title">Tell Aly what you’re making.</h2><p>Send the project type, desired deliverables, target date, location, and approximate budget. That is enough to start a useful conversation.</p></div>
+      <div class="contact-actions"><a class="contact-email" href="mailto:hello@alyhackbart.com?subject=Project%20inquiry">hello@alyhackbart.com</a><p>[Confirm this is Aly’s preferred business email]</p></div>
     </section>
   </main>
 
-  <footer>
-    <span>© <span id="year"></span> Aly Hackbart</span>
-    <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
-  </footer>
-
+  <footer><span>© <span id="year"></span> Aly Hackbart</span><div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#top">Back to top</a></div></footer>
   <script src="script.js"></script>
 </body>
 </html>

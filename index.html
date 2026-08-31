@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#11110f">
-  <meta name="description" content="San Diego video editing, social content, event coverage, and wedding films by Aly Hackbart for local businesses, restaurants, creators, and couples.">
-  <meta property="og:title" content="Aly Hackbart | San Diego Video Editing & Content">
-  <meta property="og:description" content="Browse social content, editing, event, restaurant, and wedding video services from Aly Hackbart in San Diego.">
+  <meta name="theme-color" content="#f5e9ed">
+  <meta name="description" content="San Diego video editing, social content, event coverage, restaurant content, and wedding films by Aly Hackbart.">
+  <meta property="og:title" content="Aly Hackbart | San Diego Video Editing and Content">
+  <meta property="og:description" content="Browse video editing, social content, event coverage, restaurant content, and wedding packages from Aly Hackbart in San Diego.">
   <meta property="og:type" content="website">
-  <title>Aly Hackbart | San Diego Video Editing & Content</title>
+  <meta property="og:url" content="https://alyhackbart.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Aly Hackbart | San Diego Video Editing and Content</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,15 +37,23 @@
         <p class="hero-intro">Aly Hackbart creates and edits video for San Diego businesses, restaurants, creators, events, and couples who want strong content without a complicated production process.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#packages">Browse packages</a>
-          <a class="button button-secondary" href="#work">View selected work</a>
+          <a class="button button-secondary" href="#work">View sample work</a>
         </div>
       </div>
-      <div class="hero-visual" aria-label="Showreel placeholder">
-        <div class="frame frame-hero">
-          <span class="frame-label">Showreel placeholder</span>
-          <span class="frame-cue">Add Aly's best 15–30 sec reel</span>
+
+      <div class="hero-visual">
+        <div class="reel-frame">
+          <video id="sample-reel" class="sample-reel" data-reel autoplay muted loop playsinline preload="metadata" data-poster="hero" aria-label="Concept reel showing sample visual directions for Aly's services">
+          </video>
+          <div class="media-overlay">
+            <span>Concept reel</span>
+            <span>Sample imagery</span>
+          </div>
+          <button class="video-toggle" type="button" aria-controls="sample-reel" aria-pressed="false">Pause reel</button>
         </div>
+        <p class="concept-note">This reel uses concept imagery to show the visual direction Aly is building toward. It is not client work.</p>
       </div>
+
       <div class="hero-proof" aria-label="Service summary">
         <div><strong>Based in San Diego</strong><span>Serving local clients</span></div>
         <div><strong>Built for social</strong><span>Vertical and horizontal delivery</span></div>
@@ -53,94 +63,229 @@
 
     <section class="work-section" id="work" aria-labelledby="work-title">
       <div class="section-heading">
-        <p class="eyebrow">Selected work</p>
-        <h2 id="work-title">A portfolio built for real footage.</h2>
-        <p>These slots are ready for Aly's actual projects. We can turn each one into a case study with the finished video, client name, Aly's role, and deliverables.</p>
+        <p class="eyebrow">Sample work</p>
+        <h2 id="work-title">A preview of the work Aly is building toward.</h2>
+        <p>These concept images demonstrate possible project directions while Aly builds her real portfolio. They do not represent paid client work.</p>
       </div>
+
       <div class="project-grid">
         <article class="project project-featured">
-          <div class="frame frame-a"><span class="frame-label">Restaurant / local business</span><span class="frame-cue">Replace with real project</span></div>
-          <div class="project-meta"><div><h3>[Restaurant or Business Name]</h3><p>[Social content, promo, launch, or menu feature]</p></div><p>[Aly's role]</p></div>
+          <div class="media-frame media-wide">
+            <img data-media="restaurant" width="1600" height="900" alt="Concept image of a restaurant content shoot at golden hour" loading="lazy">
+            <span class="media-badge">Concept sample</span>
+          </div>
+          <div class="project-meta">
+            <div><h3>Restaurant and hospitality content</h3><p>Food, atmosphere, staff, menu launches, and social-first storytelling.</p></div>
+            <p>Filming · Editing · Social cuts</p>
+          </div>
         </article>
+
         <article class="project">
-          <div class="frame frame-b"><span class="frame-label">Creator / social content</span><span class="frame-cue">Replace with real project</span></div>
-          <div class="project-meta"><div><h3>[Creator / Project Name]</h3><p>[Reels, TikTok, Shorts, or campaign]</p></div><p>[Aly's role]</p></div>
+          <div class="media-frame media-portrait">
+            <img data-media="creator" width="1000" height="1250" alt="Concept image of a creator recording social content in a bright coastal setting" loading="lazy">
+            <span class="media-badge">Concept sample</span>
+          </div>
+          <div class="project-meta">
+            <div><h3>Creator and social content</h3><p>Short-form video designed for Reels, TikTok, Shorts, and brand channels.</p></div>
+            <p>Capture · Edit · Captions</p>
+          </div>
         </article>
+
         <article class="project">
-          <div class="frame frame-c"><span class="frame-label">Event / wedding</span><span class="frame-cue">Replace with real project</span></div>
-          <div class="project-meta"><div><h3>[Event / Couple Name]</h3><p>[Event recap, celebration, or wedding film]</p></div><p>[Aly's role]</p></div>
+          <div class="media-frame media-landscape">
+            <img data-media="event" width="1500" height="1000" alt="Concept image of a lively San Diego coastal event at sunset" loading="lazy">
+            <span class="media-badge">Concept sample</span>
+          </div>
+          <div class="project-meta">
+            <div><h3>Event highlight films</h3><p>Openings, parties, pop-ups, performances, and community gatherings.</p></div>
+            <p>Coverage · Recap · Social cuts</p>
+          </div>
+        </article>
+
+        <article class="project project-featured">
+          <div class="media-frame media-wide">
+            <img data-media="wedding" width="1600" height="900" alt="Concept image of a couple at a coastal wedding during golden hour" loading="lazy">
+            <span class="media-badge">Concept sample</span>
+          </div>
+          <div class="project-meta">
+            <div><h3>Wedding and celebration films</h3><p>Story-focused coverage for weddings, elopements, and meaningful celebrations.</p></div>
+            <p>Custom coverage · Highlight edit</p>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="services-section" id="services" aria-labelledby="services-title">
-      <div class="section-heading compact">
+      <div class="section-heading section-heading-dark">
         <p class="eyebrow">Services</p>
         <h2 id="services-title">Video support for businesses, creators, events, and celebrations.</h2>
-        <p>Packages below are introductory starting points for San Diego projects. Final quotes depend on shoot time, location, deliverables, turnaround, travel, and revision needs.</p>
+        <p>Introductory starting points for San Diego projects. Final quotes depend on shoot time, deliverables, location, turnaround, and revisions.</p>
       </div>
-      <div class="service-grid">
-        <article class="service-card"><h3>Video editing</h3><p>Editing for Reels, TikTok, YouTube, promos, interviews, event recaps, and existing footage. Includes pacing, color polish, audio cleanup, captions, and exports as scoped.</p><div class="service-bottom"><span>Starting point</span><strong>$150+</strong></div></article>
-        <article class="service-card"><h3>Social content production</h3><p>Short-form filming and editing for creators and small businesses that need fresh, platform-ready content.</p><div class="service-bottom"><span>Starting point</span><strong>$450+</strong></div></article>
-        <article class="service-card"><h3>Restaurant & hospitality content</h3><p>Food, atmosphere, staff, behind-the-scenes, menu launches, and social-first video designed for restaurants, cafes, bars, and hospitality brands.</p><div class="service-bottom"><span>Starting point</span><strong>$650+</strong></div></article>
-        <article class="service-card"><h3>Event coverage</h3><p>Capture and recap videos for openings, community events, performances, parties, launches, pop-ups, and branded gatherings.</p><div class="service-bottom"><span>Starting point</span><strong>$750+</strong></div></article>
-        <article class="service-card"><h3>Wedding & celebration films</h3><p>Simple, story-focused coverage for weddings, elopements, and celebrations. Custom scope based on hours, ceremony coverage, audio, and final edits.</p><div class="service-bottom"><span>Introductory starting point</span><strong>$1,500+</strong></div></article>
-        <article class="service-card"><h3>Ongoing content support</h3><p>Recurring filming and editing for businesses or creators who want a consistent stream of social video each month.</p><div class="service-bottom"><span>Starting point</span><strong>$1,200+/mo</strong></div></article>
+
+      <div class="service-list">
+        <article><div><h3>Video editing</h3><p>Reels, TikTok, YouTube, promos, interviews, event recaps, and client-supplied footage.</p></div><strong>From $150</strong></article>
+        <article><div><h3>Social content production</h3><p>Short-form filming and editing for creators and local businesses.</p></div><strong>From $450</strong></article>
+        <article><div><h3>Restaurant and hospitality content</h3><p>Food, atmosphere, staff, behind-the-scenes, menu launches, and social video.</p></div><strong>From $650</strong></article>
+        <article><div><h3>Event coverage</h3><p>Capture and recap videos for openings, parties, pop-ups, performances, and branded events.</p></div><strong>From $750</strong></article>
+        <article><div><h3>Wedding and celebration films</h3><p>Custom coverage based on hours, ceremony needs, audio, and final edits.</p></div><strong>From $1,500</strong></article>
+        <article><div><h3>Ongoing content support</h3><p>Recurring filming and editing for a consistent monthly content rhythm.</p></div><strong>From $1,200/mo</strong></article>
       </div>
-      <p class="pricing-note">These are introductory planning prices, not fixed quotes. Larger productions, long-form edits, rush delivery, travel, extra crew, licensed assets, or expanded usage are quoted separately.</p>
+      <p class="pricing-note">These are introductory planning prices, not fixed quotes. Travel, rush delivery, extra crew, licensed assets, raw footage handoff, and larger productions are quoted separately.</p>
     </section>
 
     <section class="packages-section" id="packages" aria-labelledby="packages-title">
-      <div class="section-heading compact light-heading">
+      <div class="section-heading">
         <p class="eyebrow">Packages</p>
-        <h2 id="packages-title">Easy starting points for the work Aly wants to do most.</h2>
-        <p>Choose a package as a baseline, then Aly can tailor the scope around the project.</p>
+        <h2 id="packages-title">Clear starting points for the work Aly wants to do most.</h2>
+        <p>Choose a package as a baseline. Aly can tailor the final scope around your project, timeline, and platforms.</p>
       </div>
+
       <div class="package-grid">
         <article class="package-card">
-          <div class="package-top"><p class="package-name">Social Edit</p><p class="package-price">Starting at <strong>$150</strong></p></div>
+          <div class="package-top"><p class="package-name">Social Edit</p><p class="package-price">From <strong>$150</strong></p></div>
           <p>For creators or businesses that already have footage and need one polished short-form video.</p>
-          <ul><li>Up to 60-second final edit</li><li>Client-supplied footage</li><li>Basic color and audio polish</li><li>Captions or simple text</li><li>1 revision round</li></ul>
-          <a href="#contact">Ask about this package</a>
+          <ul><li>Up to 60-second final edit</li><li>Client-supplied footage</li><li>Basic color and audio polish</li><li>Captions or simple text</li><li>One revision round</li></ul>
+          <a href="#contact" data-package="Social Edit">Ask about Social Edit</a>
         </article>
+
         <article class="package-card featured-package">
-          <div class="package-top"><p class="package-name">Content Session</p><p class="package-price">Starting at <strong>$650</strong></p></div>
+          <div class="package-top"><p class="package-name">Content Session</p><p class="package-price">From <strong>$650</strong></p></div>
           <p>For a restaurant, local business, or creator that needs a focused batch of fresh social content.</p>
-          <ul><li>Up to 2 hours on location</li><li>One San Diego location</li><li>3 short-form edited videos</li><li>Vertical social delivery</li><li>Basic color, audio, and captions</li><li>1 revision round</li></ul>
-          <a href="#contact">Ask about this package</a>
+          <ul><li>Up to two hours on location</li><li>One San Diego location</li><li>Three short-form edited videos</li><li>Vertical social delivery</li><li>Color, audio, and captions</li><li>One revision round</li></ul>
+          <a href="#contact" data-package="Content Session">Ask about Content Session</a>
         </article>
+
         <article class="package-card">
-          <div class="package-top"><p class="package-name">Event Recap</p><p class="package-price">Starting at <strong>$750</strong></p></div>
+          <div class="package-top"><p class="package-name">Event Recap</p><p class="package-price">From <strong>$750</strong></p></div>
           <p>For launches, parties, pop-ups, performances, and community events that need a fast highlight piece.</p>
-          <ul><li>Up to 2 hours of coverage</li><li>One San Diego location</li><li>45–60 second highlight edit</li><li>2 short social cutdowns</li><li>Music, color, and basic audio polish</li><li>1 revision round</li></ul>
-          <a href="#contact">Ask about this package</a>
+          <ul><li>Up to two hours of coverage</li><li>One San Diego location</li><li>45 to 60-second highlight edit</li><li>Two short social cutdowns</li><li>Music, color, and audio polish</li><li>One revision round</li></ul>
+          <a href="#contact" data-package="Event Recap">Ask about Event Recap</a>
         </article>
       </div>
-      <div class="custom-quote"><div><p class="eyebrow">Weddings & ongoing work</p><h3>Some projects need a custom scope.</h3></div><p>Wedding coverage, monthly content, multi-location shoots, longer events, travel, raw footage handoff, and larger edit packages are quoted around the actual needs of the project.</p><a class="button button-dark" href="#contact">Request a custom quote</a></div>
+
+      <div class="custom-quote">
+        <div><p class="eyebrow">Weddings and ongoing work</p><h3>Some projects need a custom scope.</h3></div>
+        <p>Wedding coverage, monthly content, multi-location shoots, longer events, travel, and larger edit packages are quoted around the actual needs of the project.</p>
+        <a class="button button-dark" href="#contact">Request a custom quote</a>
+      </div>
     </section>
 
     <section class="process-section" aria-labelledby="process-title">
-      <div class="section-heading compact"><p class="eyebrow">How it works</p><h2 id="process-title">Simple from first message to final files.</h2></div>
+      <div class="section-heading">
+        <p class="eyebrow">How it works</p>
+        <h2 id="process-title">Simple from first message to final files.</h2>
+        <p>A clear scope, organized feedback, and platform-ready delivery keep the process manageable.</p>
+      </div>
       <div class="process-list">
-        <article><h3>Tell Aly what you need</h3><p>Share the project, location, target date, platforms, and the kind of final videos you want.</p></article>
-        <article><h3>Confirm the scope</h3><p>Aly confirms the deliverables, shoot or editing time, turnaround, price, and revision rounds before work starts.</p></article>
+        <article><h3>Tell Aly what you need</h3><p>Share the project, location, target date, platforms, and final videos you have in mind.</p></article>
+        <article><h3>Confirm the scope</h3><p>Aly confirms deliverables, schedule, price, turnaround, and revision rounds before work starts.</p></article>
         <article><h3>Create</h3><p>Aly films, edits, or handles both depending on the approved project scope.</p></article>
-        <article><h3>Review & deliver</h3><p>You review the agreed draft, send consolidated feedback, and receive final platform-ready files.</p></article>
+        <article><h3>Review and deliver</h3><p>You send consolidated feedback and receive final files for the agreed platforms.</p></article>
       </div>
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
-      <div class="about-visual"><div class="frame frame-portrait"><span class="frame-label">Professional portrait placeholder</span><span class="frame-cue">Upload a clear photo of Aly</span></div></div>
-      <div class="about-copy"><p class="eyebrow">About Aly</p><h2 id="about-title">San Diego-based editor and content creator.</h2><p>Aly Hackbart creates social video, edits existing footage, and captures events for local businesses, restaurants, creators, and couples. Her approach is collaborative, detail-focused, and built around making content that feels natural to the person or brand behind it.</p><p class="placeholder-copy"><strong>Still needed:</strong> a professional portrait, 3–6 real portfolio projects, preferred travel radius, equipment details if relevant, turnaround preferences, and any client testimonials once Aly has permission to publish them.</p></div>
+      <div class="about-mark" aria-label="Aly Hackbart monogram">
+        <span>AH</span>
+        <small>Professional portrait coming soon</small>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">About Aly</p>
+        <h2 id="about-title">San Diego-based editor and content creator.</h2>
+        <p>Aly Hackbart creates social video, edits existing footage, and captures events for local businesses, restaurants, creators, and couples. Her approach is collaborative, detail-focused, and built around making content that feels natural to the person or brand behind it.</p>
+        <p class="about-note">A real portrait and client work will replace the temporary portfolio assets as Aly builds her body of work.</p>
+      </div>
     </section>
 
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
-      <div><p class="eyebrow">Start a project</p><h2 id="contact-title">Tell Aly what you want to make.</h2><p>Include the project type, location, target date, desired deliverables, and approximate budget. For weddings or events, include the date and expected coverage hours.</p></div>
-      <div class="contact-actions"><a class="contact-email" href="mailto:alysonhackbart@gmail.com?subject=Project%20inquiry">alysonhackbart@gmail.com</a><p>San Diego, California · Available for local projects and select travel</p></div>
+      <div class="contact-copy">
+        <p class="eyebrow">Start a project</p>
+        <h2 id="contact-title">Tell Aly what you want to make.</h2>
+        <p>Share what you need, when you need it, and the budget range you have in mind. Aly will reply by email to confirm availability and next steps.</p>
+        <dl class="contact-details">
+          <div><dt>Email</dt><dd><a href="mailto:alysonhackbart@gmail.com">alysonhackbart@gmail.com</a></dd></div>
+          <div><dt>Based in</dt><dd>San Diego, California</dd></div>
+        </dl>
+      </div>
+
+      <form class="inquiry-form" action="https://formsubmit.co/alysonhackbart@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New AlyHackbart.com project inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://alyhackbart.com/thanks.html">
+        <input type="hidden" name="_url" value="https://alyhackbart.com/#contact">
+        <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Aly Hackbart. Your project inquiry was received, and Aly will reply as soon as possible.">
+        <div class="honeypot" aria-hidden="true"><label>Leave this field empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="form-grid">
+          <label>Full name <span aria-hidden="true">*</span>
+            <input type="text" name="Full name" autocomplete="name" required>
+          </label>
+          <label>Email <span aria-hidden="true">*</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>Phone
+            <input type="tel" name="Phone" autocomplete="tel">
+          </label>
+          <label>Business or organization
+            <input type="text" name="Business or organization" autocomplete="organization">
+          </label>
+          <label>Project type <span aria-hidden="true">*</span>
+            <select name="Project type" id="project-type" required>
+              <option value="" selected disabled>Select a project type</option>
+              <option>Social Edit</option>
+              <option>Content Session</option>
+              <option>Restaurant or hospitality content</option>
+              <option>Event Recap</option>
+              <option>Wedding or celebration film</option>
+              <option>Monthly content support</option>
+              <option>Other or custom project</option>
+            </select>
+          </label>
+          <label>Approximate budget
+            <select name="Approximate budget">
+              <option value="" selected>Select a range</option>
+              <option>Under $500</option>
+              <option>$500 to $1,000</option>
+              <option>$1,000 to $2,500</option>
+              <option>$2,500 to $5,000</option>
+              <option>$5,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+          <label>Preferred date
+            <input type="date" name="Preferred date">
+          </label>
+          <label>Project location
+            <input type="text" name="Project location" placeholder="San Diego, venue, or remote" autocomplete="street-address">
+          </label>
+          <label class="form-full">Project details <span aria-hidden="true">*</span>
+            <textarea name="Project details" rows="7" placeholder="Tell Aly about the project, deliverables, platforms, timing, and anything else that would help." required></textarea>
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="Consent" value="Agreed" required>
+            <span>I agree that Aly may use the information I provide to respond to this project inquiry.</span>
+          </label>
+        </div>
+
+        <div class="form-footer">
+          <p><span aria-hidden="true">*</span> Required fields. Submissions are delivered through FormSubmit and used to respond to your inquiry.</p>
+          <button class="submit-button" type="submit">Send project inquiry</button>
+        </div>
+      </form>
     </section>
   </main>
 
-  <footer><span>© <span id="year"></span> Aly Hackbart</span><div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#top">Back to top</a></div></footer>
+  <footer>
+    <span>© <span id="year"></span> Aly Hackbart</span>
+    <div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#top">Back to top</a></div>
+  </footer>
+
+  <script src="media/hero.js"></script>
+  <script src="media/restaurant.js"></script>
+  <script src="media/creator.js"></script>
+  <script src="media/event.js"></script>
+  <script src="media/wedding.js"></script>
+  <script src="media/reel.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

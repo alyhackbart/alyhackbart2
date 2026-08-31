@@ -5,7 +5,7 @@ AlyHackbart.com is Aly Hackbart's client-facing video editing and content portfo
 ## Business profile
 - Based in San Diego, California
 - Early-career independent creator with less than one year in business
-- Primary services: video editing, social content production, event coverage
+- Primary services: video editing, social content production, and event coverage
 - Secondary offering: wedding and celebration films by custom scope
 - Priority clients: local businesses, restaurants, creators, events, and couples
 - Public contact email: alysonhackbart@gmail.com
@@ -13,13 +13,18 @@ AlyHackbart.com is Aly Hackbart's client-facing video editing and content portfo
 ## User job
 A visitor should quickly understand what Aly offers, browse services and packages, review sample visual directions, understand introductory starting prices, and submit enough information for Aly to scope a project.
 
+Aly should be able to replace temporary media and update site content without redesigning the page.
+
 ## Current implementation
-- Static `index.html`, `styles.css`, and `script.js`
+- Static HTML, CSS, and vanilla JavaScript
+- Central editable content and media paths in `content/site-content.js`
+- Real media uploads live in `assets/media/`
+- Existing generated media remains as a temporary fallback under `media/`
+- `EDITING-GUIDE.md` documents routine updates
 - Served by a small Python HTTP server from `Dockerfile`
 - Deployed from the `main` branch to Google Cloud
+- Inquiry form posts through an activated FormSubmit endpoint and redirects to `thanks.html`
 - No frontend framework or package dependency is required
-- Inquiry form posts to FormSubmit and redirects to `thanks.html`
-- Temporary concept images and the lightweight MP4 concept reel are embedded through text-based files under `media/`
 
 ## Design direction
 Professional creative-services portfolio with a muted pink editorial palette, clear navigation, visible services and packages, meaningful media, strong hierarchy, restrained interaction, and easy conversion to inquiry.
@@ -37,4 +42,3 @@ Do not invent clients, projects, awards, metrics, testimonials, or outcomes. Gen
 - Equipment details if they materially help client confidence
 - Typical turnaround preferences
 - Testimonials only with permission to publish
-- Activation of the FormSubmit email endpoint after the first test submission

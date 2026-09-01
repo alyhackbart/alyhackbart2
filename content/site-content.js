@@ -14,14 +14,17 @@ const SITE_CONTENT = {
     domainName: "AlyHackbart.com",
     title: "Aly Hackbart | San Diego Video Editing and Social Content",
     description: "San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.",
-    socialImage: "assets/media/hero-poster.webp",
-    updated: "2026-08-31"
+    socialImage: "assets/og-image.webp",
+    updated: "2026-08-31",
+    googleSiteVerification: "",
+    googleAnalyticsId: ""
   },
 
   business: {
     name: "Aly Hackbart",
     location: "San Diego, California",
     email: "alysonhackbart@gmail.com",
+    publicEmail: "",
     serviceArea: "San Diego and nearby communities, with select travel available",
     areaServed: ["San Diego", "San Diego County"]
   },
@@ -34,8 +37,8 @@ const SITE_CONTENT = {
     secondaryAction: "View sample work",
     video: "assets/media/hero-reel.mp4",
     poster: "assets/media/hero-poster.webp",
-    fallbackVideo: "assets/media/hero-reel.mp4",
-    fallbackPoster: "assets/media/hero-poster.webp",
+    fallbackVideo: "reel",
+    fallbackPoster: "hero",
     videoLabel: "Concept reel",
     videoNote: "Sample imagery",
     disclosure: "This reel uses concept imagery to show the visual direction Aly is building toward. It is not client work.",
@@ -57,6 +60,7 @@ const SITE_CONTENT = {
         services: "Filming · Editing · Social cuts",
         image: "assets/media/restaurant.webp",
         fallbackImage: "assets/media/restaurant.webp",
+        fallbackKey: "restaurant",
         alt: "Concept image of a restaurant content shoot at golden hour",
         layout: "wide",
         sample: true
@@ -67,6 +71,7 @@ const SITE_CONTENT = {
         services: "Capture · Edit · Captions",
         image: "assets/media/creator.webp",
         fallbackImage: "assets/media/creator.webp",
+        fallbackKey: "creator",
         alt: "Concept image of a creator recording social content in a bright coastal setting",
         layout: "portrait",
         sample: true
@@ -77,6 +82,7 @@ const SITE_CONTENT = {
         services: "Coverage · Recap · Social cuts",
         image: "assets/media/event.webp",
         fallbackImage: "assets/media/event.webp",
+        fallbackKey: "event",
         alt: "Concept image of a lively San Diego coastal event at sunset",
         layout: "landscape",
         sample: true
@@ -87,6 +93,7 @@ const SITE_CONTENT = {
         services: "Limited coverage · Highlight edit",
         image: "assets/media/wedding.webp",
         fallbackImage: "assets/media/wedding.webp",
+        fallbackKey: "wedding",
         alt: "Concept image of a couple at a small coastal celebration during golden hour",
         layout: "wide",
         sample: true
@@ -300,11 +307,13 @@ const SITE_CONTENT = {
     eyebrow: "About Aly",
     headline: "San Diego-based editor and content creator.",
     body: "Aly Hackbart creates social video, edits existing footage, and captures events for local businesses, restaurants, creators, and couples. Her approach is collaborative, detail-focused, and built around making content that feels natural to the person or brand behind it.",
-    note: "A real portrait and client work will replace the temporary portfolio assets as Aly builds her body of work.",
+    note: "Available for local business, restaurant, creator, event, and intimate celebration projects in San Diego and nearby communities.",
     monogram: "AH",
     portrait: "",
     portraitAlt: "Portrait of Aly Hackbart",
-    placeholder: "Professional portrait coming soon"
+    behindScenes: "",
+    behindScenesAlt: "Aly Hackbart working on a video project",
+    placeholder: "San Diego video editor and content creator"
   },
 
   contact: {

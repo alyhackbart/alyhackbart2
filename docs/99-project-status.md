@@ -17,8 +17,7 @@ type: status
 - Static portfolio architecture preserved
 - Primary content pre-rendered into crawlable HTML from `content/site-content.js`
 - Automatic GitHub workflow regenerates static pages after editable content changes
-- Muted pink editorial design retained across desktop and mobile
-- Mobile header includes a direct Inquire action, and supporting mobile copy is easier to read
+- Muted pink editorial design retained with a compact mobile Inquire action and more readable mobile supporting text
 - Sticky navigation includes Work, Services, Packages, About, FAQ, and Contact
 - Generated concept images and reel remain clearly labeled as sample imagery
 - Replaceable sample image and video files now live in `assets/media/`
@@ -38,9 +37,12 @@ Current prices are introductory planning anchors. They are not fixed universal q
 ## Content status
 - Generated concept visuals are temporary and do not represent client work
 - Real project footage, titles, clients, years, outcomes, and exact roles are still needed
-- A real professional portrait is still needed
+- A real professional portrait and behind-the-scenes photo are still needed
 - Testimonials may be added only with permission to publish
 - Google Search Console ownership verification still requires an exact token from Google
+- Google Business Profile setup requires Aly's Google account
+- A custom domain email remains intentionally disabled until a mailbox or forwarding route is verified
+- Analytics tracking remains disabled until Aly supplies an approved measurement ID and reviews consent requirements
 
 ## Verification
 - Dependency-free build completed twice with identical generated-page hashes
@@ -50,9 +52,9 @@ Current prices are introductory planning anchors. They are not fixed universal q
 - Structured data includes visible and accurate `WebSite`, `Person`, `ProfessionalService`, and `FAQPage` entities
 - Inquiry form retained the activated tokenized FormSubmit endpoint, required fields, consent, package prefill, and privacy link
 - Hero video is a 12-second H.264 MP4 at 720 by 900 with a poster and fallback behavior
-- Rendered Chromium verification passed at 1440 by 1000 and 375 by 812 through an inlined local harness
+- Rendered Chromium verification passed for desktop and mobile layouts, including 320, 375, 414, 768, and 1440-pixel widths
 - Desktop and mobile overflow checks passed
-- Mobile menu open, close, and Escape behavior passed
+- Mobile Inquire action, menu open and close behavior, Escape handling, and readable mobile supporting text passed
 - Hero reel playback control, FAQ disclosure, package prefill, and native form validation passed
 - Homepage and privacy-page visual review passed
 - Generated-copy em-dash guardrail passed

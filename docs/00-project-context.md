@@ -52,9 +52,10 @@ Use transparent introductory starting prices for smaller editing, social content
 Do not invent clients, projects, awards, metrics, testimonials, or outcomes. Generated concept imagery must remain clearly labeled as sample imagery and must not be represented as Aly's client work.
 
 ## Remaining inputs
-- Professional portrait or usable reference photo
+- Professional portrait and behind-the-scenes photo
 - 3 to 6 real portfolio projects with client or project name, media, year, and Aly's exact role
 - Preferred travel radius
 - Equipment details if they materially help client confidence
 - Testimonials only with permission to publish
 - Google Search Console ownership verification token
+- Working custom-domain mailbox before changing the public email

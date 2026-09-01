@@ -11,6 +11,7 @@ Recommended filenames:
 - `event.webp`: event project
 - `wedding.webp`: elopement or intimate celebration project
 - `portrait.webp`: portrait of Aly
+- `behind-scenes.webp`: Aly working on a video project
 
 You can replace a file using the same filename, or upload a new filename and update its path in `content/site-content.js`.
 

@@ -6,9 +6,10 @@
   <meta name="theme-color" content="#f4e7eb">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="description" content="{{DESCRIPTION}}">
+{{SEARCH_CONSOLE_META}}
   <link rel="canonical" href="{{SITE_URL}}/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta property="og:site_name" content="{{SITE_NAME}}">
@@ -17,8 +18,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{SITE_URL}}/">
   <meta property="og:image" content="{{SOCIAL_IMAGE_URL}}">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Aly Hackbart, San Diego video editing and social content">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{TITLE}}">
@@ -29,6 +30,7 @@
 {{STRUCTURED_DATA}}
   </script>
   <link rel="stylesheet" href="styles.css">
+{{ANALYTICS_SCRIPT}}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -227,6 +229,12 @@
     <div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a><a href="#top">Back to top</a></div>
   </footer>
 
+  <script src="media/hero.js"></script>
+  <script src="media/restaurant.js"></script>
+  <script src="media/creator.js"></script>
+  <script src="media/event.js"></script>
+  <script src="media/wedding.js"></script>
+  <script src="media/reel.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>

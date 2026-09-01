@@ -35,8 +35,12 @@ Normal image and video files live in `assets/media/` and are referenced from `co
 
 `EDITING-GUIDE.md` documents the update workflow.
 
-## Search and privacy
+## Search, measurement, and privacy
 The homepage includes canonical metadata, Open Graph and Twitter metadata, crawlable JSON-LD, favicons, and a social-sharing image. `robots.txt` points to `sitemap.xml`. The project inquiry form links to a dedicated privacy notice.
+
+`site.googleSiteVerification` and `site.googleAnalyticsId` are optional editable fields. They remain blank until Google supplies an ownership token or Aly approves analytics. The generated privacy notice changes its analytics disclosure when an analytics ID is enabled.
+
+`business.publicEmail` remains blank until a custom-domain mailbox is confirmed. The generated pages fall back to the verified Gmail address without changing the activated FormSubmit endpoint.
 
 ## Serving
 `Dockerfile` uses Python 3.12 Alpine and serves the repository with `python -m http.server` on port 8080.

@@ -7,7 +7,7 @@ Client-facing portfolio and services website for Aly Hackbart, a San Diego video
 Routine changes happen in two places:
 
 - `content/site-content.js` controls page copy, services, prices, packages, FAQs, policies, portfolio details, media paths, contact information, form choices, and SEO text.
-- `assets/media/` stores the hero reel, project images, and future portrait.
+- `assets/media/` stores the hero reel, project images, future portrait, and behind-the-scenes photography.
 
 After editing the content file, run:
 
@@ -36,8 +36,9 @@ Then open `http://localhost:8080`.
 - `templates/`: source templates for generated pages
 - `scripts/build-site.mjs`: dependency-free static page generator
 - `styles.css`: muted-pink design system and responsive layout
-- `script.js`: mobile menu, reel controls, package prefill, media fallbacks, and form state
+- `script.js`: mobile menu, mobile inquiry CTA behavior, reel controls, package prefill, optional analytics events, media fallbacks, and form state
 - `privacy.html`: generated privacy notice
+- `GOOGLE-SETUP.md`: account-level Search Console, Business Profile, analytics, and custom-email steps
 - `robots.txt` and `sitemap.xml`: generated search files
 
 ## Deployment

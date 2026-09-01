@@ -44,6 +44,7 @@ The current concept files already live in `assets/media/`:
 | Event project | `assets/media/event.webp` | 3:2 |
 | Celebration project | `assets/media/wedding.webp` | 16:9 |
 | Aly portrait | `assets/media/portrait.webp` | 4:5 |
+| Behind-the-scenes image | `assets/media/behind-scenes.webp` | 4:5 or 3:2 |
 
 Use WebP or JPEG. Aim for about 1,600 pixels on the longest edge and less than 700 KB when practical.
 
@@ -161,23 +162,27 @@ Edit `faq.items` to add or revise common questions. Each item contains a `questi
 
 Edit `policies.items` for booking, payment, feedback, rescheduling, usage, travel, and file-delivery summaries. Final project terms should still be confirmed in a written proposal.
 
-## Add a professional portrait
+## Add a professional portrait and behind-the-scenes image
 
 1. Upload the portrait to `assets/media/portrait.webp`.
-2. Find `about.portrait` in `content/site-content.js`.
-3. Set:
+2. Upload an optional working image to `assets/media/behind-scenes.webp`.
+3. Find the `about` block in `content/site-content.js`.
+4. Set:
 
 ```js
-portrait: "assets/media/portrait.webp"
+portrait: "assets/media/portrait.webp",
+behindScenes: "assets/media/behind-scenes.webp"
 ```
 
-The AH placeholder will be replaced by the portrait after the build.
+The AH placeholder will be replaced by the available photography after the build. Do not use a generated person as Aly. Use a real, approved photo.
 
 ## Change contact information
 
 Find the `business` block near the top of `content/site-content.js`.
 
 The form destination is controlled by `contact.formEndpoint`. The current tokenized FormSubmit endpoint is active. If the destination email changes, activate a new endpoint before replacing it.
+
+Keep `business.publicEmail` empty until a custom domain mailbox or forwarding address has been tested in both directions. Once `hello@alyhackbart.com` works, place it in `business.publicEmail`; the site will display it while retaining the activated FormSubmit endpoint.
 
 ## Change the color palette
 
@@ -205,7 +210,9 @@ To finish Google Search Console setup, add the site as a Domain property and com
 https://alyhackbart.com/sitemap.xml
 ```
 
-A Google verification token should only be added after Google provides the exact value.
+A Google verification token should only be added after Google provides the exact value. The optional `site.googleSiteVerification` and `site.googleAnalyticsId` fields are ready in `content/site-content.js`.
+
+See `GOOGLE-SETUP.md` for the remaining account-level Search Console, Business Profile, analytics, and custom-email steps.
 
 ## Form submissions and privacy
 

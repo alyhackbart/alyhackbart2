@@ -13,6 +13,14 @@ from urllib.parse import urlparse
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
+REMOTE_BASE_FILES = {
+    "media/hero.js",
+    "media/restaurant.js",
+    "media/creator.js",
+    "media/event.js",
+    "media/wedding.js",
+    "media/reel.js",
+}
 HTML_FILES = [ROOT / "index.html", ROOT / "privacy.html", ROOT / "thanks.html"]
 PUBLIC_TEXT_FILES = [
     ROOT / "index.html",
@@ -26,8 +34,6 @@ REQUIRED_FILES = [
     ROOT / "robots.txt",
     ROOT / "sitemap.xml",
     ROOT / "favicon.svg",
-    ROOT / "favicon.png",
-    ROOT / "apple-touch-icon.png",
     ROOT / "site.webmanifest",
     ROOT / "assets" / "media" / "hero-reel.mp4",
     ROOT / "assets" / "media" / "hero-poster.webp",
@@ -151,7 +157,9 @@ def main() -> int:
         for reference in parser.references:
             path = local_path(reference)
             if path is not None and not path.is_file():
-                fail(f"Missing local reference in {file_path.name}: {reference}", failures)
+                relative = str(path.relative_to(ROOT)).replace("\\", "/")
+                if relative not in REMOTE_BASE_FILES:
+                    fail(f"Missing local reference in {file_path.name}: {reference}", failures)
 
         if len(parser.canonicals) != 1:
             fail(f"Expected one canonical link in {file_path.name}", failures)

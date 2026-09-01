@@ -37,7 +37,7 @@ const projects = content.work.projects.map((project) => {
   const dimensions = layout === 'portrait' ? 'width="800" height="1000"' : layout === 'wide' ? 'width="1280" height="720"' : 'width="1200" height="800"';
   return `        <article class="project${featured}">
           <div class="media-frame media-${layout}">
-            <img src="${escapeHtml(project.image)}" data-fallback-src="${escapeHtml(project.fallbackImage || project.image)}" ${dimensions} alt="${escapeHtml(project.alt)}" loading="lazy">${badge}
+            <img src="${escapeHtml(project.image)}" data-fallback-src="${escapeHtml(project.fallbackImage || project.image)}" data-fallback-key="${escapeHtml(project.fallbackKey || "")}" ${dimensions} alt="${escapeHtml(project.alt)}" loading="lazy">${badge}
           </div>
           <div class="project-meta">
             <div><h3>${escapeHtml(project.title)}</h3><p>${escapeHtml(project.description)}</p></div>
@@ -62,8 +62,15 @@ const processSteps = content.process.steps.map((step) =>
   `        <article><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.description)}</p></article>`
 ).join('\n');
 
-const aboutMedia = content.about.portrait
-  ? `      <div class="about-mark has-portrait" aria-label="Aly Hackbart portrait area"><img src="${escapeHtml(content.about.portrait)}" alt="${escapeHtml(content.about.portraitAlt)}" loading="lazy"></div>`
+const aboutImages = [];
+if (content.about.portrait?.trim()) {
+  aboutImages.push(`<figure class="about-photo about-photo-primary"><img src="${escapeHtml(content.about.portrait)}" alt="${escapeHtml(content.about.portraitAlt)}" loading="lazy"></figure>`);
+}
+if (content.about.behindScenes?.trim()) {
+  aboutImages.push(`<figure class="about-photo about-photo-secondary"><img src="${escapeHtml(content.about.behindScenes)}" alt="${escapeHtml(content.about.behindScenesAlt)}" loading="lazy"></figure>`);
+}
+const aboutMedia = aboutImages.length
+  ? `      <div class="about-gallery" aria-label="Aly Hackbart photography">${aboutImages.join('')}</div>`
   : `      <div class="about-mark" aria-label="Aly Hackbart portrait area"><span>${escapeHtml(content.about.monogram)}</span><small>${escapeHtml(content.about.placeholder)}</small></div>`;
 
 const faqItems = content.faq.items.map((item, index) => `          <details${index === 0 ? ' open' : ''}>
@@ -80,6 +87,23 @@ const projectTypes = content.contact.projectTypes.map((item) => `            <op
 const budgets = content.contact.budgets.map((item) => `            <option>${escapeHtml(item)}</option>`).join('\n');
 
 const socialImageUrl = absoluteUrl(content.site.socialImage);
+const publicEmail = content.business.publicEmail?.trim() || content.business.email;
+const searchConsoleMeta = content.site.googleSiteVerification?.trim()
+  ? `<meta name="google-site-verification" content="${escapeHtml(content.site.googleSiteVerification.trim())}">`
+  : '<!-- Google Search Console verification can be added in content/site-content.js. -->';
+const analyticsId = content.site.googleAnalyticsId?.trim();
+const analyticsScript = analyticsId
+  ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${escapeHtml(analyticsId)}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${escapeHtml(analyticsId)}');
+  </script>`
+  : '<!-- Analytics is not enabled. Add an approved measurement ID in content/site-content.js. -->';
+const analyticsPrivacyText = analyticsId
+  ? 'This website uses Google Analytics to understand general website use and inquiry activity. Google may process device, browser, usage, and approximate location information and may use cookies or similar technologies. Analytics should be enabled only after the applicable privacy and consent requirements are reviewed.'
+  : 'This website does not currently use advertising cookies or behavioral analytics. A basic session may still involve technical logs created by browsers, networks, hosting providers, or security systems.';
 const schema = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -96,7 +120,7 @@ const schema = {
       '@id': `${content.site.url}/#aly`,
       name: content.business.name,
       url: `${content.site.url}/`,
-      email: content.business.email,
+      email: publicEmail,
       jobTitle: 'Video Editor and Content Creator',
       homeLocation: {
         '@type': 'City',
@@ -111,7 +135,7 @@ const schema = {
       url: `${content.site.url}/`,
       image: socialImageUrl,
       description: content.site.description,
-      email: content.business.email,
+      email: publicEmail,
       founder: { '@id': `${content.site.url}/#aly` },
       areaServed: content.business.areaServed.map((name) => ({ '@type': 'AdministrativeArea', name })),
       serviceType: content.services.items.map((service) => service.title)
@@ -134,13 +158,15 @@ const schema = {
 const replacements = {
   TITLE: content.site.title,
   DESCRIPTION: content.site.description,
+  SEARCH_CONSOLE_META: searchConsoleMeta,
+  ANALYTICS_SCRIPT: analyticsScript,
   SITE_URL: content.site.url,
   SITE_NAME: content.site.name,
   DOMAIN_NAME: content.site.domainName,
   SOCIAL_IMAGE_URL: socialImageUrl,
   STRUCTURED_DATA: JSON.stringify(schema, null, 2).replaceAll('<', '\\u003c'),
   BUSINESS_NAME: content.business.name,
-  BUSINESS_EMAIL: content.business.email,
+  BUSINESS_EMAIL: publicEmail,
   BUSINESS_LOCATION: content.business.location,
   BUSINESS_SERVICE_AREA: content.business.serviceArea,
   HERO_EYEBROW: content.hero.eyebrow,
@@ -209,13 +235,14 @@ const replacements = {
   BUDGETS: budgets,
   PRIVACY_TITLE: content.privacy.title,
   PRIVACY_DESCRIPTION: content.privacy.description,
-  PRIVACY_EFFECTIVE_DATE: content.privacy.effectiveDate
+  PRIVACY_EFFECTIVE_DATE: content.privacy.effectiveDate,
+  ANALYTICS_PRIVACY_TEXT: analyticsPrivacyText
 };
 
 const renderTemplate = (templatePath, outputPath) => {
   let output = fs.readFileSync(templatePath, 'utf8');
   for (const [token, rawValue] of Object.entries(replacements)) {
-    const value = token === 'STRUCTURED_DATA' || ['HERO_PROOF', 'PROJECTS', 'SERVICES', 'PACKAGES', 'ADD_ONS', 'PROCESS_STEPS', 'ABOUT_MEDIA', 'FAQ_ITEMS', 'POLICY_ITEMS', 'PROJECT_TYPES', 'BUDGETS'].includes(token)
+    const value = ['STRUCTURED_DATA', 'SEARCH_CONSOLE_META', 'ANALYTICS_SCRIPT', 'HERO_PROOF', 'PROJECTS', 'SERVICES', 'PACKAGES', 'ADD_ONS', 'PROCESS_STEPS', 'ABOUT_MEDIA', 'FAQ_ITEMS', 'POLICY_ITEMS', 'PROJECT_TYPES', 'BUDGETS'].includes(token)
       ? String(rawValue)
       : escapeHtml(rawValue);
     output = output.replaceAll(`{{${token}}}`, value);

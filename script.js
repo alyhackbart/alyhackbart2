@@ -1,6 +1,8 @@
 (() => {
   'use strict';
 
+  const fallbackMedia = window.ALY_MEDIA || {};
+
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
@@ -32,8 +34,8 @@
 
   if (reel instanceof HTMLVideoElement && reelToggle instanceof HTMLButtonElement) {
     let fallbackAttempted = false;
-    const fallbackVideo = reel.dataset.fallbackVideo;
-    const fallbackPoster = reel.dataset.fallbackPoster;
+    const fallbackVideo = fallbackMedia[reel.dataset.fallbackVideo] || reel.dataset.fallbackVideo;
+    const fallbackPoster = fallbackMedia[reel.dataset.fallbackPoster] || reel.dataset.fallbackPoster;
 
     const updateToggle = () => {
       const paused = reel.paused;
@@ -76,7 +78,7 @@
   document.querySelectorAll('img[data-fallback-src]').forEach((image) => {
     if (!(image instanceof HTMLImageElement)) return;
     image.addEventListener('error', () => {
-      const fallbackSource = image.dataset.fallbackSrc;
+      const fallbackSource = fallbackMedia[image.dataset.fallbackKey] || image.dataset.fallbackSrc;
       if (fallbackSource && image.currentSrc !== new URL(fallbackSource, document.baseURI).href) {
         image.src = fallbackSource;
         return;
@@ -86,12 +88,17 @@
     });
   });
 
+  const track = (eventName, parameters = {}) => {
+    if (typeof window.gtag === 'function') window.gtag('event', eventName, parameters);
+  };
+
   const projectType = document.getElementById('project-type');
   document.querySelectorAll('[data-package]').forEach((link) => {
     link.addEventListener('click', () => {
-      if (!(projectType instanceof HTMLSelectElement)) return;
       const packageName = link.getAttribute('data-package');
       if (!packageName) return;
+      track('select_package', { package_name: packageName });
+      if (!(projectType instanceof HTMLSelectElement)) return;
       const option = Array.from(projectType.options).find((item) => item.value === packageName || item.textContent.trim() === packageName);
       if (option) projectType.value = option.value;
     });
@@ -103,6 +110,9 @@
       if (!inquiryForm.checkValidity()) return;
       const submitButton = inquiryForm.querySelector('.submit-button');
       if (!(submitButton instanceof HTMLButtonElement)) return;
+      track('generate_lead', {
+        project_type: projectType instanceof HTMLSelectElement ? projectType.value : ''
+      });
       submitButton.disabled = true;
       submitButton.textContent = 'Sending inquiry...';
     });

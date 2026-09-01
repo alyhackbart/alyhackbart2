@@ -6,7 +6,8 @@
   "background_color": "#f4e7eb",
   "theme_color": "#f4e7eb",
   "icons": [
-    {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"},
-    {"src": "/favicon.png", "sizes": "64x64", "type": "image/png"}
+    {"src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "/favicon.png", "sizes": "64x64", "type": "image/png", "purpose": "any"},
+    {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any"}
   ]
 }

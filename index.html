@@ -6,9 +6,10 @@
   <meta name="theme-color" content="#f4e7eb">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="description" content="San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.">
+<!-- Google Search Console verification can be added in content/site-content.js. -->
   <link rel="canonical" href="https://alyhackbart.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta property="og:site_name" content="Aly Hackbart">
@@ -16,14 +17,14 @@
   <meta property="og:description" content="San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://alyhackbart.com/">
-  <meta property="og:image" content="https://alyhackbart.com/assets/media/hero-poster.webp">
-  <meta property="og:image:width" content="1280">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image" content="https://alyhackbart.com/assets/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Aly Hackbart, San Diego video editing and social content">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aly Hackbart | San Diego Video Editing and Social Content">
   <meta name="twitter:description" content="San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.">
-  <meta name="twitter:image" content="https://alyhackbart.com/assets/media/hero-poster.webp">
+  <meta name="twitter:image" content="https://alyhackbart.com/assets/og-image.webp">
   <title>Aly Hackbart | San Diego Video Editing and Social Content</title>
   <script type="application/ld+json">
 {
@@ -62,7 +63,7 @@
       "@id": "https://alyhackbart.com/#business",
       "name": "Aly Hackbart",
       "url": "https://alyhackbart.com/",
-      "image": "https://alyhackbart.com/assets/media/hero-poster.webp",
+      "image": "https://alyhackbart.com/assets/og-image.webp",
       "description": "San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.",
       "email": "alysonhackbart@gmail.com",
       "founder": {
@@ -161,6 +162,7 @@
 }
   </script>
   <link rel="stylesheet" href="styles.css">
+<!-- Analytics is not enabled. Add an approved measurement ID in content/site-content.js. -->
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -194,7 +196,7 @@
 
       <div class="hero-visual">
         <div class="reel-frame">
-          <video id="sample-reel" class="sample-reel" data-reel autoplay muted loop playsinline preload="metadata" src="assets/media/hero-reel.mp4" poster="assets/media/hero-poster.webp" data-fallback-video="assets/media/hero-reel.mp4" data-fallback-poster="assets/media/hero-poster.webp" aria-label="Concept reel showing sample visual directions for Aly's services"></video>
+          <video id="sample-reel" class="sample-reel" data-reel autoplay muted loop playsinline preload="metadata" src="assets/media/hero-reel.mp4" poster="assets/media/hero-poster.webp" data-fallback-video="reel" data-fallback-poster="hero" aria-label="Concept reel showing sample visual directions for Aly's services"></video>
           <div class="media-overlay"><span>Concept reel</span><span>Sample imagery</span></div>
           <button class="video-toggle" type="button" aria-controls="sample-reel" aria-pressed="false">Pause reel</button>
         </div>
@@ -217,7 +219,7 @@
       <div class="project-grid">
         <article class="project project-featured">
           <div class="media-frame media-wide">
-            <img src="assets/media/restaurant.webp" data-fallback-src="assets/media/restaurant.webp" width="1280" height="720" alt="Concept image of a restaurant content shoot at golden hour" loading="lazy">
+            <img src="assets/media/restaurant.webp" data-fallback-src="assets/media/restaurant.webp" data-fallback-key="restaurant" width="1280" height="720" alt="Concept image of a restaurant content shoot at golden hour" loading="lazy">
             <span class="media-badge">Concept sample</span>
           </div>
           <div class="project-meta">
@@ -228,7 +230,7 @@
 
         <article class="project">
           <div class="media-frame media-portrait">
-            <img src="assets/media/creator.webp" data-fallback-src="assets/media/creator.webp" width="800" height="1000" alt="Concept image of a creator recording social content in a bright coastal setting" loading="lazy">
+            <img src="assets/media/creator.webp" data-fallback-src="assets/media/creator.webp" data-fallback-key="creator" width="800" height="1000" alt="Concept image of a creator recording social content in a bright coastal setting" loading="lazy">
             <span class="media-badge">Concept sample</span>
           </div>
           <div class="project-meta">
@@ -239,7 +241,7 @@
 
         <article class="project">
           <div class="media-frame media-landscape">
-            <img src="assets/media/event.webp" data-fallback-src="assets/media/event.webp" width="1200" height="800" alt="Concept image of a lively San Diego coastal event at sunset" loading="lazy">
+            <img src="assets/media/event.webp" data-fallback-src="assets/media/event.webp" data-fallback-key="event" width="1200" height="800" alt="Concept image of a lively San Diego coastal event at sunset" loading="lazy">
             <span class="media-badge">Concept sample</span>
           </div>
           <div class="project-meta">
@@ -250,7 +252,7 @@
 
         <article class="project project-featured">
           <div class="media-frame media-wide">
-            <img src="assets/media/wedding.webp" data-fallback-src="assets/media/wedding.webp" width="1280" height="720" alt="Concept image of a couple at a small coastal celebration during golden hour" loading="lazy">
+            <img src="assets/media/wedding.webp" data-fallback-src="assets/media/wedding.webp" data-fallback-key="wedding" width="1280" height="720" alt="Concept image of a couple at a small coastal celebration during golden hour" loading="lazy">
             <span class="media-badge">Concept sample</span>
           </div>
           <div class="project-meta">
@@ -354,12 +356,12 @@
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
-      <div class="about-mark" aria-label="Aly Hackbart portrait area"><span>AH</span><small>Professional portrait coming soon</small></div>
+      <div class="about-mark" aria-label="Aly Hackbart portrait area"><span>AH</span><small>San Diego video editor and content creator</small></div>
       <div class="about-copy">
         <p class="eyebrow">About Aly</p>
         <h2 id="about-title">San Diego-based editor and content creator.</h2>
         <p>Aly Hackbart creates social video, edits existing footage, and captures events for local businesses, restaurants, creators, and couples. Her approach is collaborative, detail-focused, and built around making content that feels natural to the person or brand behind it.</p>
-        <p class="about-note">A real portrait and client work will replace the temporary portfolio assets as Aly builds her body of work.</p>
+        <p class="about-note">Available for local business, restaurant, creator, event, and intimate celebration projects in San Diego and nearby communities.</p>
       </div>
     </section>
 
@@ -500,6 +502,12 @@
     <div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a><a href="#top">Back to top</a></div>
   </footer>
 
+  <script src="media/hero.js"></script>
+  <script src="media/restaurant.js"></script>
+  <script src="media/creator.js"></script>
+  <script src="media/event.js"></script>
+  <script src="media/wedding.js"></script>
+  <script src="media/reel.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>

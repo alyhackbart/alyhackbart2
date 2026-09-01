@@ -1,14 +1,55 @@
-name: Retired one-time site release
+name: Apply approved final site upgrade
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - release/APPLY
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  retired:
+  apply:
     runs-on: ubuntu-latest
     steps:
-      - name: Explain replacement
-        run: echo "This one-time workflow is retired. Use the Prerender editable site content workflow for future content builds."
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Reassemble and verify release archive
+        run: |
+          test -f release/APPLY
+          test -n "$(find release -maxdepth 1 -name 'site-update.b64.*' -print -quit)"
+          cat release/site-update.b64.* | base64 --decode > /tmp/site-update.tar.gz
+          if tar -tzf /tmp/site-update.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
+            echo "Unsafe path found in release archive."
+            exit 1
+          fi
+
+      - name: Apply release files
+        run: |
+          tar -xzf /tmp/site-update.tar.gz -C .
+          rm -rf release
+
+      - name: Build and validate site
+        run: |
+          node scripts/build-site.mjs
+          node --check script.js
+          node --check content/site-content.js
+          python3 scripts/validate-site.py
+
+      - name: Commit final upgrade
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Finish SEO, measurement, and editable media setup"
+          git push

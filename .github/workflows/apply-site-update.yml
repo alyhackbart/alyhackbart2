@@ -39,6 +39,31 @@ jobs:
           tar -xzf /tmp/site-update.tar.gz -C .
           rm -rf release
 
+      - name: Convert embedded concept media into replaceable files
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+
+          const media = {
+            'media/hero.js': 'assets/media/hero-poster.webp',
+            'media/restaurant.js': 'assets/media/restaurant.webp',
+            'media/creator.js': 'assets/media/creator.webp',
+            'media/event.js': 'assets/media/event.webp',
+            'media/wedding.js': 'assets/media/wedding.webp',
+            'media/reel.js': 'assets/media/hero-reel.mp4'
+          };
+
+          fs.mkdirSync('assets/media', { recursive: true });
+          for (const [sourcePath, outputPath] of Object.entries(media)) {
+            const source = fs.readFileSync(sourcePath, 'utf8');
+            const match = source.match(/base64,([^'";]+)/);
+            if (!match) throw new Error(`No embedded media found in ${sourcePath}`);
+            fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+            fs.writeFileSync(outputPath, Buffer.from(match[1], 'base64'));
+          }
+          NODE
+
       - name: Generate and validate static site
         run: |
           node scripts/build-site.mjs

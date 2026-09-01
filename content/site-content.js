@@ -15,7 +15,7 @@ const SITE_CONTENT = {
     title: "Aly Hackbart | San Diego Video Editing and Social Content",
     description: "San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.",
     socialImage: "assets/og-image.webp",
-    updated: "2026-08-31",
+    updated: "2026-09-01",
     googleSiteVerification: "",
     googleAnalyticsId: ""
   },
@@ -53,6 +53,14 @@ const SITE_CONTENT = {
     eyebrow: "Sample work",
     headline: "A preview of the work Aly is building toward.",
     introduction: "These concept images demonstrate possible project directions while Aly builds her real portfolio. They do not represent paid client work.",
+    featuredCredit: {
+      eyebrow: "Professional portfolio",
+      title: "6 Days Stranded on an Island",
+      description: "A television production Aly worked on, presented here as part of her professional portfolio.",
+      videoId: "eSkU9LMWX38",
+      videoUrl: "https://www.youtube.com/watch?v=eSkU9LMWX38",
+      channel: "Survival Games TV"
+    },
     projects: [
       {
         title: "Restaurant and hospitality content",
@@ -309,7 +317,7 @@ const SITE_CONTENT = {
     body: "Aly Hackbart creates social video, edits existing footage, and captures events for local businesses, restaurants, creators, and couples. Her approach is collaborative, detail-focused, and built around making content that feels natural to the person or brand behind it.",
     note: "Available for local business, restaurant, creator, event, and intimate celebration projects in San Diego and nearby communities.",
     monogram: "AH",
-    portrait: "",
+    portrait: "assets/media/aly-portrait.webp",
     portraitAlt: "Portrait of Aly Hackbart",
     behindScenes: "",
     behindScenesAlt: "Aly Hackbart working on a video project",

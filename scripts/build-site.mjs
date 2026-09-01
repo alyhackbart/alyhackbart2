@@ -46,6 +46,21 @@ const projects = content.work.projects.map((project) => {
         </article>`;
 }).join('\n\n');
 
+const featuredCredit = content.work.featuredCredit;
+const featuredCreditMarkup = featuredCredit?.videoId?.trim()
+  ? `      <article class="featured-credit">
+        <div class="featured-credit-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/${escapeHtml(featuredCredit.videoId)}" title="${escapeHtml(featuredCredit.title)}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="featured-credit-copy">
+          <p class="eyebrow">${escapeHtml(featuredCredit.eyebrow)}</p>
+          <h3>${escapeHtml(featuredCredit.title)}</h3>
+          <p>${escapeHtml(featuredCredit.description)}</p>
+          <a href="${escapeHtml(featuredCredit.videoUrl)}" target="_blank" rel="noopener">Watch on YouTube · ${escapeHtml(featuredCredit.channel)}</a>
+        </div>
+      </article>`
+  : '';
+
 const services = content.services.items.map((service) =>
   `        <article><div><h3>${escapeHtml(service.title)}</h3><p>${escapeHtml(service.description)}</p></div><strong>${escapeHtml(service.price)}</strong></article>`
 ).join('\n');
@@ -185,6 +200,7 @@ const replacements = {
   WORK_EYEBROW: content.work.eyebrow,
   WORK_HEADLINE: content.work.headline,
   WORK_INTRODUCTION: content.work.introduction,
+  FEATURED_CREDIT: featuredCreditMarkup,
   PROJECTS: projects,
   INVITATION_EYEBROW: content.work.invitation.eyebrow,
   INVITATION_HEADLINE: content.work.invitation.headline,
@@ -242,7 +258,7 @@ const replacements = {
 const renderTemplate = (templatePath, outputPath) => {
   let output = fs.readFileSync(templatePath, 'utf8');
   for (const [token, rawValue] of Object.entries(replacements)) {
-    const value = ['STRUCTURED_DATA', 'SEARCH_CONSOLE_META', 'ANALYTICS_SCRIPT', 'HERO_PROOF', 'PROJECTS', 'SERVICES', 'PACKAGES', 'ADD_ONS', 'PROCESS_STEPS', 'ABOUT_MEDIA', 'FAQ_ITEMS', 'POLICY_ITEMS', 'PROJECT_TYPES', 'BUDGETS'].includes(token)
+    const value = ['STRUCTURED_DATA', 'SEARCH_CONSOLE_META', 'ANALYTICS_SCRIPT', 'HERO_PROOF', 'FEATURED_CREDIT', 'PROJECTS', 'SERVICES', 'PACKAGES', 'ADD_ONS', 'PROCESS_STEPS', 'ABOUT_MEDIA', 'FAQ_ITEMS', 'POLICY_ITEMS', 'PROJECT_TYPES', 'BUDGETS'].includes(token)
       ? String(rawValue)
       : escapeHtml(rawValue);
     output = output.replaceAll(`{{${token}}}`, value);

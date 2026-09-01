@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   apply:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -38,6 +39,7 @@ jobs:
         run: |
           tar -xzf /tmp/site-update.tar.gz -C .
           rm -rf release
+          git restore --source=HEAD -- .github/workflows/apply-site-update.yml
 
       - name: Build and validate site
         run: |

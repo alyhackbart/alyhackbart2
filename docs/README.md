@@ -2,10 +2,10 @@
 
 ## Contracts
 
-- `00-project-context.md`: project purpose and implementation summary
+- `00-project-context.md`: project identity, business positioning, stack, and standing constraints
 - `working-mode.md`: current agent continuation state
-- `99-project-status.md`: current implementation and known gaps
+- `99-project-status.md`: implementation status, validation, known gaps, and readiness
 - `contracts/foundational/vision.md`: product and design intent
-- `contracts/foundational/architecture.md`: technical architecture and deployment boundary
+- `contracts/foundational/architecture.md`: runtime, editable-content build flow, media, search, privacy, serving, and deployment boundary
 
 These files describe project truth. Shared AI Development Harness rules remain canonical in `ConlinJoe/ai-platform`.

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4e7eb">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{SITE_URL}}/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:site_name" content="{{SITE_NAME}}">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{SITE_URL}}/">
+  <meta property="og:image" content="{{SOCIAL_IMAGE_URL}}">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta property="og:image:alt" content="Aly Hackbart, San Diego video editing and social content">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <meta name="twitter:image" content="{{SOCIAL_IMAGE_URL}}">
+  <title>{{TITLE}}</title>
+  <script type="application/ld+json">
+{{STRUCTURED_DATA}}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="{{BUSINESS_NAME}} home">{{BUSINESS_NAME}}</a>
+    <a class="mobile-header-cta" href="#contact">Inquire</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#contact">Start a project</a>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">{{HERO_EYEBROW}}</p>
+        <h1 id="hero-title">{{HERO_HEADLINE}}</h1>
+        <p class="hero-intro">{{HERO_INTRODUCTION}}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#packages">{{HERO_PRIMARY_ACTION}}</a>
+          <a class="button button-secondary" href="#work">{{HERO_SECONDARY_ACTION}}</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="reel-frame">
+          <video id="sample-reel" class="sample-reel" data-reel autoplay muted loop playsinline preload="metadata" src="{{HERO_VIDEO}}" poster="{{HERO_POSTER}}" data-fallback-video="{{HERO_FALLBACK_VIDEO}}" data-fallback-poster="{{HERO_FALLBACK_POSTER}}" aria-label="Concept reel showing sample visual directions for Aly's services"></video>
+          <div class="media-overlay"><span>{{HERO_VIDEO_LABEL}}</span><span>{{HERO_VIDEO_NOTE}}</span></div>
+          <button class="video-toggle" type="button" aria-controls="sample-reel" aria-pressed="false">Pause reel</button>
+        </div>
+        <p class="concept-note">{{HERO_DISCLOSURE}}</p>
+      </div>
+
+      <div class="hero-proof" aria-label="Service summary">
+{{HERO_PROOF}}
+      </div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <p class="eyebrow">{{WORK_EYEBROW}}</p>
+        <h2 id="work-title">{{WORK_HEADLINE}}</h2>
+        <p>{{WORK_INTRODUCTION}}</p>
+      </div>
+      <div class="project-grid">
+{{PROJECTS}}
+      </div>
+
+      <aside class="portfolio-invitation" aria-labelledby="portfolio-invitation-title">
+        <div>
+          <p class="eyebrow">{{INVITATION_EYEBROW}}</p>
+          <h3 id="portfolio-invitation-title">{{INVITATION_HEADLINE}}</h3>
+        </div>
+        <p>{{INVITATION_DESCRIPTION}}</p>
+        <a class="button button-dark" href="#contact" data-package="Restaurant or hospitality content">{{INVITATION_ACTION}}</a>
+      </aside>
+    </section>
+
+    <section class="services-section" id="services" aria-labelledby="services-title">
+      <div class="section-heading section-heading-dark">
+        <p class="eyebrow">{{SERVICES_EYEBROW}}</p>
+        <h2 id="services-title">{{SERVICES_HEADLINE}}</h2>
+        <p>{{SERVICES_INTRODUCTION}}</p>
+      </div>
+      <div class="service-list">
+{{SERVICES}}
+      </div>
+      <p class="pricing-note">{{SERVICES_NOTE}}</p>
+    </section>
+
+    <section class="packages-section" id="packages" aria-labelledby="packages-title">
+      <div class="section-heading">
+        <p class="eyebrow">{{PACKAGES_EYEBROW}}</p>
+        <h2 id="packages-title">{{PACKAGES_HEADLINE}}</h2>
+        <p>{{PACKAGES_INTRODUCTION}}</p>
+      </div>
+      <div class="package-grid">
+{{PACKAGES}}
+      </div>
+
+      <div class="add-ons" aria-labelledby="add-ons-title">
+        <div>
+          <p class="eyebrow">Optional add-ons</p>
+          <h3 id="add-ons-title">Build the scope around the actual project.</h3>
+        </div>
+        <ul>
+{{ADD_ONS}}
+        </ul>
+        <p>{{PACKAGES_NOTE}}</p>
+      </div>
+
+      <div class="custom-quote">
+        <div><p class="eyebrow">{{CUSTOM_EYEBROW}}</p><h3>{{CUSTOM_HEADLINE}}</h3></div>
+        <p>{{CUSTOM_DESCRIPTION}}</p>
+        <a class="button button-dark" href="#contact">{{CUSTOM_ACTION}}</a>
+      </div>
+    </section>
+
+    <section class="process-section" aria-labelledby="process-title">
+      <div class="section-heading">
+        <p class="eyebrow">{{PROCESS_EYEBROW}}</p>
+        <h2 id="process-title">{{PROCESS_HEADLINE}}</h2>
+        <p>{{PROCESS_INTRODUCTION}}</p>
+      </div>
+      <div class="process-list">
+{{PROCESS_STEPS}}
+      </div>
+    </section>
+
+    <section class="about-section" id="about" aria-labelledby="about-title">
+{{ABOUT_MEDIA}}
+      <div class="about-copy">
+        <p class="eyebrow">{{ABOUT_EYEBROW}}</p>
+        <h2 id="about-title">{{ABOUT_HEADLINE}}</h2>
+        <p>{{ABOUT_BODY}}</p>
+        <p class="about-note">{{ABOUT_NOTE}}</p>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="section-heading">
+        <p class="eyebrow">{{FAQ_EYEBROW}}</p>
+        <h2 id="faq-title">{{FAQ_HEADLINE}}</h2>
+        <p>{{FAQ_INTRODUCTION}}</p>
+      </div>
+
+      <div class="faq-policy-layout">
+        <div class="faq-list">
+{{FAQ_ITEMS}}
+        </div>
+        <aside class="policy-panel" aria-labelledby="policy-title">
+          <p class="eyebrow">{{POLICIES_EYEBROW}}</p>
+          <h3 id="policy-title">{{POLICIES_HEADLINE}}</h3>
+          <p class="policy-introduction">{{POLICIES_INTRODUCTION}}</p>
+          <div class="policy-list">
+{{POLICY_ITEMS}}
+          </div>
+          <p class="policy-note">{{POLICIES_NOTE}}</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-copy">
+        <p class="eyebrow">{{CONTACT_EYEBROW}}</p>
+        <h2 id="contact-title">{{CONTACT_HEADLINE}}</h2>
+        <p>{{CONTACT_INTRODUCTION}}</p>
+        <dl class="contact-details">
+          <div><dt>Email</dt><dd><a href="mailto:{{BUSINESS_EMAIL}}">{{BUSINESS_EMAIL}}</a></dd></div>
+          <div><dt>Based in</dt><dd>{{BUSINESS_LOCATION}} · {{BUSINESS_SERVICE_AREA}}</dd></div>
+        </dl>
+      </div>
+
+      <form class="inquiry-form" action="{{FORM_ENDPOINT}}" method="POST">
+        <input type="hidden" name="_subject" value="{{FORM_SUBJECT}}">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{{FORM_NEXT}}">
+        <input type="hidden" name="_url" value="{{FORM_SOURCE}}">
+        <input type="hidden" name="_autoresponse" value="{{FORM_AUTORESPONSE}}">
+        <label class="honeypot" aria-hidden="true">Leave this field empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+
+        <div class="form-grid">
+          <label>Full name <span aria-hidden="true">*</span><input type="text" name="Full name" autocomplete="name" required></label>
+          <label>Email <span aria-hidden="true">*</span><input type="email" name="email" autocomplete="email" required></label>
+          <label>Phone<input type="tel" name="Phone" autocomplete="tel"></label>
+          <label>Business or organization<input type="text" name="Business or organization" autocomplete="organization"></label>
+          <label>Project type <span aria-hidden="true">*</span><select name="Project type" id="project-type" required><option value="" selected disabled>Select a project type</option>
+{{PROJECT_TYPES}}
+          </select></label>
+          <label>Approximate budget<select name="Approximate budget"><option value="" selected>Select a range</option>
+{{BUDGETS}}
+          </select></label>
+          <label>Preferred date<input type="date" name="Preferred date"></label>
+          <label>Project location<input type="text" name="Project location" placeholder="San Diego, venue, or remote" autocomplete="street-address"></label>
+          <label class="form-full">Project details <span aria-hidden="true">*</span><textarea name="Project details" rows="7" placeholder="Tell Aly about the project, deliverables, platforms, timing, and anything else that would help." required></textarea></label>
+          <label class="consent"><input type="checkbox" name="Consent" value="Agreed" required><span>I have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy Notice</a> and agree that Aly may use the information I provide to respond to this project inquiry.</span></label>
+        </div>
+
+        <div class="form-footer">
+          <p><span aria-hidden="true">*</span> Required fields. Submissions are used only to respond to your inquiry.</p>
+          <button class="submit-button" type="submit">Send project inquiry</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> {{BUSINESS_NAME}}</span>
+    <div><a href="#work">Work</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a><a href="#top">Back to top</a></div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

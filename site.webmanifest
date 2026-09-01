@@ -1,0 +1,12 @@
+{
+  "name": "Aly Hackbart",
+  "short_name": "Aly Hackbart",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4e7eb",
+  "theme_color": "#f4e7eb",
+  "icons": [
+    {"src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"},
+    {"src": "/favicon.png", "sizes": "64x64", "type": "image/png"}
+  ]
+}

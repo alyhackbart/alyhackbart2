@@ -1,18 +1,29 @@
 /*
   ALYHACKBART.COM CONTENT FILE
 
-  This is the main file to edit when you want to change website wording,
-  services, prices, packages, portfolio details, or contact information.
+  Edit this file to change website wording, services, prices, packages,
+  portfolio details, contact information, policies, FAQs, and media paths.
 
-  Keep quotation marks and commas in place. Replace only the text values.
-  Media files live in assets/media. See EDITING-GUIDE.md for exact steps.
+  After editing, run: node scripts/build-site.mjs
+  The generated index.html is the SEO-ready version served in production.
 */
-window.SITE_CONTENT = {
+const SITE_CONTENT = {
+  site: {
+    url: "https://alyhackbart.com",
+    name: "Aly Hackbart",
+    domainName: "AlyHackbart.com",
+    title: "Aly Hackbart | San Diego Video Editing and Social Content",
+    description: "San Diego video editing, social content production, restaurant content, event coverage, and intimate celebration films by Aly Hackbart.",
+    socialImage: "assets/media/hero-poster.webp",
+    updated: "2026-08-31"
+  },
+
   business: {
     name: "Aly Hackbart",
     location: "San Diego, California",
     email: "alysonhackbart@gmail.com",
-    serviceArea: "Available for local projects and select travel"
+    serviceArea: "San Diego and nearby communities, with select travel available",
+    areaServed: ["San Diego", "San Diego County"]
   },
 
   hero: {
@@ -21,11 +32,10 @@ window.SITE_CONTENT = {
     introduction: "Aly Hackbart creates and edits video for San Diego businesses, restaurants, creators, events, and couples who want strong content without a complicated production process.",
     primaryAction: "Browse packages",
     secondaryAction: "View sample work",
-    // Upload your files to assets/media, then add the paths here.
-    video: "",
-    poster: "",
-    fallbackVideo: "reel",
-    fallbackPoster: "hero",
+    video: "assets/media/hero-reel.mp4",
+    poster: "assets/media/hero-poster.webp",
+    fallbackVideo: "assets/media/hero-reel.mp4",
+    fallbackPoster: "assets/media/hero-poster.webp",
     videoLabel: "Concept reel",
     videoNote: "Sample imagery",
     disclosure: "This reel uses concept imagery to show the visual direction Aly is building toward. It is not client work.",
@@ -45,8 +55,8 @@ window.SITE_CONTENT = {
         title: "Restaurant and hospitality content",
         description: "Food, atmosphere, staff, menu launches, and social-first storytelling.",
         services: "Filming · Editing · Social cuts",
-        image: "",
-        fallback: "restaurant",
+        image: "assets/media/restaurant.webp",
+        fallbackImage: "assets/media/restaurant.webp",
         alt: "Concept image of a restaurant content shoot at golden hour",
         layout: "wide",
         sample: true
@@ -55,8 +65,8 @@ window.SITE_CONTENT = {
         title: "Creator and social content",
         description: "Short-form video designed for Reels, TikTok, Shorts, and brand channels.",
         services: "Capture · Edit · Captions",
-        image: "",
-        fallback: "creator",
+        image: "assets/media/creator.webp",
+        fallbackImage: "assets/media/creator.webp",
         alt: "Concept image of a creator recording social content in a bright coastal setting",
         layout: "portrait",
         sample: true
@@ -65,23 +75,29 @@ window.SITE_CONTENT = {
         title: "Event highlight films",
         description: "Openings, parties, pop-ups, performances, and community gatherings.",
         services: "Coverage · Recap · Social cuts",
-        image: "",
-        fallback: "event",
+        image: "assets/media/event.webp",
+        fallbackImage: "assets/media/event.webp",
         alt: "Concept image of a lively San Diego coastal event at sunset",
         layout: "landscape",
         sample: true
       },
       {
-        title: "Wedding and celebration films",
-        description: "Story-focused coverage for weddings, elopements, and meaningful celebrations.",
-        services: "Custom coverage · Highlight edit",
-        image: "",
-        fallback: "wedding",
-        alt: "Concept image of a couple at a coastal wedding during golden hour",
+        title: "Elopements and intimate celebrations",
+        description: "Limited, story-focused coverage for elopements, micro-weddings, and intimate celebrations.",
+        services: "Limited coverage · Highlight edit",
+        image: "assets/media/wedding.webp",
+        fallbackImage: "assets/media/wedding.webp",
+        alt: "Concept image of a couple at a small coastal celebration during golden hour",
         layout: "wide",
         sample: true
       }
-    ]
+    ],
+    invitation: {
+      eyebrow: "San Diego restaurants",
+      headline: "Have a restaurant that should look this good online?",
+      description: "Aly is building a focused restaurant and hospitality portfolio and welcomes inquiries from local teams that need fresh social video.",
+      action: "Ask about restaurant content"
+    }
   },
 
   services: {
@@ -111,9 +127,9 @@ window.SITE_CONTENT = {
         price: "From $750"
       },
       {
-        title: "Wedding and celebration films",
-        description: "Custom coverage based on hours, ceremony needs, audio, and final edits.",
-        price: "From $1,500"
+        title: "Elopements and intimate celebrations",
+        description: "Limited coverage for elopements, micro-weddings, and small celebrations. Availability and scope are confirmed case by case.",
+        price: "Custom quote"
       },
       {
         title: "Ongoing content support",
@@ -135,10 +151,11 @@ window.SITE_CONTENT = {
         featured: false,
         formValue: "Social Edit",
         features: [
-          "Up to 60-second final edit",
-          "Client-supplied footage",
-          "Basic color and audio polish",
-          "Captions or simple text",
+          "One final edit up to 60 seconds",
+          "One organized folder of client-supplied footage",
+          "One delivery aspect ratio",
+          "Basic color, audio, captions, or simple text",
+          "Standard turnaround of about 5 business days",
           "One revision round"
         ]
       },
@@ -153,7 +170,8 @@ window.SITE_CONTENT = {
           "One San Diego location",
           "Three short-form edited videos",
           "Vertical social delivery",
-          "Color, audio, and captions",
+          "Color, audio, and basic captions",
+          "Standard turnaround of 7 to 10 business days",
           "One revision round"
         ]
       },
@@ -166,19 +184,31 @@ window.SITE_CONTENT = {
         features: [
           "Up to two hours of coverage",
           "One San Diego location",
-          "45 to 60-second highlight edit",
+          "One 45 to 60-second highlight edit",
           "Two short social cutdowns",
-          "Music, color, and audio polish",
+          "Music, color, and basic audio polish",
+          "Standard turnaround of about 10 business days",
           "One revision round"
         ]
       }
     ],
     custom: {
-      eyebrow: "Weddings and ongoing work",
+      eyebrow: "Elopements and ongoing work",
       headline: "Some projects need a custom scope.",
-      description: "Wedding coverage, monthly content, multi-location shoots, longer events, travel, and larger edit packages are quoted around the actual needs of the project.",
+      description: "Elopements, intimate celebrations, monthly content, multi-location shoots, longer events, travel, and larger edit packages are quoted around the actual needs of the project.",
       action: "Request a custom quote"
-    }
+    },
+    addOns: [
+      "Additional short-form edit",
+      "Additional filming hour",
+      "Additional location",
+      "Horizontal or square version",
+      "Advanced captions or motion graphics",
+      "Raw footage handoff",
+      "Rush turnaround",
+      "Extended or paid advertising usage"
+    ],
+    note: "Add-ons are quoted after Aly reviews the footage, schedule, licensing, and delivery requirements. Final scope, payment schedule, and usage terms are confirmed in writing before work begins."
   },
 
   process: {
@@ -187,10 +217,83 @@ window.SITE_CONTENT = {
     introduction: "A clear scope, organized feedback, and platform-ready delivery keep the process manageable.",
     steps: [
       { title: "Tell Aly what you need", description: "Share the project, location, target date, platforms, and final videos you have in mind." },
-      { title: "Confirm the scope", description: "Aly confirms deliverables, schedule, price, turnaround, and revision rounds before work starts." },
+      { title: "Confirm the scope", description: "Aly confirms deliverables, schedule, price, turnaround, payment schedule, and revision rounds before work starts." },
       { title: "Create", description: "Aly films, edits, or handles both depending on the approved project scope." },
       { title: "Review and deliver", description: "You send consolidated feedback and receive final files for the agreed platforms." }
     ]
+  },
+
+  faq: {
+    eyebrow: "Frequently asked questions",
+    headline: "The practical details, before you book.",
+    introduction: "These are Aly's current planning defaults. Every project receives a written scope with its exact deliverables, schedule, and terms.",
+    items: [
+      {
+        question: "How long does delivery take?",
+        answer: "Short social edits usually take about 5 business days. Filmed content and event packages usually take 7 to 14 business days. Larger projects and rush requests receive a custom schedule."
+      },
+      {
+        question: "How many revisions are included?",
+        answer: "The listed packages include one consolidated revision round. Additional revisions or a major change in direction are quoted separately."
+      },
+      {
+        question: "Is a deposit required?",
+        answer: "A booking retainer is usually required to reserve a filming date or begin a larger edit. The amount and payment schedule are shown in the written proposal."
+      },
+      {
+        question: "How far outside San Diego do you travel?",
+        answer: "Local San Diego projects are the primary focus. Travel, parking, permits, and projects outside the immediate area are quoted based on the location and schedule."
+      },
+      {
+        question: "Do I receive the raw footage?",
+        answer: "Raw footage is not included unless it is listed in the approved scope. A raw footage handoff can be added when storage, organization, and usage terms are agreed in advance."
+      },
+      {
+        question: "Are captions included?",
+        answer: "Basic captions are included when they are listed in the package. Custom typography, detailed animation, or advanced motion graphics are separate add-ons."
+      },
+      {
+        question: "Who handles music licensing?",
+        answer: "When music is included, Aly uses properly licensed music that fits the agreed use. Tell Aly before the project if the video will run as a paid advertisement or needs broader commercial usage."
+      },
+      {
+        question: "What happens if a shoot needs to be rescheduled?",
+        answer: "Contact Aly as soon as possible. The written proposal confirms the rescheduling and cancellation terms for that project, including any non-recoverable costs."
+      }
+    ]
+  },
+
+  policies: {
+    eyebrow: "Policies and project details",
+    headline: "Clear expectations protect the project.",
+    introduction: "The final proposal controls each booking. These summaries explain the normal starting point.",
+    items: [
+      {
+        title: "Booking and payment",
+        description: "A project is reserved after the written scope is accepted and any required booking retainer is paid."
+      },
+      {
+        title: "Feedback and revisions",
+        description: "Feedback should be consolidated into one response. Work outside the approved scope may require a revised quote."
+      },
+      {
+        title: "Rescheduling and cancellation",
+        description: "Provide as much notice as possible. Non-recoverable costs and work already completed remain payable."
+      },
+      {
+        title: "Usage and licensing",
+        description: "The proposal identifies intended platforms and usage. Paid advertising, third-party licensing, or expanded campaigns may require additional terms."
+      },
+      {
+        title: "Travel and locations",
+        description: "Travel, parking, permits, venue fees, and additional locations are quoted when they apply."
+      },
+      {
+        title: "Files and storage",
+        description: "Final deliverables are supplied in the agreed formats. Raw footage and long-term project storage are not included unless stated."
+      }
+    ],
+    note: "This website provides general planning information, not the final contract for a project."
   },
 
   about: {
@@ -218,7 +321,7 @@ window.SITE_CONTENT = {
       "Content Session",
       "Restaurant or hospitality content",
       "Event Recap",
-      "Wedding or celebration film",
+      "Elopement or intimate celebration",
       "Monthly content support",
       "Other or custom project"
     ],
@@ -230,5 +333,14 @@ window.SITE_CONTENT = {
       "$5,000+",
       "Not sure yet"
     ]
+  },
+
+  privacy: {
+    title: "Privacy Notice | Aly Hackbart",
+    description: "Privacy information for AlyHackbart.com and its project inquiry form.",
+    effectiveDate: "August 31, 2026"
   }
 };
+
+if (typeof window !== "undefined") window.SITE_CONTENT = SITE_CONTENT;
+if (typeof module !== "undefined" && module.exports) module.exports = SITE_CONTENT;

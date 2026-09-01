@@ -2,90 +2,126 @@
 
 Routine updates happen in three predictable places:
 
-1. `assets/media/` for your pictures and hero video
-2. `content/site-content.js` for wording, prices, services, packages, portfolio details, media paths, contact information, and form choices
+1. `assets/media/` for pictures and the hero video
+2. `content/site-content.js` for wording, prices, services, packages, FAQs, policies, portfolio details, media paths, contact information, form choices, and SEO text
 3. the `:root` section at the top of `styles.css` for the muted-pink color palette
 
-The generated concept media remains available as a fallback, so an incomplete upload will not leave an empty website.
+Do not edit `index.html` for normal content changes. It is generated from the editable content file and the template.
+
+## Publish a content change
+
+### Automatic GitHub workflow
+
+When `content/site-content.js`, a file in `templates/`, or `scripts/build-site.mjs` changes on `main`, the GitHub workflow rebuilds the static pages and commits them automatically when needed.
+
+### Manual build
+
+From the repository root, run:
+
+```bash
+node scripts/build-site.mjs
+```
+
+The build updates:
+
+- `index.html`
+- `privacy.html`
+- `thanks.html`
+- `robots.txt`
+- `sitemap.xml`
+
+Commit the editable source and the generated files together when working locally.
 
 ## Replace a sample project image
 
-### Upload the file
+The current concept files already live in `assets/media/`:
 
-1. Open the `alyhackbart/alyhackbart2` repository.
-2. Open `assets`, then `media`.
-3. Choose **Add file**, then **Upload files**.
-4. Upload the image and commit it to `main`.
-
-Recommended filenames and shapes:
-
-| Website use | Recommended file | Shape |
+| Website use | File | Shape |
 | --- | --- | --- |
-| Hero poster | `assets/media/hero-poster.webp` | 4:5 or 16:9 |
+| Hero poster | `assets/media/hero-poster.webp` | 16:9 |
 | Restaurant project | `assets/media/restaurant.webp` | 16:9 |
 | Creator project | `assets/media/creator.webp` | 4:5 |
 | Event project | `assets/media/event.webp` | 3:2 |
-| Wedding project | `assets/media/wedding.webp` | 16:9 |
+| Celebration project | `assets/media/wedding.webp` | 16:9 |
 | Aly portrait | `assets/media/portrait.webp` | 4:5 |
 
 Use WebP or JPEG. Aim for about 1,600 pixels on the longest edge and less than 700 KB when practical.
 
-### Connect the uploaded image
+### Easiest replacement
 
-Open `content/site-content.js`, find the matching project under `work.projects`, and change the empty `image` value:
+Upload your real file using the same filename, then edit the matching project in `content/site-content.js` and change:
 
 ```js
-image: "assets/media/restaurant.webp",
-fallback: "restaurant",
+sample: true
+```
+
+to:
+
+```js
 sample: false
 ```
 
-Changing `sample` from `true` to `false` removes the **Concept sample** label.
+That removes the **Concept sample** badge.
+
+### Use a different filename
+
+Update the project entry:
+
+```js
+image: "assets/media/my-restaurant-project.webp",
+fallbackImage: "assets/media/restaurant.webp",
+sample: false
+```
+
+If the real image fails to load, the original concept image remains available as a fallback.
 
 Valid layout values are `wide`, `portrait`, and `landscape`.
 
 ## Replace the hero video
 
-1. Upload an H.264 MP4 to `assets/media/hero-reel.mp4`.
-2. Upload a poster image to `assets/media/hero-poster.webp`.
-3. In `content/site-content.js`, update the hero values:
+1. Upload an H.264 MP4 to `assets/media/`.
+2. Upload a poster image to `assets/media/`.
+3. Update the hero paths in `content/site-content.js`:
 
 ```js
-video: "assets/media/hero-reel.mp4",
-poster: "assets/media/hero-poster.webp"
+video: "assets/media/my-reel.mp4",
+poster: "assets/media/my-reel-poster.webp",
+fallbackVideo: "assets/media/hero-reel.mp4",
+fallbackPoster: "assets/media/hero-poster.webp"
 ```
 
 Recommended video settings:
 
-- 4:5 works best in the desktop hero
+- 4:5 or 16:9
 - 10 to 30 seconds
-- No audio is required because the reel starts muted
-- Keep the file under about 8 MB for mobile performance
+- Muted playback
+- H.264 MP4
+- Under about 8 MB for mobile performance
 
-If either file is missing or cannot load, the site automatically returns to the current concept reel and poster.
+## Change page copy and SEO text
 
-## Change project titles or descriptions
+Open `content/site-content.js`.
 
-Open `content/site-content.js` and find `work.projects`.
+The `site` block controls the page title, meta description, canonical domain, social image path, and sitemap update date. Update `site.updated` when publishing a meaningful site change.
 
-Each project controls its title, description, services, image, fallback, layout, and concept label:
+The remaining blocks control their matching page sections:
 
-```js
-{
-  title: "Restaurant and hospitality content",
-  description: "Food, atmosphere, staff, menu launches, and social-first storytelling.",
-  services: "Filming · Editing · Social cuts",
-  image: "assets/media/restaurant.webp",
-  fallback: "restaurant",
-  alt: "Description of the image",
-  layout: "wide",
-  sample: false
-}
-```
+- `hero`
+- `work`
+- `services`
+- `packages`
+- `process`
+- `faq`
+- `policies`
+- `about`
+- `contact`
+- `privacy`
+
+Run the build after editing.
 
 ## Change services and prices
 
-In `content/site-content.js`, find `services.items` and edit the text inside quotation marks:
+Find `services.items` and edit the values inside quotation marks:
 
 ```js
 {
@@ -97,11 +133,11 @@ In `content/site-content.js`, find `services.items` and edit the text inside quo
 
 To add a service, copy one complete service block, paste it after another block, and keep the comma between blocks.
 
-## Change packages
+## Change packages, boundaries, and add-ons
 
 Find `packages.items` in `content/site-content.js`.
 
-Each package controls its name, price, description, feature list, highlighted styling, and matching project type in the inquiry form:
+Each package controls its name, price, description, feature list, highlighted styling, and matching inquiry-form value:
 
 ```js
 {
@@ -117,38 +153,35 @@ Each package controls its name, price, description, feature list, highlighted st
 }
 ```
 
-Only one package should usually use `featured: true`.
+Use `packages.addOns` for optional services and `packages.note` for the scope disclaimer. Only one package should usually use `featured: true`.
+
+## Change FAQs and policies
+
+Edit `faq.items` to add or revise common questions. Each item contains a `question` and `answer`.
+
+Edit `policies.items` for booking, payment, feedback, rescheduling, usage, travel, and file-delivery summaries. Final project terms should still be confirmed in a written proposal.
 
 ## Add a professional portrait
 
 1. Upload the portrait to `assets/media/portrait.webp`.
-2. In `content/site-content.js`, find `about.portrait`.
-3. Change the empty value to:
+2. Find `about.portrait` in `content/site-content.js`.
+3. Set:
 
 ```js
 portrait: "assets/media/portrait.webp"
 ```
 
-The AH placeholder will automatically be replaced by the portrait.
+The AH placeholder will be replaced by the portrait after the build.
 
 ## Change contact information
 
-Find `business` near the top of `content/site-content.js`:
+Find the `business` block near the top of `content/site-content.js`.
 
-```js
-business: {
-  name: "Aly Hackbart",
-  location: "San Diego, California",
-  email: "alysonhackbart@gmail.com",
-  serviceArea: "Available for local projects and select travel"
-}
-```
-
-The form destination is controlled by `contact.formEndpoint` farther down the same file. The current tokenized FormSubmit endpoint is active. If the destination email changes, create and activate a new FormSubmit endpoint before replacing it.
+The form destination is controlled by `contact.formEndpoint`. The current tokenized FormSubmit endpoint is active. If the destination email changes, activate a new endpoint before replacing it.
 
 ## Change the color palette
 
-Open `styles.css` and edit the color values in the `:root` section at the top. These variables control the full site:
+Open `styles.css` and edit the values in `:root`:
 
 ```css
 --ink: #2f2028;
@@ -160,12 +193,24 @@ Open `styles.css` and edit the color values in the `:root` section at the top. T
 --accent-light: #d89aae;
 ```
 
-Keep enough contrast between text and backgrounds so the site remains readable.
+Keep enough contrast between text and backgrounds for comfortable reading.
 
-## Form submissions
+## Search setup
 
-The inquiry form is active and sends submissions through FormSubmit to `alysonhackbart@gmail.com`. Live delivery was verified on August 31, 2026.
+The repository now includes canonical metadata, structured data, `robots.txt`, `sitemap.xml`, favicons, and a social-sharing image.
+
+To finish Google Search Console setup, add the site as a Domain property and complete Google's ownership verification. After verification, submit:
+
+```text
+https://alyhackbart.com/sitemap.xml
+```
+
+A Google verification token should only be added after Google provides the exact value.
+
+## Form submissions and privacy
+
+The inquiry form is active and sends submissions through FormSubmit to `alysonhackbart@gmail.com`. The form links to `privacy.html`, which describes the current information flow and website practices.
 
 ## Before publishing real work
 
-Confirm that you have permission to publish the footage, client name, logo, testimonial, and any identifiable people shown. Do not present generated concept imagery as client work.
+Confirm that you have permission to publish footage, client names, logos, testimonials, music, and identifiable people. Do not present generated concept imagery as client work.

@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - release/site-update.tar.gz
+      - release/APPLY
   workflow_dispatch:
 
 permissions:
@@ -24,19 +24,20 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: Verify release archive
+      - name: Reassemble and verify release archive
         run: |
-          test -f release/site-update.tar.gz
-          if tar -tzf release/site-update.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
+          test -f release/APPLY
+          test -n "$(find release -maxdepth 1 -name 'site-update.b64.*' -print -quit)"
+          cat release/site-update.b64.* | base64 --decode > /tmp/site-update.tar.gz
+          if tar -tzf /tmp/site-update.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
             echo "Unsafe path found in release archive."
             exit 1
           fi
 
       - name: Apply release files
         run: |
-          tar -xzf release/site-update.tar.gz -C .
-          rm release/site-update.tar.gz
-          rmdir release 2>/dev/null || true
+          tar -xzf /tmp/site-update.tar.gz -C .
+          rm -rf release
 
       - name: Generate and validate static site
         run: |

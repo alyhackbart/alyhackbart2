@@ -17,7 +17,8 @@ type: status
 - Static portfolio architecture preserved
 - Primary content pre-rendered into crawlable HTML from `content/site-content.js`
 - Automatic GitHub workflow regenerates static pages after editable content changes
-- Muted pink editorial design retained without the excluded mobile-header redesign
+- Muted pink editorial design retained across desktop and mobile
+- Mobile header includes a direct Inquire action, and supporting mobile copy is easier to read
 - Sticky navigation includes Work, Services, Packages, About, FAQ, and Contact
 - Generated concept images and reel remain clearly labeled as sample imagery
 - Replaceable sample image and video files now live in `assets/media/`

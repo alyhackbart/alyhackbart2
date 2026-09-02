@@ -1,8 +1,8 @@
 ---
 status: active
-last_reviewed: 2026-08-31
+last_reviewed: 2026-09-02
 source_of_truth_for:
-  - Project identity, business positioning, stack, and standing content constraints
+  - Project identity, business positioning, stack, editing workflow, and standing content constraints
 depends_on:
   - docs/contracts/foundational/architecture.md
   - docs/contracts/foundational/vision.md
@@ -27,11 +27,13 @@ AlyHackbart.com is Aly Hackbart's client-facing video editing and content portfo
 ## User job
 A visitor should quickly understand what Aly offers, browse services and packages, review clearly labeled sample visual directions, understand introductory starting prices, read common project policies, and submit enough information for Aly to scope a project.
 
-Aly should be able to replace temporary media and update site content without redesigning the page.
+Aly should be able to replace temporary media and update site content through Pages CMS without editing code or redesigning the page.
 
 ## Current implementation
 - Pre-rendered static HTML, CSS, and vanilla JavaScript
-- Central editable content in `content/site-content.js`
+- Structured content source in `content/site-content.json`
+- Pages CMS configuration in `.pages.yml`
+- Compatibility adapter in `content/site-content.js`
 - Dependency-free page generator in `scripts/build-site.mjs`
 - Automatic GitHub workflow that regenerates static pages when editable content changes
 - Replaceable images and video in `assets/media/`
@@ -52,7 +54,7 @@ Use transparent introductory starting prices for smaller editing, social content
 Do not invent clients, projects, awards, metrics, testimonials, or outcomes. Generated concept imagery must remain clearly labeled as sample imagery and must not be represented as Aly's client work.
 
 ## Remaining inputs
-- Professional portrait and behind-the-scenes photo
+- Additional real behind-the-scenes photo
 - 3 to 6 real portfolio projects with client or project name, media, year, and Aly's exact role
 - Preferred travel radius
 - Equipment details if they materially help client confidence

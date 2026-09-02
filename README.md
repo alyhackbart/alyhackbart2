@@ -2,45 +2,45 @@
 
 Client-facing portfolio and services website for Aly Hackbart, a San Diego video editor and content creator.
 
-## Edit the site
+## Edit the website without code
 
-Routine changes happen in two places:
+The repository is configured for Pages CMS.
 
-- `content/site-content.js` controls page copy, services, prices, packages, FAQs, policies, portfolio details, media paths, contact information, form choices, and SEO text.
-- `assets/media/` stores the hero reel, project images, future portrait, and behind-the-scenes photography.
+1. Sign in at `https://app.pagescms.org` with GitHub.
+2. Open `alyhackbart/alyhackbart2` and select the `main` branch.
+3. Open **AlyHackbart.com content**.
+4. Change text, prices, packages, projects, FAQs, policies, contact choices, or media.
+5. Save the entry.
 
-After editing the content file, run:
+Pages CMS writes the changes to `content/site-content.json`. GitHub Actions then rebuilds the static pages automatically. Google Cloud continues deploying from `main`.
+
+Use the Pages CMS media library to upload images and videos into `assets/media/`. See `EDITING-GUIDE.md` for exact replacement steps.
+
+## Developer workflow
+
+The site remains dependency-free at runtime.
 
 ```bash
 node scripts/build-site.mjs
-```
-
-This generates the production-ready `index.html`, `privacy.html`, `thanks.html`, `robots.txt`, and `sitemap.xml` with the editable content already written into the HTML.
-
-A GitHub Actions workflow also runs the build automatically after `content/site-content.js`, the templates, or the build script changes on `main`.
-
-Follow `EDITING-GUIDE.md` for step-by-step instructions.
-
-## Preview locally
-
-```bash
+python3 scripts/validate-site.py
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080`.
+Open `http://localhost:8080` to preview.
 
 ## Structure
 
-- `content/site-content.js`: editable business and website content
-- `assets/media/`: replaceable image and video files
+- `.pages.yml`: Pages CMS editor configuration
+- `content/site-content.json`: authoritative editable website content
+- `content/site-content.js`: compatibility adapter used by the generator
+- `assets/media/`: replaceable portfolio images, portrait, and hero video
 - `templates/`: source templates for generated pages
-- `scripts/build-site.mjs`: dependency-free static page generator
+- `scripts/build-site.mjs`: static page generator
 - `styles.css`: muted-pink design system and responsive layout
-- `script.js`: mobile menu, mobile inquiry CTA behavior, reel controls, package prefill, optional analytics events, media fallbacks, and form state
+- `script.js`: menu, reel controls, package prefill, fallbacks, and form state
 - `privacy.html`: generated privacy notice
-- `GOOGLE-SETUP.md`: account-level Search Console, Business Profile, analytics, and custom-email steps
 - `robots.txt` and `sitemap.xml`: generated search files
 
 ## Deployment
 
-The site is deployed from the `main` branch to Google Cloud.
+The production site deploys from the `main` branch to Google Cloud.

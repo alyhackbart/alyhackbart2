@@ -1,64 +1,48 @@
 # Google Search and Business Setup
 
-The website code is prepared for Google Search Console, a Google Business Profile, and optional Google Analytics. The remaining steps require Aly's Google account and, for domain verification or custom email, access to the domain's DNS settings.
+The website code is prepared for Google Search Console, a Google Business Profile, and optional Google Analytics. These account-level steps require Aly's Google account and, for domain verification or custom email, access to the domain DNS settings.
 
 ## Google Search Console
 
-1. Open Google Search Console and add `alyhackbart.com` as a Domain property.
+1. Add `alyhackbart.com` as a Domain property in Google Search Console.
 2. Copy the TXT verification value Google provides.
-3. Add that TXT record wherever the domain's DNS is managed.
-4. Return to Search Console and complete verification.
-5. Submit this sitemap after verification:
+3. Add the TXT record where the domain DNS is managed.
+4. Complete verification in Search Console.
+5. Submit `https://alyhackbart.com/sitemap.xml`.
 
-```text
-https://alyhackbart.com/sitemap.xml
-```
-
-The repository already contains `robots.txt`, `sitemap.xml`, canonical metadata, structured data, favicons, and a social-sharing image.
-
-For a URL-prefix verification method, paste the exact Google verification token into `site.googleSiteVerification` in `content/site-content.js`, then run:
-
-```bash
-node scripts/build-site.mjs
-```
-
-Do not invent a verification value. Use only the exact value Google supplies.
+For a URL-prefix verification method, enter the exact token in Pages CMS under **Website and search settings > Google Search Console verification token**, then save.
 
 ## Google Business Profile
 
-Use Aly's real business details:
+Use only accurate business details:
 
 - Business name: Aly Hackbart
 - Primary market: San Diego, California
 - Website: `https://alyhackbart.com`
 - Current email: `alysonhackbart@gmail.com`
-- Core services: video editing, social content production, restaurant content, and event coverage
+- Core services: video editing, social content, restaurant content, and event coverage
 - Limited custom service: elopements and intimate celebrations
 
-Choose the closest category that Google actually offers. If clients do not visit a staffed business location, configure the profile as a service-area business and do not publish a home address merely to improve rankings.
-
-Add only real photos, real work, accurate hours, and reviews from actual clients. Do not use the generated concept imagery as client evidence on the profile.
+If clients do not visit a staffed business location, configure a service-area business and do not publish a home address merely to improve rankings.
 
 ## Optional Google Analytics
 
-Analytics is currently disabled. To enable it later:
+Analytics is disabled until a valid measurement ID is supplied and privacy requirements are reviewed.
 
-1. Create a Google Analytics 4 web data stream for `alyhackbart.com`.
-2. Copy the exact measurement ID beginning with `G-`.
-3. Paste it into `site.googleAnalyticsId` in `content/site-content.js`.
-4. Run `node scripts/build-site.mjs` and publish the generated pages.
-5. Review the privacy and consent requirements that apply before collecting analytics data.
+1. Create a Google Analytics 4 web stream.
+2. Copy the ID beginning with `G-`.
+3. Enter it in Pages CMS under **Website and search settings > Google Analytics measurement ID**.
+4. Save and verify the generated privacy notice.
 
-The site already emits package-selection and lead-submission events when Google Analytics is enabled.
+The site can record package selections and lead submissions when analytics is enabled.
 
 ## Custom business email
 
-Do not display `hello@alyhackbart.com` until that address can receive mail reliably.
+Do not display `hello@alyhackbart.com` until the address works reliably.
 
-After configuring Google Workspace or a verified forwarding mailbox:
+After configuring Google Workspace or verified forwarding:
 
-1. Send a test message to the new address from a different account.
-2. Reply from the new address and confirm delivery in both directions.
-3. Set `business.publicEmail` in `content/site-content.js` to the working custom address.
-4. Keep the activated FormSubmit endpoint unchanged unless the form destination itself is intentionally migrated.
-5. Run `node scripts/build-site.mjs` and publish the generated pages.
+1. Test receiving mail from another account.
+2. Test replying from the new address.
+3. Enter the working address in Pages CMS under **Business information > Public business email**.
+4. Keep the protected FormSubmit delivery endpoint unchanged unless the form destination is intentionally migrated.

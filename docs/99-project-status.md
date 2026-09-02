@@ -1,6 +1,6 @@
 ---
 status: active
-last_reviewed: 2026-08-31
+last_reviewed: 2026-09-02
 source_of_truth_for:
   - Current implementation status, validation, known gaps, and production readiness
 depends_on:
@@ -15,21 +15,25 @@ type: status
 
 ## Current
 - Static portfolio architecture preserved
-- Primary content pre-rendered into crawlable HTML from `content/site-content.js`
-- Automatic GitHub workflow regenerates static pages after editable content changes
-- Muted pink editorial design retained with a compact mobile Inquire action and more readable mobile supporting text
+- Primary content pre-rendered into crawlable HTML
+- Pages CMS connected through root `.pages.yml`
+- Structured content moved to `content/site-content.json`
+- Pages CMS offers friendly fields for copy, prices, packages, projects, FAQs, policies, contact choices, SEO settings, images, and video
+- Automatic GitHub workflow regenerates static pages after Pages CMS saves
+- Manual Rebuild website action is available inside Pages CMS
+- Muted pink editorial design retained across desktop and mobile
 - Sticky navigation includes Work, Services, Packages, About, FAQ, and Contact
 - Generated concept images and reel remain clearly labeled as sample imagery
-- Replaceable sample image and video files now live in `assets/media/`
+- Replaceable image and video files live in `assets/media/`
 - Six service categories and three introductory packages retained
 - Elopement and intimate-celebration positioning replaces broad full-wedding positioning
-- Package turnaround, revision boundaries, optional add-ons, and scope disclaimers added
-- Restaurant portfolio collaboration callout added
-- FAQ and project-policy sections added
+- Package turnaround, revision boundaries, optional add-ons, and scope disclaimers included
+- Featured television credit and restaurant collaboration callout included
+- FAQ and project-policy sections included
 - Privacy notice linked from the inquiry form and footer
-- Canonical metadata, structured data, favicons, social image, `robots.txt`, and `sitemap.xml` added
+- Canonical metadata, structured data, favicons, social image, `robots.txt`, and `sitemap.xml` included
 - Activated FormSubmit inquiry flow and thank-you page retained
-- `EDITING-GUIDE.md` documents content, media, build, policy, privacy, and search updates
+- `EDITING-GUIDE.md` documents Pages CMS and manual editing
 
 ## Pricing status
 Current prices are introductory planning anchors. They are not fixed universal quotes and should be reviewed as Aly gains project history and better understands production costs, turnaround, travel, revision scope, and minimum project size.
@@ -37,28 +41,21 @@ Current prices are introductory planning anchors. They are not fixed universal q
 ## Content status
 - Generated concept visuals are temporary and do not represent client work
 - Real project footage, titles, clients, years, outcomes, and exact roles are still needed
-- A real professional portrait and behind-the-scenes photo are still needed
+- Additional real behind-the-scenes photography is still useful
 - Testimonials may be added only with permission to publish
 - Google Search Console ownership verification still requires an exact token from Google
 - Google Business Profile setup requires Aly's Google account
-- A custom domain email remains intentionally disabled until a mailbox or forwarding route is verified
-- Analytics tracking remains disabled until Aly supplies an approved measurement ID and reviews consent requirements
+- A custom domain email remains disabled until a mailbox or forwarding route is verified
+- Analytics remains disabled until Aly supplies an approved measurement ID and reviews consent requirements
 
-## Verification
-- Dependency-free build completed twice with identical generated-page hashes
-- Static HTML parsing, unique IDs, local references, and fragment links passed
-- Primary headings, services, FAQs, and form choices remained visible with JavaScript disabled
-- Canonical metadata, Open Graph metadata, Twitter metadata, JSON-LD, favicons, social image, sitemap, and robots checks passed
-- Structured data includes visible and accurate `WebSite`, `Person`, `ProfessionalService`, and `FAQPage` entities
-- Inquiry form retained the activated tokenized FormSubmit endpoint, required fields, consent, package prefill, and privacy link
-- Hero video is a 12-second H.264 MP4 at 720 by 900 with a poster and fallback behavior
-- Rendered Chromium verification passed for desktop and mobile layouts, including 320, 375, 414, 768, and 1440-pixel widths
-- Desktop and mobile overflow checks passed
-- Mobile Inquire action, menu open and close behavior, Escape handling, and readable mobile supporting text passed
-- Hero reel playback control, FAQ disclosure, package prefill, and native form validation passed
-- Homepage and privacy-page visual review passed
-- Generated-copy em-dash guardrail passed
-- Production-domain verification remains required after the push to `main`
+## Verification required for this CMS migration
+- JSON parses successfully and preserves the complete content shape
+- Compatibility adapter exports the JSON content
+- `.pages.yml` parses and targets the expected content and media paths
+- GitHub workflow responds to `content/site-content.json`
+- Full generator and repository validator pass in GitHub Actions
+- Pages CMS reloads the repository and renders the structured editor
+- Production-domain verification follows the generated-page commit
 
 ## Release gate
-A change is DONE only after the intended source is on `main` and AlyHackbart.com reflects it.
+A change is DONE only after the intended source is on `main`, the GitHub workflow passes, Pages CMS displays the editor, and AlyHackbart.com reflects generated changes.

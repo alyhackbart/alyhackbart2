@@ -5,10 +5,16 @@ on:
     branches:
       - main
     paths:
+      - content/site-content.json
       - content/site-content.js
       - templates/**
       - scripts/build-site.mjs
   workflow_dispatch:
+    inputs:
+      payload:
+        description: Optional Pages CMS action payload
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -33,6 +39,8 @@ jobs:
       - name: Validate generated site
         run: |
           node --check script.js
+          node --check content/site-content.js
+          node -e "JSON.parse(require('node:fs').readFileSync('content/site-content.json', 'utf8'))"
           python3 scripts/validate-site.py
 
       - name: Commit generated pages when needed

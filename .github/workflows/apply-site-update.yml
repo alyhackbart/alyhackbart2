@@ -1,14 +1,59 @@
-name: Retired one-time site release
+name: Apply approved cinematic portfolio release
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - release/APPLY
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  retired:
+  apply:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Explain replacement
-        run: echo "This one-time workflow is retired. Use the Prerender editable site content workflow for future content builds."
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Reassemble and verify release archive
+        run: |
+          test -f release/APPLY
+          test -n "$(find release -maxdepth 1 -name 'portfolio-release.b64.*' -print -quit)"
+          cat release/portfolio-release.b64.* | base64 --decode > /tmp/portfolio-release.tar.gz
+          echo "77797b98e0ca8c50c337fb6ff27d0bc278376f49c304e86d345a3a224f99575d  /tmp/portfolio-release.tar.gz" | sha256sum -c -
+          if tar -tzf /tmp/portfolio-release.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
+            echo "Unsafe path found in release archive."
+            exit 1
+          fi
+
+      - name: Apply portfolio release
+        run: |
+          tar -xzf /tmp/portfolio-release.tar.gz -C .
+          rm -rf release
+
+      - name: Build and validate portfolio
+        run: |
+          node scripts/build-site.mjs
+          node --check script.js
+          node --check content/site-content.js
+          node -e "JSON.parse(require('node:fs').readFileSync('content/site-content.json', 'utf8'))"
+          python3 scripts/validate-site.py
+          bash scripts/check-guardrails.sh . --files templates/index.html templates/resume.html templates/privacy.html templates/thanks.html templates/404.html index.html resume.html privacy.html thanks.html 404.html script.js styles.css
+
+      - name: Commit cinematic portfolio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Launch cinematic video editor portfolio"
+          git push

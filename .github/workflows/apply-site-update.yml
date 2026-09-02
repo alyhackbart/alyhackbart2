@@ -29,16 +29,16 @@ jobs:
         run: |
           test -f release/APPLY
           test -n "$(find release -maxdepth 1 -name 'portfolio-release.b64.*' -print -quit)"
-          cat release/portfolio-release.b64.* | base64 --decode > /tmp/portfolio-release.tar.gz
-          echo "77797b98e0ca8c50c337fb6ff27d0bc278376f49c304e86d345a3a224f99575d  /tmp/portfolio-release.tar.gz" | sha256sum -c -
-          if tar -tzf /tmp/portfolio-release.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
+          cat release/portfolio-release.b64.* | base64 --decode > /tmp/portfolio-release.tar.xz
+          echo "dd5c4341b983c0d5b16b94710b6bbc49592b1efaa55ed2b7908dbccced1686f0  /tmp/portfolio-release.tar.xz" | sha256sum -c -
+          if tar -tJf /tmp/portfolio-release.tar.xz | grep -E '(^/|(^|/)\.\.(/|$))'; then
             echo "Unsafe path found in release archive."
             exit 1
           fi
 
       - name: Apply portfolio release
         run: |
-          tar -xzf /tmp/portfolio-release.tar.gz -C .
+          tar -xJf /tmp/portfolio-release.tar.xz -C .
           rm -rf release
 
       - name: Build and validate portfolio

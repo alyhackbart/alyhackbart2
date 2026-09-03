@@ -58,22 +58,14 @@
           "Social cutdowns",
           "Post-production delivery"
         ]
-      },
-      {
-        "@type": "CreativeWork",
-        "@id": "https://alyhackbart.com/#featured-work",
-        "name": "6 Days Stranded on an Island",
-        "url": "https://www.youtube.com/watch?v=eSkU9LMWX38",
-        "creator": { "@id": "https://alyhackbart.com/#aly" },
-        "creditText": "Video Editor, Survival Games TV"
       }
     ]
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260903-7">
+  <link rel="stylesheet" href="styles.css?v=20260903-8">
   <script src="script.js?v=20260903-4" defer></script>
 </head>
-<body id="top">
+<body id="top" class="portfolio-page">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -83,9 +75,10 @@
       <i aria-hidden="true"></i>
     </button>
     <nav id="site-nav" aria-label="Primary navigation" data-nav>
-      <a href="#showcase">Work</a>
+      <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="/readings/">Readings</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </nav>
   </header>
@@ -102,8 +95,8 @@
         <h1 id="hero-title">Aly<br>Hackbart</h1>
         <p class="hero-statement">Finding the story inside the footage.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#showcase">View work</a>
-          <a class="button button-outline" href="#contact">Get in touch</a>
+          <a class="button button-primary" href="#work">Watch reel</a>
+          <a class="button button-outline" href="#contact">Start a project</a>
         </div>
       </div>
       <div class="hero-foot">
@@ -116,39 +109,25 @@
     </section>
 
     <div class="black-stage">
-      <section class="showcase-section" id="showcase" aria-label="Selected video by Aly Hackbart">
-        <div class="showcase-header">
-          <p class="section-label">Selected edit</p>
-        </div>
+      <section class="showcase-section" id="work" aria-labelledby="reel-title">
+        <header class="section-header showcase-heading">
+          <div>
+            <p class="section-label">Selected reel</p>
+            <h2 id="reel-title">The cut starts with story.</h2>
+          </div>
+          <p class="section-note">A selection of pacing, music, performance, and visual rhythm from Aly's editing work.</p>
+        </header>
         <div class="showcase-video">
-          <video class="showcase-player" controls playsinline preload="metadata" poster="assets/media/selected-edit-poster.webp?v=20260903-1" data-segmented-video data-segments='["assets/media/selected-edit.part01.mp4?v=20260903-1","assets/media/selected-edit.part02.mp4?v=20260903-1","assets/media/selected-edit.part03.mp4?v=20260903-1","assets/media/selected-edit.part04.mp4?v=20260903-1","assets/media/selected-edit.part05.mp4?v=20260903-1"]' aria-label="Selected video by Aly Hackbart">
+          <video class="showcase-player" controls playsinline preload="metadata" poster="assets/media/selected-edit-poster.webp?v=20260903-1" data-segmented-video data-segments='["assets/media/selected-edit.part01.mp4?v=20260903-1","assets/media/selected-edit.part02.mp4?v=20260903-1","assets/media/selected-edit.part03.mp4?v=20260903-1","assets/media/selected-edit.part04.mp4?v=20260903-1","assets/media/selected-edit.part05.mp4?v=20260903-1"]' aria-label="Selected editing reel by Aly Hackbart">
             Your browser does not support this video player.
           </video>
           <p class="showcase-video-status" data-video-status role="status" hidden></p>
         </div>
-      </section>
-
-      <section class="work-section" id="work" aria-labelledby="work-title">
-        <header class="section-header">
-          <div class="project-heading">
-            <p class="section-label">Featured work</p>
-            <h2 id="work-title">6 Days Stranded on an Island</h2>
-          </div>
-          <p class="section-note">Long-form television shaped around story, pacing, selects, and continuity.</p>
-        </header>
-
-        <div class="featured-work">
-          <div class="featured-video">
-            <iframe src="https://www.youtube-nocookie.com/embed/eSkU9LMWX38" title="6 Days Stranded on an Island" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <div class="project-details">
-            <dl>
-              <div><dt>Production</dt><dd>Survival Games TV</dd></div>
-              <div><dt>Role</dt><dd>Video Editor</dd></div>
-              <div><dt>Format</dt><dd>Long-form television</dd></div>
-            </dl>
-            <a class="project-link" href="https://www.youtube.com/watch?v=eSkU9LMWX38" target="_blank" rel="noopener"><span>Watch full episode</span><span aria-hidden="true">↗</span></a>
-          </div>
+        <div class="reel-meta" aria-label="Reel details">
+          <p><span>Role</span>Video editor</p>
+          <p><span>Based</span>San Diego</p>
+          <p><span>Available for</span>Television · branded · social</p>
+          <a href="#contact"><span>Discuss a project</span><span aria-hidden="true">↗</span></a>
         </div>
       </section>
 
@@ -174,84 +153,92 @@
       <section class="services-section" id="services" aria-labelledby="services-title">
         <header class="section-header services-header">
           <div>
-            <p class="section-label">Services</p>
-            <h2 id="services-title">Choose how we work together.</h2>
+            <p class="section-label">Editing services</p>
+            <h2 id="services-title">From raw footage to a clear, finished story.</h2>
           </div>
-          <p class="section-note">Start an editing project, book a personal reading, or support Aly's independent creative work.</p>
+          <p class="section-note">Every edit is scoped around the footage, audience, timeline, and delivery needs. Share the brief to receive a custom quote.</p>
         </header>
 
-        <div class="service-list">
-          <article class="service-item service-item-featured">
-            <div class="service-title">
-              <p class="service-type">Post-production</p>
-              <h3>Video editing</h3>
-            </div>
-            <p class="service-description">Story-driven editing for long-form, branded, social, and digital projects. Scope and pricing are tailored to your footage, timeline, and delivery needs.</p>
-            <p class="service-price">Custom quote</p>
-            <a class="service-action" href="#contact"><span>Request a quote</span><span aria-hidden="true">↗</span></a>
+        <div class="editing-service-list">
+          <article class="editing-service">
+            <p class="service-type">Long-form</p>
+            <h3>Story edit</h3>
+            <p>Shape selects, structure, performance, and pacing into a cut that stays focused from beginning to end.</p>
           </article>
-
-          <article class="service-item">
-            <div class="service-title">
-              <p class="service-type">Personal reading</p>
-              <h3>Tarot reading</h3>
-            </div>
-            <p class="service-description">A focused personal reading delivered as a thoughtful written email or a live video call. Scheduling is arranged by email.</p>
-            <p class="service-price"><span>$35</span><small>one reading</small></p>
-            <a class="service-action" href="https://book.stripe.com/9B63cufn41yC1Ovgvq4Ja00"><span>Book tarot</span><span aria-hidden="true">↗</span></a>
+          <article class="editing-service">
+            <p class="service-type">Campaign</p>
+            <h3>Branded content</h3>
+            <p>Build a clear visual story around the message, the audience, and the moments that carry the idea.</p>
           </article>
-
-          <article class="service-item">
-            <div class="service-title">
-              <p class="service-type">Personal reading</p>
-              <h3>Astrology reading</h3>
-            </div>
-            <p class="service-description">A personal astrology reading shaped around your birth details, delivered as a written email or a live video call.</p>
-            <p class="service-price"><span>$55</span><small>one reading</small></p>
-            <a class="service-action" href="https://book.stripe.com/14AcN4b6Ob9c0Kr3IE4Ja01"><span>Book astrology</span><span aria-hidden="true">↗</span></a>
+          <article class="editing-service">
+            <p class="service-type">Platform</p>
+            <h3>Social cutdowns</h3>
+            <p>Adapt longer material into tighter edits made for digital and social viewing.</p>
           </article>
-
-          <article class="service-item service-item-support">
-            <div class="service-title">
-              <p class="service-type">Support</p>
-              <h3>Support Aly</h3>
-            </div>
-            <p class="service-description">Make an optional personal contribution to support Aly's independent creative work. Choose an amount from $5 to $500.</p>
-            <p class="service-price"><span>Your choice</span><small>$5 minimum</small></p>
-            <a class="service-action" href="https://buy.stripe.com/bJe28q4Iqcdg8cTeni4Ja02"><span>Support Aly</span><span aria-hidden="true">↗</span></a>
+          <article class="editing-service">
+            <p class="service-type">Delivery</p>
+            <h3>Finishing support</h3>
+            <p>Keep revisions, exports, and final delivery organized so the last stage stays clear.</p>
           </article>
         </div>
-
-        <div class="services-notes">
-          <p>Readings are for personal reflection and entertainment only. They are not medical, legal, financial, or mental health advice.</p>
-          <p>Support is a personal contribution, not a charitable donation. No goods or services are provided in exchange.</p>
-        </div>
+        <a class="wide-cta" href="#contact"><span>Tell me about the footage</span><span aria-hidden="true">↗</span></a>
       </section>
 
-      <section class="contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="contact-copy">
-          <p class="section-label">Contact</p>
-          <h2 id="contact-title">Let’s make something worth watching.</h2>
-          <p>Have a project in motion? Tell me about the footage, timeline, and where you need an editor.</p>
-          <a class="email-link" href="mailto:alysonhackbart@gmail.com">alysonhackbart@gmail.com</a>
+      <aside class="readings-bridge" aria-labelledby="readings-bridge-title">
+        <div>
+          <p class="section-label">Personal readings</p>
+          <h2 id="readings-bridge-title">Looking for tarot or astrology?</h2>
         </div>
+        <p>Readings now have a dedicated space with service details, secure checkout, and clear next steps.</p>
+        <a class="button button-primary" href="/readings/">Explore readings</a>
+      </aside>
 
-        <form action="https://formsubmit.co/251d51551e089c4c1000323b75ae9878" method="post">
-          <input type="hidden" name="_subject" value="New AlyHackbart.com inquiry">
-          <input type="hidden" name="_next" value="https://alyhackbart.com/thanks.html">
-          <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Aly Hackbart. Your message was received, and Aly will reply as soon as possible.">
-          <input type="hidden" name="Source" value="https://alyhackbart.com/#contact">
-          <label>Full name<input type="text" name="Full name" autocomplete="name" required></label>
-          <label>Email<input type="email" name="email" autocomplete="email" required></label>
-          <label>Inquiry type<select name="Inquiry type" required><option value="">Select one</option><option value="Editing role or employment opportunity">Editing role or employment opportunity</option><option value="Assistant editor opportunity">Assistant editor opportunity</option><option value="Freelance editing project">Freelance editing project</option><option value="Branded or social content">Branded or social content</option><option value="YouTube or long-form content">YouTube or long-form content</option><option value="Tarot reading question">Tarot reading question</option><option value="Astrology reading question">Astrology reading question</option><option value="Payment or support question">Payment or support question</option><option value="Other">Other</option></select></label>
-          <label>Budget or opportunity<select name="Budget"><option value="">Select one</option><option value="Employment opportunity">Employment opportunity</option><option value="Under $500">Under $500</option><option value="$500 to $1,000">$500 to $1,000</option><option value="$1,000 to $2,500">$1,000 to $2,500</option><option value="$2,500+">$2,500+</option><option value="Not sure yet">Not sure yet</option></select></label>
-          <label class="form-full">Project details<textarea name="Details" rows="6" placeholder="Tell me about the project, timeline, footage, and what you need from an editor." required></textarea></label>
-          <label class="consent form-full"><input type="checkbox" name="Consent" value="I agree" required><span>I agree that Aly may use this information to reply. Read the <a href="privacy.html">privacy notice</a>.</span></label>
-          <div class="form-footer form-full">
-            <p>Used only to respond to your inquiry.</p>
-            <button type="submit">Start a project <span aria-hidden="true">↗</span></button>
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <header class="contact-heading">
+          <p class="section-label">Start a project</p>
+          <h2 id="contact-title">Bring the footage.<br>I’ll help find the story.</h2>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <p>Share what you are making, what stage it is in, and where you need an editor. A useful brief can be short.</p>
+            <div class="brief-guide">
+              <p class="brief-guide-title">Helpful details</p>
+              <ul>
+                <li>Format and intended audience</li>
+                <li>Approximate footage volume</li>
+                <li>Target runtime and deliverables</li>
+                <li>Ideal deadline and review process</li>
+              </ul>
+            </div>
+            <p class="direct-contact">Prefer email?</p>
+            <a class="email-link" href="mailto:alysonhackbart@gmail.com">alysonhackbart@gmail.com</a>
           </div>
-        </form>
+
+          <form action="https://formsubmit.co/251d51551e089c4c1000323b75ae9878" method="post">
+            <div class="form-intro form-full">
+              <p class="service-type">Project brief</p>
+              <h3>Tell me what is taking shape.</h3>
+              <p>I’ll reply by email to talk through fit, timing, and a custom quote.</p>
+            </div>
+            <input type="hidden" name="_subject" value="New AlyHackbart.com editing inquiry">
+            <input type="hidden" name="_next" value="https://alyhackbart.com/thanks.html">
+            <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Aly Hackbart. Your project brief was received, and Aly will reply as soon as possible.">
+            <input type="hidden" name="Source" value="https://alyhackbart.com/#contact">
+            <label>Full name<input type="text" name="Full name" autocomplete="name" required></label>
+            <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            <label>Project type<select name="Project type" required><option value="">Select one</option><option value="Editing role or employment opportunity">Editing role or employment opportunity</option><option value="Assistant editor opportunity">Assistant editor opportunity</option><option value="Long-form or YouTube">Long-form or YouTube</option><option value="Branded content">Branded content</option><option value="Social content">Social content</option><option value="Other editing project">Other editing project</option></select></label>
+            <label>Timeline<select name="Timeline"><option value="">Select one</option><option value="As soon as possible">As soon as possible</option><option value="1 to 2 weeks">1 to 2 weeks</option><option value="3 to 4 weeks">3 to 4 weeks</option><option value="1 to 3 months">1 to 3 months</option><option value="Ongoing">Ongoing</option><option value="Not set yet">Not set yet</option></select></label>
+            <label>Budget or opportunity<select name="Budget"><option value="">Select one</option><option value="Employment opportunity">Employment opportunity</option><option value="Under $500">Under $500</option><option value="$500 to $1,000">$500 to $1,000</option><option value="$1,000 to $2,500">$1,000 to $2,500</option><option value="$2,500+">$2,500+</option><option value="Not sure yet">Not sure yet</option></select></label>
+            <label>Project link <span class="optional">Optional</span><input type="url" name="Project link" inputmode="url" placeholder="https://"></label>
+            <label class="form-full">Project details<textarea name="Details" rows="7" placeholder="What are you making, what footage exists, and what would a successful edit feel like?" required></textarea></label>
+            <label class="consent form-full"><input type="checkbox" name="Consent" value="I agree" required><span>I agree that Aly may use this information to reply. Read the <a href="privacy.html">privacy notice</a>.</span></label>
+            <div class="form-footer form-full">
+              <p>Used only to respond to your inquiry.</p>
+              <button type="submit">Send project brief <span aria-hidden="true">↗</span></button>
+            </div>
+          </form>
+        </div>
       </section>
     </div>
   </main>
@@ -259,7 +246,7 @@
   <footer>
     <a class="wordmark" href="#top">Aly Hackbart</a>
     <p>Video Editor · San Diego</p>
-    <div><a href="#services">Services</a><a href="privacy.html">Privacy</a><a href="mailto:alysonhackbart@gmail.com">Email</a></div>
+    <div><a href="#work">Work</a><a href="/readings/">Readings</a><a href="privacy.html">Privacy</a><a href="mailto:alysonhackbart@gmail.com">Email</a></div>
   </footer>
 </body>
 </html>

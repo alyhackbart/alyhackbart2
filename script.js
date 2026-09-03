@@ -20,7 +20,7 @@ if (menuToggle && navigation) {
 
   navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
+    if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
       closeMenu();
       menuToggle.focus();
     }
@@ -30,12 +30,18 @@ if (menuToggle && navigation) {
 const heroVideo = document.querySelector('[data-hero-video]');
 const videoControl = document.querySelector('[data-video-control]');
 const videoControlLabel = document.querySelector('[data-video-control-label]');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (heroVideo && videoControl && videoControlLabel) {
   const setVideoState = (paused) => {
     videoControl.setAttribute('aria-pressed', String(paused));
     videoControlLabel.textContent = paused ? 'Play background' : 'Pause background';
   };
+
+  if (reduceMotion) {
+    heroVideo.pause();
+    setVideoState(true);
+  }
 
   videoControl.addEventListener('click', () => {
     if (heroVideo.paused) {
@@ -48,20 +54,4 @@ if (heroVideo && videoControl && videoControlLabel) {
 
   heroVideo.addEventListener('pause', () => setVideoState(true));
   heroVideo.addEventListener('play', () => setVideoState(false));
-}
-
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const revealItems = [...document.querySelectorAll('.reveal')];
-
-if (reduceMotion || !('IntersectionObserver' in window)) {
-  revealItems.forEach((item) => item.classList.add('is-visible'));
-} else {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  revealItems.forEach((item) => observer.observe(item));
 }

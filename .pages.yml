@@ -24,116 +24,48 @@ content:
       delete: false
     fields:
       - name: site
-        label: Website and search settings
+        label: Website and search
         type: object
         fields:
-          - name: url
-            label: Website URL
-            type: string
-            readonly: true
-          - name: name
-            label: Website name
-            type: string
-            required: true
-          - name: domainName
-            label: Display domain name
-            type: string
-            required: true
-          - name: title
-            label: Search result title
-            type: string
-            required: true
-            options:
-              maxlength: 70
-          - name: description
-            label: Search result description
-            type: text
-            required: true
-            options:
-              maxlength: 170
+          - { name: url, label: Website URL, type: string, readonly: true }
+          - { name: name, label: Website name, type: string, required: true }
+          - { name: title, label: Search result title, type: string, required: true }
+          - { name: description, label: Search description, type: text, required: true }
           - name: socialImage
             label: Social sharing image
             type: image
             required: true
-            description: Recommended size is 1200 by 630 pixels.
             options:
               media: branding
               extensions: [jpg, jpeg, png, webp]
-          - name: updated
-            label: Last major update
-            type: date
-            required: true
-            options:
-              format: yyyy-MM-dd
-          - name: googleSiteVerification
-            label: Google Search Console verification token
-            type: string
-            description: Leave blank until Google gives you the exact token.
-          - name: googleAnalyticsId
-            label: Google Analytics measurement ID
-            type: string
-            description: Optional. Use an ID beginning with G- only after reviewing privacy requirements.
-            pattern:
-              regex: "^$|^G-[A-Z0-9]+$"
-              message: Leave blank or enter a valid Google Analytics ID beginning with G-.
+          - { name: updated, label: Last major update, type: date, required: true }
+          - { name: googleSiteVerification, label: Google verification token, type: string }
+          - { name: googleAnalyticsId, label: Google Analytics ID, type: string }
 
-      - name: business
-        label: Business information
+      - name: identity
+        label: Aly's information
         type: object
         fields:
-          - name: name
-            label: Name
-            type: string
-            required: true
-          - name: location
-            label: Location
-            type: string
-            required: true
-          - name: email
-            label: Form delivery email
-            type: string
-            required: true
-            readonly: true
-            description: The active form currently delivers to this verified address.
-          - name: publicEmail
-            label: Public business email
-            type: string
-            description: Leave blank to show the verified Gmail address.
-          - name: serviceArea
-            label: Service area description
-            type: text
-            required: true
-          - name: areaServed
-            label: Areas served
-            type: string
-            list: true
+          - { name: name, label: Name, type: string, required: true }
+          - { name: role, label: Professional title, type: string, required: true }
+          - { name: location, label: Location, type: string, required: true }
+          - { name: email, label: Form delivery email, type: string, required: true, readonly: true }
+          - { name: publicEmail, label: Public email override, type: string }
+          - { name: availability, label: Availability, type: text, required: true }
 
       - name: hero
         label: Homepage hero
         type: object
         fields:
-          - name: eyebrow
-            label: Small heading
-            type: string
-            required: true
-          - name: headline
-            label: Main headline
-            type: text
-            required: true
-          - name: introduction
-            label: Introduction
-            type: text
-            required: true
-          - name: primaryAction
-            label: Primary button text
-            type: string
-            required: true
-          - name: secondaryAction
-            label: Secondary button text
-            type: string
-            required: true
+          - { name: eyebrow, label: Small heading, type: string, required: true }
+          - { name: name, label: Large name, type: string, required: true }
+          - { name: role, label: Role, type: string, required: true }
+          - { name: statement, label: Main statement, type: string, required: true }
+          - { name: introduction, label: Introduction, type: text, required: true }
+          - { name: primaryAction, label: Primary button, type: string, required: true }
+          - { name: secondaryAction, label: Secondary button, type: string, required: true }
           - name: video
-            label: Hero reel
+            label: Background video
             type: file
             required: true
             options:
@@ -141,471 +73,197 @@ content:
               categories: [video]
               extensions: [mp4, webm, mov]
           - name: poster
-            label: Hero poster image
+            label: Background poster
             type: image
             required: true
             options:
               media: portfolio
               extensions: [jpg, jpeg, png, webp]
-          - name: fallbackVideo
-            type: string
-            hidden: true
-            readonly: true
-          - name: fallbackPoster
-            type: string
-            hidden: true
-            readonly: true
-          - name: videoLabel
-            label: Reel label
-            type: string
-          - name: videoNote
-            label: Reel note
-            type: string
-          - name: disclosure
-            label: Sample media disclosure
-            type: text
-            required: true
-          - name: proof
-            label: Quick facts
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{title}"
-            fields:
-              - name: title
-                label: Fact heading
-                type: string
-                required: true
-              - name: detail
-                label: Fact detail
-                type: string
-                required: true
+          - { name: mediaNote, label: Media note, type: text, required: true }
+          - { name: ticker, label: Scrolling skills, type: string, list: true, required: true }
 
-      - name: work
-        label: Portfolio and work
+      - name: manifesto
+        label: Editing approach
         type: object
         fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-            required: true
-          - name: headline
-            label: Section headline
-            type: text
-            required: true
-          - name: introduction
-            label: Section introduction
-            type: text
-            required: true
-          - name: featuredCredit
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: paragraphs, label: Paragraphs, type: text, list: true, required: true }
+          - { name: pullQuote, label: Pull quote, type: text, required: true }
+
+      - name: work
+        label: Featured work
+        type: object
+        fields:
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: introduction, label: Introduction, type: text, required: true }
+          - name: featured
             label: Featured professional credit
             type: object
             fields:
-              - name: eyebrow
-                label: Small heading
-                type: string
-              - name: title
-                label: Project title
-                type: string
-              - name: description
-                label: Project description
-                type: text
-              - name: videoId
-                label: YouTube video ID
-                type: string
-                description: The short ID from the YouTube URL, such as eSkU9LMWX38.
-              - name: videoUrl
-                label: Full YouTube URL
-                type: string
-              - name: channel
-                label: Channel or production name
-                type: string
-          - name: projects
-            label: Portfolio projects
+              - { name: category, label: Category, type: string, required: true }
+              - { name: title, label: Project title, type: string, required: true }
+              - { name: production, label: Production, type: string, required: true }
+              - { name: role, label: Aly's role, type: string, required: true }
+              - { name: description, label: Description, type: text, required: true }
+              - { name: videoId, label: YouTube video ID, type: string, required: true }
+              - { name: videoUrl, label: Full YouTube URL, type: string, required: true }
+              - { name: button, label: Video button, type: string, required: true }
+          - name: reel
+            label: Editing reel status
+            type: object
+            fields:
+              - { name: label, label: Small label, type: string, required: true }
+              - { name: headline, label: Headline, type: text, required: true }
+              - { name: description, label: Description, type: text, required: true }
+              - { name: status, label: Status, type: string, required: true }
+              - { name: button, label: Button, type: string, required: true }
+
+      - name: experience
+        label: Experience
+        type: object
+        fields:
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: introduction, label: Introduction, type: text, required: true }
+          - name: items
+            label: Experience entries
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{company}"
+            fields:
+              - { name: company, label: Company, type: string, required: true }
+              - { name: dates, label: Dates, type: string, required: true }
+              - { name: role, label: Role, type: string, required: true }
+              - { name: summary, label: Summary, type: text, required: true }
+              - { name: details, label: Details, type: string, list: true, required: true }
+
+      - name: capabilities
+        label: Capabilities
+        type: object
+        fields:
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: introduction, label: Introduction, type: text, required: true }
+          - name: items
+            label: Capabilities
             type: object
             list:
               collapsible:
                 collapsed: true
                 summary: "{title}"
             fields:
-              - name: title
-                label: Project title
-                type: string
-                required: true
-              - name: description
-                label: Description
-                type: text
-                required: true
-              - name: services
-                label: Role and deliverables
-                type: string
-                required: true
-              - name: image
-                label: Project image
-                type: image
-                required: true
-                options:
-                  media: portfolio
-                  extensions: [jpg, jpeg, png, webp]
-              - name: fallbackImage
-                type: string
-                hidden: true
-                readonly: true
-              - name: fallbackKey
-                type: string
-                hidden: true
-                readonly: true
-              - name: alt
-                label: Image description for accessibility
-                type: text
-                required: true
-              - name: layout
-                label: Image shape
-                type: select
-                required: true
-                options:
-                  values:
-                    - name: wide
-                      label: Wide
-                    - name: portrait
-                      label: Portrait
-                    - name: landscape
-                      label: Landscape
-              - name: sample
-                label: Show Concept sample label
-                type: boolean
-                default: true
-                description: Turn this off only when the image and project are real, approved work.
-          - name: invitation
-            label: Restaurant collaboration callout
-            type: object
-            fields:
-              - name: eyebrow
-                label: Small heading
-                type: string
-              - name: headline
-                label: Headline
-                type: text
-              - name: description
-                label: Description
-                type: text
-              - name: action
-                label: Button text
-                type: string
+              - { name: title, label: Title, type: string, required: true }
+              - { name: description, label: Description, type: text, required: true }
 
-      - name: services
-        label: Services
+      - name: toolkit
+        label: Toolkit
         type: object
         fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: introduction
-            label: Section introduction
-            type: text
-          - name: note
-            label: Pricing note
-            type: text
-          - name: items
-            label: Service list
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{title} - {price}"
-            fields:
-              - name: title
-                label: Service name
-                type: string
-                required: true
-              - name: description
-                label: Service description
-                type: text
-                required: true
-              - name: price
-                label: Display price
-                type: string
-                required: true
-
-      - name: packages
-        label: Packages and add-ons
-        type: object
-        fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: introduction
-            label: Section introduction
-            type: text
-          - name: items
-            label: Package list
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{name} - {price}"
-            fields:
-              - name: name
-                label: Package name
-                type: string
-                required: true
-              - name: price
-                label: Starting price
-                type: string
-                required: true
-              - name: description
-                label: Package description
-                type: text
-                required: true
-              - name: featured
-                label: Highlight this package
-                type: boolean
-              - name: formValue
-                label: Inquiry form value
-                type: string
-                required: true
-                description: Keep this aligned with a project type in the contact form.
-              - name: features
-                label: Included features
-                type: string
-                list: true
-          - name: custom
-            label: Custom quote callout
-            type: object
-            fields:
-              - name: eyebrow
-                label: Small heading
-                type: string
-              - name: headline
-                label: Headline
-                type: string
-              - name: description
-                label: Description
-                type: text
-              - name: action
-                label: Button text
-                type: string
-          - name: addOns
-            label: Optional add-ons
-            type: string
-            list: true
-          - name: note
-            label: Add-on note
-            type: text
-
-      - name: process
-        label: How it works
-        type: object
-        fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: introduction
-            label: Section introduction
-            type: text
-          - name: steps
-            label: Process steps
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{title}"
-            fields:
-              - name: title
-                label: Step title
-                type: string
-                required: true
-              - name: description
-                label: Step description
-                type: text
-                required: true
-
-      - name: faq
-        label: Frequently asked questions
-        type: object
-        fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: introduction
-            label: Section introduction
-            type: text
-          - name: items
-            label: Questions and answers
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{question}"
-            fields:
-              - name: question
-                label: Question
-                type: string
-                required: true
-              - name: answer
-                label: Answer
-                type: text
-                required: true
-
-      - name: policies
-        label: Project policies
-        type: object
-        fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: introduction
-            label: Section introduction
-            type: text
-          - name: items
-            label: Policy list
-            type: object
-            list:
-              collapsible:
-                collapsed: true
-                summary: "{title}"
-            fields:
-              - name: title
-                label: Policy heading
-                type: string
-                required: true
-              - name: description
-                label: Policy description
-                type: text
-                required: true
-          - name: note
-            label: Policy disclaimer
-            type: text
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: introduction, label: Introduction, type: text, required: true }
+          - { name: software, label: Software, type: string, list: true, required: true }
+          - { name: workflow, label: Workflow skills, type: string, list: true, required: true }
 
       - name: about
         label: About Aly
         type: object
         fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: body
-            label: Biography
-            type: text
-          - name: note
-            label: Availability note
-            type: text
-          - name: monogram
-            label: Placeholder initials
-            type: string
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
           - name: portrait
-            label: Professional portrait
+            label: Portrait
             type: image
+            required: true
             options:
               media: portfolio
               extensions: [jpg, jpeg, png, webp]
-          - name: portraitAlt
-            label: Portrait description
-            type: string
-          - name: behindScenes
-            label: Behind-the-scenes image
-            type: image
-            options:
-              media: portfolio
-              extensions: [jpg, jpeg, png, webp]
-          - name: behindScenesAlt
-            label: Behind-the-scenes image description
-            type: string
-          - name: placeholder
-            label: Placeholder text
-            type: string
+          - { name: portraitAlt, label: Portrait description, type: string, required: true }
+          - { name: paragraphs, label: Paragraphs, type: text, list: true, required: true }
+          - { name: closing, label: Closing note, type: text, required: true }
+
+      - name: qualities
+        label: What Aly brings
+        type: object
+        fields:
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - name: items
+            label: Qualities
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - { name: title, label: Title, type: string, required: true }
+              - { name: description, label: Description, type: text, required: true }
+
+      - name: opportunities
+        label: Job opportunities
+        type: object
+        fields:
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: description, label: Description, type: text, required: true }
+          - { name: targets, label: Target teams, type: string, list: true, required: true }
+          - { name: primaryAction, label: Resume button, type: string, required: true }
+          - { name: secondaryAction, label: Email button, type: string, required: true }
+
+      - name: freelance
+        label: Freelance
+        type: object
+        fields:
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: description, label: Description, type: text, required: true }
+          - { name: services, label: Services, type: string, list: true, required: true }
+          - { name: action, label: Button, type: string, required: true }
 
       - name: contact
         label: Contact form
         type: object
         fields:
-          - name: eyebrow
-            label: Section label
-            type: string
-          - name: headline
-            label: Section headline
-            type: text
-          - name: introduction
-            label: Section introduction
-            type: text
-          - name: formEndpoint
-            type: string
-            hidden: true
-            readonly: true
-          - name: formSubject
-            label: Inquiry email subject
-            type: string
-          - name: thankYouUrl
-            type: string
-            hidden: true
-            readonly: true
-          - name: formSourceUrl
-            type: string
-            hidden: true
-            readonly: true
-          - name: autoresponse
-            label: Automatic reply message
-            type: text
-          - name: projectTypes
-            label: Project type choices
-            type: string
-            list: true
-          - name: budgets
-            label: Budget choices
-            type: string
-            list: true
+          - { name: label, label: Section label, type: string, required: true }
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: description, label: Description, type: text, required: true }
+          - { name: formEndpoint, label: Form endpoint, type: string, required: true, readonly: true }
+          - { name: formSubject, label: Email subject, type: string, required: true }
+          - { name: thankYouUrl, label: Thank-you URL, type: string, required: true, readonly: true }
+          - { name: formSourceUrl, label: Source URL, type: string, required: true, readonly: true }
+          - { name: autoresponse, label: Automatic reply, type: text, required: true }
+          - { name: inquiryTypes, label: Inquiry choices, type: string, list: true, required: true }
+          - { name: budgetRanges, label: Budget choices, type: string, list: true, required: true }
+
+      - name: resume
+        label: Resume page
+        type: object
+        fields:
+          - { name: headline, label: Headline, type: text, required: true }
+          - { name: role, label: Professional title, type: string, required: true }
+          - { name: summary, label: Summary, type: text, required: true }
+          - name: experience
+            label: Resume experience
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{company}"
+            fields:
+              - { name: role, label: Role, type: string, required: true }
+              - { name: company, label: Company, type: string, required: true }
+              - { name: dates, label: Dates, type: string, required: true }
+              - { name: bullets, label: Details, type: string, list: true, required: true }
+          - { name: skills, label: Skills, type: string, list: true, required: true }
 
       - name: privacy
         label: Privacy notice
         type: object
         fields:
-          - name: title
-            label: Page title
-            type: string
-          - name: description
-            label: Page description
-            type: text
-          - name: effectiveDate
-            label: Effective date shown on page
-            type: string
-
-settings:
-  content:
-    merge: true
-  commit:
-    identity: user
-    templates:
-      create: "Create {path} via Pages CMS"
-      update: "Update {path} via Pages CMS"
-      delete: "Delete {path} via Pages CMS"
-      rename: "Rename {oldPath} to {newPath} via Pages CMS"
-
-actions:
-  - name: rebuild-site
-    label: Rebuild website
-    workflow: prerender.yml
-    ref: current
-    cancelable: false
-    confirm:
-      title: Rebuild AlyHackbart.com?
-      message: This regenerates the static website from the saved content.
-      button: Rebuild website
+          - { name: title, label: Title, type: string, required: true }
+          - { name: description, label: Description, type: text, required: true }
+          - { name: effectiveDate, label: Effective date, type: string, required: true }

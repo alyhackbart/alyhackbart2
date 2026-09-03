@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2efe6">
+  <meta name="description" content="{{RESUME_SUMMARY}}">
+  <link rel="canonical" href="{{SITE_URL}}/resume.html">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>{{NAME}} Resume | {{ROLE}}</title>
+</head>
+<body class="resume-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="simple-header">
+    <a class="wordmark" href="index.html">{{NAME}}</a>
+    <a class="text-link dark-link" href="index.html">Back to portfolio <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main" class="resume-document">
+    <header class="resume-intro">
+      <p class="eyebrow">{{LOCATION}}</p>
+      <h1>{{NAME}}</h1>
+      <p class="resume-role">{{RESUME_ROLE}}</p>
+      <p>{{RESUME_HEADLINE}}</p>
+      <div><a href="mailto:{{EMAIL}}">{{EMAIL}}</a><a href="{{SITE_URL}}">{{SITE_URL}}</a></div>
+    </header>
+    <section aria-labelledby="summary-title">
+      <h2 id="summary-title">Professional summary</h2>
+      <p>{{RESUME_SUMMARY}}</p>
+    </section>
+    <section aria-labelledby="resume-experience-title">
+      <h2 id="resume-experience-title">Experience</h2>
+      <div class="resume-experience">
+{{RESUME_EXPERIENCE}}
+      </div>
+    </section>
+    <section aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <ul class="resume-skills">{{RESUME_SKILLS}}</ul>
+    </section>
+    <section class="resume-contact" aria-labelledby="resume-contact-title">
+      <h2 id="resume-contact-title">Let’s talk</h2>
+      <p>{{AVAILABILITY}}</p>
+      <a class="button button-dark" href="mailto:{{EMAIL}}">Email Aly</a>
+    </section>
+  </main>
+</body>
+</html>

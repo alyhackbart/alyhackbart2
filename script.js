@@ -1,120 +1,67 @@
-(() => {
-  'use strict';
+document.documentElement.classList.add('js');
 
-  const fallbackMedia = window.ALY_MEDIA || {};
+const menuToggle = document.querySelector('[data-menu-toggle]');
+const navigation = document.querySelector('[data-nav]');
 
-  const year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
+const closeMenu = () => {
+  if (!menuToggle || !navigation) return;
+  menuToggle.setAttribute('aria-expanded', 'false');
+  navigation.classList.remove('is-open');
+  document.body.classList.remove('menu-open');
+};
 
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.getElementById('site-nav');
-
-  if (menuToggle && nav) {
-    const closeMenu = () => {
-      nav.classList.remove('is-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.textContent = 'Menu';
-    };
-
-    menuToggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('is-open');
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-      menuToggle.textContent = isOpen ? 'Close' : 'Menu';
-    });
-
-    nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeMenu();
-    });
-  }
-
-  const reel = document.querySelector('[data-reel]');
-  const reelToggle = document.querySelector('.video-toggle');
-
-  if (reel instanceof HTMLVideoElement && reelToggle instanceof HTMLButtonElement) {
-    let fallbackAttempted = false;
-    const fallbackVideo = fallbackMedia[reel.dataset.fallbackVideo] || reel.dataset.fallbackVideo;
-    const fallbackPoster = fallbackMedia[reel.dataset.fallbackPoster] || reel.dataset.fallbackPoster;
-
-    const updateToggle = () => {
-      const paused = reel.paused;
-      reelToggle.textContent = paused ? 'Play reel' : 'Pause reel';
-      reelToggle.setAttribute('aria-pressed', String(paused));
-    };
-
-    const setPlayback = (shouldPlay) => {
-      if (!shouldPlay) {
-        reel.pause();
-        updateToggle();
-        return;
-      }
-
-      const playRequest = reel.play();
-      if (playRequest instanceof Promise) playRequest.catch(updateToggle);
-    };
-
-    reelToggle.addEventListener('click', () => setPlayback(reel.paused));
-    reel.addEventListener('play', updateToggle);
-    reel.addEventListener('pause', updateToggle);
-    reel.addEventListener('error', () => {
-      if (!fallbackAttempted && fallbackVideo && reel.currentSrc !== new URL(fallbackVideo, document.baseURI).href) {
-        fallbackAttempted = true;
-        if (fallbackPoster) reel.poster = fallbackPoster;
-        reel.src = fallbackVideo;
-        reel.load();
-        return;
-      }
-      reel.classList.add('is-poster-only');
-      if (fallbackPoster) reel.poster = fallbackPoster;
-      reelToggle.hidden = true;
-    });
-
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPlayback(!reduceMotion.matches);
-    reduceMotion.addEventListener?.('change', (event) => setPlayback(!event.matches));
-  }
-
-  document.querySelectorAll('img[data-fallback-src]').forEach((image) => {
-    if (!(image instanceof HTMLImageElement)) return;
-    image.addEventListener('error', () => {
-      const fallbackSource = fallbackMedia[image.dataset.fallbackKey] || image.dataset.fallbackSrc;
-      if (fallbackSource && image.currentSrc !== new URL(fallbackSource, document.baseURI).href) {
-        image.src = fallbackSource;
-        return;
-      }
-      image.closest('.media-frame')?.classList.add('is-empty');
-      image.alt = '';
-    });
+if (menuToggle && navigation) {
+  menuToggle.addEventListener('click', () => {
+    const nextOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
+    menuToggle.setAttribute('aria-expanded', String(nextOpen));
+    navigation.classList.toggle('is-open', nextOpen);
+    document.body.classList.toggle('menu-open', nextOpen);
   });
 
-  const track = (eventName, parameters = {}) => {
-    if (typeof window.gtag === 'function') window.gtag('event', eventName, parameters);
+  navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
+}
+
+const heroVideo = document.querySelector('[data-hero-video]');
+const videoControl = document.querySelector('[data-video-control]');
+const videoControlLabel = document.querySelector('[data-video-control-label]');
+
+if (heroVideo && videoControl && videoControlLabel) {
+  const setVideoState = (paused) => {
+    videoControl.setAttribute('aria-pressed', String(paused));
+    videoControlLabel.textContent = paused ? 'Play background' : 'Pause background';
   };
 
-  const projectType = document.getElementById('project-type');
-  document.querySelectorAll('[data-package]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const packageName = link.getAttribute('data-package');
-      if (!packageName) return;
-      track('select_package', { package_name: packageName });
-      if (!(projectType instanceof HTMLSelectElement)) return;
-      const option = Array.from(projectType.options).find((item) => item.value === packageName || item.textContent.trim() === packageName);
-      if (option) projectType.value = option.value;
-    });
+  videoControl.addEventListener('click', () => {
+    if (heroVideo.paused) {
+      heroVideo.play().then(() => setVideoState(false)).catch(() => setVideoState(true));
+    } else {
+      heroVideo.pause();
+      setVideoState(true);
+    }
   });
 
-  const inquiryForm = document.querySelector('.inquiry-form');
-  if (inquiryForm instanceof HTMLFormElement) {
-    inquiryForm.addEventListener('submit', () => {
-      if (!inquiryForm.checkValidity()) return;
-      const submitButton = inquiryForm.querySelector('.submit-button');
-      if (!(submitButton instanceof HTMLButtonElement)) return;
-      track('generate_lead', {
-        project_type: projectType instanceof HTMLSelectElement ? projectType.value : ''
-      });
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending inquiry...';
+  heroVideo.addEventListener('pause', () => setVideoState(true));
+  heroVideo.addEventListener('play', () => setVideoState(false));
+}
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealItems = [...document.querySelectorAll('.reveal')];
+
+if (reduceMotion || !('IntersectionObserver' in window)) {
+  revealItems.forEach((item) => item.classList.add('is-visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     });
-  }
-})();
+  }, { threshold: 0.12 });
+  revealItems.forEach((item) => observer.observe(item));
+}

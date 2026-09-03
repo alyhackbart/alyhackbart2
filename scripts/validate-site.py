@@ -13,34 +13,36 @@ from urllib.parse import urlparse
 from xml.etree import ElementTree
 
 ROOT = Path(__file__).resolve().parents[1]
-REMOTE_BASE_FILES = {
-    "media/hero.js",
-    "media/restaurant.js",
-    "media/creator.js",
-    "media/event.js",
-    "media/wedding.js",
-    "media/reel.js",
-}
-HTML_FILES = [ROOT / "index.html", ROOT / "privacy.html", ROOT / "thanks.html"]
+HTML_FILES = [
+    ROOT / "index.html",
+    ROOT / "resume.html",
+    ROOT / "privacy.html",
+    ROOT / "thanks.html",
+    ROOT / "404.html",
+]
 PUBLIC_TEXT_FILES = [
     ROOT / "index.html",
     ROOT / "privacy.html",
     ROOT / "thanks.html",
+    ROOT / "resume.html",
+    ROOT / "404.html",
     ROOT / "styles.css",
     ROOT / "script.js",
-    ROOT / "content" / "site-content.js",
+    ROOT / "content" / "site-content.json",
 ]
 REQUIRED_FILES = [
+    ROOT / "content" / "site-content.json",
+    ROOT / "content" / "site-content.js",
     ROOT / "robots.txt",
     ROOT / "sitemap.xml",
     ROOT / "favicon.svg",
     ROOT / "site.webmanifest",
-    ROOT / "assets" / "media" / "hero-reel.mp4",
-    ROOT / "assets" / "media" / "hero-poster.webp",
-    ROOT / "assets" / "media" / "restaurant.webp",
-    ROOT / "assets" / "media" / "creator.webp",
-    ROOT / "assets" / "media" / "event.webp",
-    ROOT / "assets" / "media" / "wedding.webp",
+    ROOT / "favicon.png",
+    ROOT / "apple-touch-icon.png",
+    ROOT / "assets" / "og-image.webp",
+    ROOT / "assets" / "media" / "hero-background.mp4",
+    ROOT / "assets" / "media" / "hero-background-poster.webp",
+    ROOT / "assets" / "media" / "aly-portrait.webp",
 ]
 
 
@@ -55,6 +57,7 @@ class PageParser(HTMLParser):
         self.forms: list[dict[str, str]] = []
         self.required_names: list[str] = []
         self.links: list[str] = []
+        self.h1_count = 0
         self._json_ld = False
         self._json_buffer: list[str] = []
         self.json_ld: list[object] = []
@@ -63,6 +66,8 @@ class PageParser(HTMLParser):
         data = {key: value or "" for key, value in attrs}
         if data.get("id"):
             self.ids.append(data["id"])
+        if tag == "h1":
+            self.h1_count += 1
 
         for attr in ("src", "href", "poster"):
             value = data.get(attr)
@@ -130,6 +135,20 @@ def main() -> int:
         if not file_path.is_file():
             fail(f"Missing required file: {file_path.relative_to(ROOT)}", failures)
 
+    try:
+        content = json.loads((ROOT / "content" / "site-content.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        fail(f"Invalid content/site-content.json: {exc}", failures)
+        content = {}
+
+    if content:
+        if content.get("contact", {}).get("formEndpoint") != "https://formsubmit.co/251d51551e089c4c1000323b75ae9878":
+            fail("Activated FormSubmit endpoint changed unexpectedly", failures)
+        if content.get("hero", {}).get("video") != "assets/media/hero-background.mp4":
+            fail("Hero is not configured to use the background video", failures)
+        if re.search(r"\u2014|&mdash;|&#8212;|&#x2014;", json.dumps(content, ensure_ascii=False), re.IGNORECASE):
+            fail("Em dash guardrail violation in content/site-content.json", failures)
+
     parsed_pages: dict[str, PageParser] = {}
     for file_path in HTML_FILES:
         if not file_path.exists():
@@ -158,11 +177,12 @@ def main() -> int:
             path = local_path(reference)
             if path is not None and not path.is_file():
                 relative = str(path.relative_to(ROOT)).replace("\\", "/")
-                if relative not in REMOTE_BASE_FILES:
-                    fail(f"Missing local reference in {file_path.name}: {reference}", failures)
+                fail(f"Missing local reference in {file_path.name}: {reference}", failures)
 
-        if len(parser.canonicals) != 1:
+        if file_path.name != "404.html" and len(parser.canonicals) != 1:
             fail(f"Expected one canonical link in {file_path.name}", failures)
+        if parser.h1_count != 1:
+            fail(f"Expected exactly one h1 in {file_path.name}, found {parser.h1_count}", failures)
 
     index = parsed_pages.get("index.html")
     if index:
@@ -174,7 +194,7 @@ def main() -> int:
         else:
             graph = index.json_ld[0].get("@graph", []) if isinstance(index.json_ld[0], dict) else []
             types = {item.get("@type") for item in graph if isinstance(item, dict)}
-            for expected in ("WebSite", "Person", "ProfessionalService", "FAQPage"):
+            for expected in ("WebSite", "ProfilePage", "Person", "CreativeWork"):
                 if expected not in types:
                     fail(f"Missing structured-data type: {expected}", failures)
 
@@ -189,7 +209,7 @@ def main() -> int:
             if "@" in form.get("action", ""):
                 fail("Inquiry form exposes a naked email address", failures)
 
-        for name in ("Full name", "email", "Project type", "Project details", "Consent"):
+        for name in ("Full name", "email", "Inquiry type", "Details", "Consent"):
             if name not in index.required_names:
                 fail(f"Required form field missing: {name}", failures)
 
@@ -204,7 +224,15 @@ def main() -> int:
             fail(f"Em dash guardrail violation in {file_path.relative_to(ROOT)}", failures)
 
     try:
-        ElementTree.parse(ROOT / "sitemap.xml")
+        tree = ElementTree.parse(ROOT / "sitemap.xml")
+        locs = {node.text for node in tree.findall(".//{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
+        for required in (
+            "https://alyhackbart.com/",
+            "https://alyhackbart.com/resume.html",
+            "https://alyhackbart.com/privacy.html",
+        ):
+            if required not in locs:
+                fail(f"Sitemap missing {required}", failures)
     except (ElementTree.ParseError, OSError) as exc:
         fail(f"Invalid sitemap.xml: {exc}", failures)
 

@@ -173,7 +173,7 @@
   "contact": {
     "label": "Contact",
     "headline": "Let’s make something worth watching.",
-    "description": "Share the role, project, timeline, and what you need from an editor. Aly will reply by email.",
+    "description": "Have a project in motion? Tell me about the footage, timeline, and where you need an editor.",
     "formEndpoint": "https://formsubmit.co/251d51551e089c4c1000323b75ae9878",
     "formSubject": "New AlyHackbart.com inquiry",
     "thankYouUrl": "https://alyhackbart.com/thanks.html",

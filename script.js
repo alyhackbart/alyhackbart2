@@ -1,5 +1,9 @@
 document.documentElement.classList.add('js');
 
+document.querySelectorAll('[data-form-started-at]').forEach((field) => {
+  field.value = String(Date.now() / 1000);
+});
+
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const navigation = document.querySelector('[data-nav]');
 

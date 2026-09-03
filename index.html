@@ -62,8 +62,8 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260903-8">
-  <script src="script.js?v=20260903-4" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260903-9">
+  <script src="script.js?v=20260903-5" defer></script>
 </head>
 <body id="top" class="portfolio-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -78,8 +78,8 @@
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="/readings/">Readings</a>
-      <a class="nav-cta" href="#contact">Contact</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta readings-nav-cta" href="/readings/">Readings</a>
     </nav>
   </header>
 
@@ -95,8 +95,9 @@
         <h1 id="hero-title">Aly<br>Hackbart</h1>
         <p class="hero-statement">Finding the story inside the footage.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">Watch reel</a>
-          <a class="button button-outline" href="#contact">Start a project</a>
+          <a class="button button-primary readings-primary" href="/readings/">Explore readings</a>
+          <a class="button button-outline" href="#work">Watch reel</a>
+          <a class="hero-text-link" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div class="hero-foot">
@@ -190,7 +191,7 @@
           <h2 id="readings-bridge-title">Looking for tarot or astrology?</h2>
         </div>
         <p>Readings now have a dedicated space with service details, secure checkout, and clear next steps.</p>
-        <a class="button button-primary" href="/readings/">Explore readings</a>
+        <a class="button button-primary readings-primary" href="/readings/">Book a reading</a>
       </aside>
 
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
@@ -225,6 +226,8 @@
             <input type="hidden" name="_next" value="https://alyhackbart.com/thanks.html">
             <input type="hidden" name="_autoresponse" value="Thanks for reaching out to Aly Hackbart. Your project brief was received, and Aly will reply as soon as possible.">
             <input type="hidden" name="Source" value="https://alyhackbart.com/#contact">
+            <input type="hidden" name="form_started_at" value="" data-form-started-at>
+            <label class="form-honeypot" aria-hidden="true">Company website<input type="url" name="company_website" tabindex="-1" autocomplete="off"></label>
             <label>Full name<input type="text" name="Full name" autocomplete="name" required></label>
             <label>Email<input type="email" name="email" autocomplete="email" required></label>
             <label>Project type<select name="Project type" required><option value="">Select one</option><option value="Editing role or employment opportunity">Editing role or employment opportunity</option><option value="Assistant editor opportunity">Assistant editor opportunity</option><option value="Long-form or YouTube">Long-form or YouTube</option><option value="Branded content">Branded content</option><option value="Social content">Social content</option><option value="Other editing project">Other editing project</option></select></label>

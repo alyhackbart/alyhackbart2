@@ -28,8 +28,9 @@ jobs:
       - name: Reassemble and verify release archive
         run: |
           test -f release/APPLY
-          test -n "$(find release -maxdepth 1 -name 'final-release.b64.*' -print -quit)"
-          cat release/final-release.b64.* | base64 --decode > /tmp/final-release.tar.gz
+          test -n "$(find release -maxdepth 1 -name 'final-release.part.*' -print -quit)"
+          cat release/final-release.part.* > /tmp/final-release.tar.gz
+          echo "f3675f489d44b1e4f64865a1c95e8c8c4afe2eeb74182cdc2dcc02bfbcfe3361  /tmp/final-release.tar.gz" | sha256sum -c -
           gzip -t /tmp/final-release.tar.gz
           if tar -tzf /tmp/final-release.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
             echo "Unsafe path found in release archive."

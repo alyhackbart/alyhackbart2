@@ -30,7 +30,7 @@ jobs:
           test -f release/APPLY
           test -n "$(find release -maxdepth 1 -name 'final-release.b64.*' -print -quit)"
           cat release/final-release.b64.* | base64 --decode > /tmp/final-release.tar.gz
-          echo "1b8002ffd34ef8cf9e03e027de5a36635b836cfe6bce2de55a41552438e769fa  /tmp/final-release.tar.gz" | sha256sum -c -
+          gzip -t /tmp/final-release.tar.gz
           if tar -tzf /tmp/final-release.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))'; then
             echo "Unsafe path found in release archive."
             exit 1

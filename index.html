@@ -70,7 +70,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260903-6">
+  <link rel="stylesheet" href="styles.css?v=20260903-7">
   <script src="script.js?v=20260903-4" defer></script>
 </head>
 <body id="top">
@@ -85,6 +85,7 @@
     <nav id="site-nav" aria-label="Primary navigation" data-nav>
       <a href="#showcase">Work</a>
       <a href="#about">About</a>
+      <a href="#services">Services</a>
       <a class="nav-cta" href="#contact">Contact</a>
     </nav>
   </header>
@@ -170,6 +171,63 @@
         </div>
       </section>
 
+      <section class="services-section" id="services" aria-labelledby="services-title">
+        <header class="section-header services-header">
+          <div>
+            <p class="section-label">Services</p>
+            <h2 id="services-title">Choose how we work together.</h2>
+          </div>
+          <p class="section-note">Start an editing project, book a personal reading, or support Aly's independent creative work.</p>
+        </header>
+
+        <div class="service-list">
+          <article class="service-item service-item-featured">
+            <div class="service-title">
+              <p class="service-type">Post-production</p>
+              <h3>Video editing</h3>
+            </div>
+            <p class="service-description">Story-driven editing for long-form, branded, social, and digital projects. Scope and pricing are tailored to your footage, timeline, and delivery needs.</p>
+            <p class="service-price">Custom quote</p>
+            <a class="service-action" href="#contact"><span>Request a quote</span><span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="service-item">
+            <div class="service-title">
+              <p class="service-type">Personal reading</p>
+              <h3>Tarot reading</h3>
+            </div>
+            <p class="service-description">A focused personal reading delivered as a thoughtful written email or a live video call. Scheduling is arranged by email.</p>
+            <p class="service-price"><span>$35</span><small>one reading</small></p>
+            <span class="service-action service-action-pending" aria-label="Tarot checkout will open after payment setup is complete"><span>Checkout setup pending</span></span>
+          </article>
+
+          <article class="service-item">
+            <div class="service-title">
+              <p class="service-type">Personal reading</p>
+              <h3>Astrology reading</h3>
+            </div>
+            <p class="service-description">A personal astrology reading shaped around your birth details, delivered as a written email or a live video call.</p>
+            <p class="service-price"><span>$55</span><small>one reading</small></p>
+            <span class="service-action service-action-pending" aria-label="Astrology checkout will open after payment setup is complete"><span>Checkout setup pending</span></span>
+          </article>
+
+          <article class="service-item service-item-support">
+            <div class="service-title">
+              <p class="service-type">Support</p>
+              <h3>Support Aly</h3>
+            </div>
+            <p class="service-description">Make an optional personal contribution to support Aly's independent creative work. Choose an amount from $5 to $500.</p>
+            <p class="service-price"><span>Your choice</span><small>$5 minimum</small></p>
+            <span class="service-action service-action-pending" aria-label="Support checkout will open after payment setup is complete"><span>Checkout setup pending</span></span>
+          </article>
+        </div>
+
+        <div class="services-notes">
+          <p>Readings are for personal reflection and entertainment only. They are not medical, legal, financial, or mental health advice.</p>
+          <p>Support is a personal contribution, not a charitable donation. No goods or services are provided in exchange.</p>
+        </div>
+      </section>
+
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-copy">
           <p class="section-label">Contact</p>
@@ -185,7 +243,7 @@
           <input type="hidden" name="Source" value="https://alyhackbart.com/#contact">
           <label>Full name<input type="text" name="Full name" autocomplete="name" required></label>
           <label>Email<input type="email" name="email" autocomplete="email" required></label>
-          <label>Inquiry type<select name="Inquiry type" required><option value="">Select one</option><option value="Editing role or employment opportunity">Editing role or employment opportunity</option><option value="Assistant editor opportunity">Assistant editor opportunity</option><option value="Freelance editing project">Freelance editing project</option><option value="Branded or social content">Branded or social content</option><option value="YouTube or long-form content">YouTube or long-form content</option><option value="Other">Other</option></select></label>
+          <label>Inquiry type<select name="Inquiry type" required><option value="">Select one</option><option value="Editing role or employment opportunity">Editing role or employment opportunity</option><option value="Assistant editor opportunity">Assistant editor opportunity</option><option value="Freelance editing project">Freelance editing project</option><option value="Branded or social content">Branded or social content</option><option value="YouTube or long-form content">YouTube or long-form content</option><option value="Tarot reading question">Tarot reading question</option><option value="Astrology reading question">Astrology reading question</option><option value="Payment or support question">Payment or support question</option><option value="Other">Other</option></select></label>
           <label>Budget or opportunity<select name="Budget"><option value="">Select one</option><option value="Employment opportunity">Employment opportunity</option><option value="Under $500">Under $500</option><option value="$500 to $1,000">$500 to $1,000</option><option value="$1,000 to $2,500">$1,000 to $2,500</option><option value="$2,500+">$2,500+</option><option value="Not sure yet">Not sure yet</option></select></label>
           <label class="form-full">Project details<textarea name="Details" rows="6" placeholder="Tell me about the project, timeline, footage, and what you need from an editor." required></textarea></label>
           <label class="consent form-full"><input type="checkbox" name="Consent" value="I agree" required><span>I agree that Aly may use this information to reply. Read the <a href="privacy.html">privacy notice</a>.</span></label>
@@ -201,7 +259,7 @@
   <footer>
     <a class="wordmark" href="#top">Aly Hackbart</a>
     <p>Video Editor · San Diego</p>
-    <div><a href="privacy.html">Privacy</a><a href="mailto:alysonhackbart@gmail.com">Email</a></div>
+    <div><a href="#services">Services</a><a href="privacy.html">Privacy</a><a href="mailto:alysonhackbart@gmail.com">Email</a></div>
   </footer>
 </body>
 </html>

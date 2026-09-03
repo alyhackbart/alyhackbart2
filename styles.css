@@ -993,10 +993,10 @@ footer a:hover { color: var(--blue); }
   background: linear-gradient(180deg, rgba(13, 9, 20, .72), transparent);
 }
 .portfolio-page .readings-nav-cta {
-  border-color: #72e3ff;
-  background: #72e3ff;
-  color: #130d1d;
-  box-shadow: 0 0 2.5rem rgba(114, 227, 255, .14);
+  border-color: #f1c5ff;
+  background: #f1c5ff;
+  color: #170d20;
+  box-shadow: 0 0 2.5rem rgba(241, 197, 255, .15);
 }
 .portfolio-page .readings-nav-cta:hover {
   border-color: #fff3df;
@@ -1064,10 +1064,10 @@ footer a:hover { color: var(--blue); }
 .portfolio-page .brief-guide .brief-guide-title,
 .portfolio-page .direct-contact { color: #e7b9ff; }
 .portfolio-page .readings-primary {
-  border-color: #72e3ff;
-  background: #72e3ff;
-  color: #130d1d;
-  box-shadow: 0 0 2.5rem rgba(114, 227, 255, .14);
+  border-color: #f1c5ff;
+  background: #f1c5ff;
+  color: #170d20;
+  box-shadow: 0 0 2.5rem rgba(241, 197, 255, .15);
 }
 .portfolio-page .readings-primary:hover { border-color: #fff3df; background: #fff3df; }
 .portfolio-page .black-stage {

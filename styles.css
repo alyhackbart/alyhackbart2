@@ -663,6 +663,11 @@ footer a:hover { color: var(--blue); }
 .message-page main { width: min(42rem, 100%); text-align: center; }
 .message-page h1 { margin: 1rem 0 1.5rem; }
 .message-page main > p:not(.section-label) { margin: 0 auto 2rem; color: var(--muted); font-size: 1.05rem; }
+.message-page .message-fineprint {
+  max-width: 35rem;
+  font-size: .9rem !important;
+}
+.message-page .message-fineprint a { color: var(--blue); text-decoration: underline; }
 
 @media (max-width: 58rem) {
   .section-header,
@@ -1265,6 +1270,7 @@ footer a:hover { color: var(--blue); }
   color: var(--muted);
   line-height: 1.75;
 }
+.questions-intro > p a { color: #f1c5ff; text-decoration: underline; }
 .reading-email {
   display: inline-block;
   max-width: 100%;

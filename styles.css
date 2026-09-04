@@ -391,9 +391,9 @@ section[id] { scroll-margin-top: 2rem; }
   padding: clamp(2rem, 4vw, 4rem);
   border: 1px solid rgba(247, 231, 255, .3);
   background:
-    linear-gradient(145deg, rgba(38, 21, 50, .88), rgba(19, 13, 29, .82));
+    linear-gradient(145deg, rgba(38, 21, 50, .74), rgba(19, 13, 29, .68));
   box-shadow: 0 2.5rem 7rem rgba(4, 2, 7, .5);
-  backdrop-filter: blur(22px);
+  backdrop-filter: blur(18px) saturate(1.12);
 }
 .recommendation-overlay blockquote { margin: 1.5rem 0 2.5rem; }
 .recommendation-overlay blockquote p {

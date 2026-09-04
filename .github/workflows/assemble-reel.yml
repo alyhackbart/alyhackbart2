@@ -1,0 +1,62 @@
+name: Package streamable portfolio reel
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/assemble-reel.yml
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install video tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ffmpeg
+
+      - name: Assemble source reel
+        run: |
+          cat \
+            assets/media/selected-edit.part01.mp4 \
+            assets/media/selected-edit.part02.mp4 \
+            assets/media/selected-edit.part03.mp4 \
+            assets/media/selected-edit.part04.mp4 \
+            assets/media/selected-edit.part05.mp4 \
+            > /tmp/selected-edit-source.mp4
+          test "$(stat -c%s /tmp/selected-edit-source.mp4)" = "45009747"
+          ffprobe -v error /tmp/selected-edit-source.mp4
+
+      - name: Package host-sized reel segments
+        run: |
+          ffmpeg -y \
+            -i /tmp/selected-edit-source.mp4 \
+            -map 0:v:0 \
+            -c:v copy \
+            -an \
+            -f segment \
+            -segment_time 45 \
+            -reset_timestamps 1 \
+            -segment_format_options movflags=+faststart \
+            assets/media/selected-edit.sequence.%02d.mp4
+          test "$(find assets/media -maxdepth 1 -name 'selected-edit.sequence.*.mp4' | wc -l)" = "8"
+          for file in assets/media/selected-edit.sequence.*.mp4; do
+            test "$(stat -c%s "$file")" -lt "10000000"
+            ffprobe -v error "$file"
+          done
+
+      - name: Commit streamable reel
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/assemble-reel.yml
+          git add assets/media/selected-edit.sequence.*.mp4
+          git commit -m "Add host-sized portfolio reel segments"
+          git push

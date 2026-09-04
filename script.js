@@ -66,6 +66,19 @@ const selectedVideoControl = document.querySelector('[data-showcase-video-contro
 const selectedVideoLabel = document.querySelector('[data-showcase-video-label]');
 
 if (selectedVideo) {
+  let selectedVideoSources = [];
+  try {
+    selectedVideoSources = JSON.parse(selectedVideo.dataset.videoSources || '[]');
+  } catch {
+    selectedVideoSources = [];
+  }
+
+  let selectedVideoIndex = Math.max(
+    0,
+    selectedVideoSources.indexOf(selectedVideo.getAttribute('src')),
+  );
+  const failedVideoSources = new Set();
+
   const setSelectedVideoState = (paused) => {
     if (!selectedVideoControl || !selectedVideoLabel) return;
     selectedVideoControl.setAttribute('aria-pressed', String(paused));
@@ -81,6 +94,35 @@ if (selectedVideo) {
   const playSelectedVideo = () => {
     selectedVideo.muted = true;
     selectedVideo.play().catch(() => setSelectedVideoState(true));
+  };
+
+  const hideVideoError = () => {
+    if (selectedVideoStatus) selectedVideoStatus.hidden = true;
+  };
+
+  const advanceSelectedVideo = () => {
+    if (!selectedVideoSources.length) {
+      setSelectedVideoState(true);
+      return;
+    }
+
+    let attempts = 0;
+    do {
+      selectedVideoIndex = (selectedVideoIndex + 1) % selectedVideoSources.length;
+      attempts += 1;
+    } while (failedVideoSources.has(selectedVideoIndex) && attempts < selectedVideoSources.length);
+
+    if (failedVideoSources.size >= selectedVideoSources.length) {
+      showVideoError();
+      setSelectedVideoState(true);
+      return;
+    }
+
+    selectedVideo.src = selectedVideoSources[selectedVideoIndex];
+    selectedVideo.load();
+    if (!reduceMotion) {
+      selectedVideo.addEventListener('canplay', playSelectedVideo, { once: true });
+    }
   };
 
   if (reduceMotion) {
@@ -101,8 +143,15 @@ if (selectedVideo) {
     });
   }
 
-  selectedVideo.addEventListener('error', showVideoError);
-  selectedVideo.addEventListener('play', () => setSelectedVideoState(false));
+  selectedVideo.addEventListener('error', () => {
+    failedVideoSources.add(selectedVideoIndex);
+    advanceSelectedVideo();
+  });
+  selectedVideo.addEventListener('canplay', hideVideoError);
+  selectedVideo.addEventListener('play', () => {
+    hideVideoError();
+    setSelectedVideoState(false);
+  });
   selectedVideo.addEventListener('pause', () => setSelectedVideoState(true));
-  selectedVideo.addEventListener('ended', () => setSelectedVideoState(true));
+  selectedVideo.addEventListener('ended', advanceSelectedVideo);
 }

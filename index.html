@@ -62,8 +62,8 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=20260903-11">
-  <script src="script.js?v=20260903-5" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260904-1">
+  <script src="script.js?v=20260904-1" defer></script>
 </head>
 <body id="top" class="portfolio-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -117,23 +117,34 @@
           </div>
           <p class="section-note">A selection of pacing, music, performance, and visual rhythm from Aly's editing work.</p>
         </header>
-        <div class="showcase-proof">
+        <div class="showcase-layer">
           <div class="showcase-video">
-            <video class="showcase-player" autoplay muted loop controls playsinline preload="none" poster="assets/media/selected-edit-poster.webp?v=20260903-1" data-segmented-video data-segments='["assets/media/selected-edit.part01.mp4?v=20260903-1","assets/media/selected-edit.part02.mp4?v=20260903-1","assets/media/selected-edit.part03.mp4?v=20260903-1","assets/media/selected-edit.part04.mp4?v=20260903-1","assets/media/selected-edit.part05.mp4?v=20260903-1"]' aria-label="Selected editing reel by Aly Hackbart">
+            <video class="showcase-player" autoplay muted loop playsinline preload="none" poster="assets/media/selected-edit-poster.webp?v=20260903-1" data-selected-video data-video-parts='["assets/media/selected-edit.part01.mp4?v=20260903-1","assets/media/selected-edit.part02.mp4?v=20260903-1","assets/media/selected-edit.part03.mp4?v=20260903-1","assets/media/selected-edit.part04.mp4?v=20260903-1","assets/media/selected-edit.part05.mp4?v=20260903-1"]' aria-label="Selected editing reel by Aly Hackbart">
               Your browser does not support this video player.
             </video>
+            <div class="showcase-video-shade" aria-hidden="true"></div>
+            <button class="showcase-video-control" type="button" aria-pressed="false" data-showcase-video-control>
+              <span data-showcase-video-label>Pause reel</span>
+              <i aria-hidden="true"></i>
+            </button>
+            <p class="showcase-video-status" data-video-status role="status" hidden></p>
           </div>
-          <article class="recommendation-card" aria-labelledby="recommendation-title">
-            <p>Branded &amp; Built</p>
-            <div>
-              <p class="section-label">Letter of recommendation</p>
-              <blockquote id="recommendation-title">“Aly is an exceptional video editor with a strong creative eye and excellent attention to detail.”</blockquote>
-            </div>
-            <footer>
-              <strong>Kyle Marino</strong>
+
+          <aside class="recommendation-overlay" aria-labelledby="recommendation-title">
+            <p class="section-label">Client recommendation</p>
+            <blockquote>
+              <p id="recommendation-title">“Aly is an exceptional video editor with a strong creative eye and excellent attention to detail. She consistently produced polished, high quality videos.”</p>
+            </blockquote>
+            <div class="recommendation-credit">
+              <p>Kyle Marino</p>
               <span>Founder, Branded &amp; Built</span>
-            </footer>
-          </article>
+            </div>
+            <ul class="recommendation-strengths" aria-label="Recommendation highlights">
+              <li>Strong pacing and storytelling</li>
+              <li>Clear communication</li>
+              <li>Reliable under tight deadlines</li>
+            </ul>
+          </aside>
         </div>
         <div class="reel-meta" aria-label="Reel details">
           <p><span>Role</span>Video editor</p>

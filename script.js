@@ -77,7 +77,8 @@ if (selectedVideo) {
     0,
     selectedVideoSources.indexOf(selectedVideo.getAttribute('src')),
   );
-  const failedVideoSources = new Set();
+  let selectedVideoRetryCount = 0;
+  const maxSelectedVideoRetries = 2;
 
   const setSelectedVideoState = (paused) => {
     if (!selectedVideoControl || !selectedVideoLabel) return;
@@ -106,18 +107,8 @@ if (selectedVideo) {
       return;
     }
 
-    let attempts = 0;
-    do {
-      selectedVideoIndex = (selectedVideoIndex + 1) % selectedVideoSources.length;
-      attempts += 1;
-    } while (failedVideoSources.has(selectedVideoIndex) && attempts < selectedVideoSources.length);
-
-    if (failedVideoSources.size >= selectedVideoSources.length) {
-      showVideoError();
-      setSelectedVideoState(true);
-      return;
-    }
-
+    selectedVideoIndex = (selectedVideoIndex + 1) % selectedVideoSources.length;
+    selectedVideoRetryCount = 0;
     selectedVideo.src = selectedVideoSources[selectedVideoIndex];
     selectedVideo.load();
     if (!reduceMotion) {
@@ -144,8 +135,16 @@ if (selectedVideo) {
   }
 
   selectedVideo.addEventListener('error', () => {
-    failedVideoSources.add(selectedVideoIndex);
-    advanceSelectedVideo();
+    if (selectedVideoRetryCount < maxSelectedVideoRetries) {
+      selectedVideoRetryCount += 1;
+      selectedVideo.src = selectedVideoSources[selectedVideoIndex];
+      selectedVideo.load();
+      selectedVideo.addEventListener('canplay', playSelectedVideo, { once: true });
+      return;
+    }
+
+    showVideoError();
+    setSelectedVideoState(true);
   });
   selectedVideo.addEventListener('canplay', hideVideoError);
   selectedVideo.addEventListener('play', () => {

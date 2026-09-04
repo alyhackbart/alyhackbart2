@@ -391,7 +391,7 @@ section[id] { scroll-margin-top: 2rem; }
   padding: clamp(2rem, 4vw, 4rem);
   border: 1px solid rgba(247, 231, 255, .3);
   background:
-    linear-gradient(145deg, rgba(38, 21, 50, .42), rgba(19, 13, 29, .38));
+    linear-gradient(145deg, rgba(38, 21, 50, .22), rgba(19, 13, 29, .18));
   box-shadow: 0 2.5rem 7rem rgba(4, 2, 7, .5);
   backdrop-filter: blur(18px) saturate(1.12);
 }

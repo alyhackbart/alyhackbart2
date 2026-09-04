@@ -82,7 +82,7 @@ if (selectedVideo) {
   const setSelectedVideoState = (paused) => {
     if (!selectedVideoControl || !selectedVideoLabel) return;
     selectedVideoControl.setAttribute('aria-pressed', String(paused));
-    selectedVideoLabel.textContent = paused ? 'Play reel' : 'Pause reel';
+    selectedVideoLabel.textContent = paused ? 'Play reel with sound' : 'Pause reel';
   };
 
   const showVideoError = () => {
@@ -92,7 +92,7 @@ if (selectedVideo) {
   };
 
   const playSelectedVideo = () => {
-    selectedVideo.muted = true;
+    selectedVideo.muted = false;
     selectedVideo.play().catch(() => setSelectedVideoState(true));
   };
 
@@ -129,8 +129,8 @@ if (selectedVideo) {
     selectedVideo.pause();
     setSelectedVideoState(true);
   } else {
-    playSelectedVideo();
-    selectedVideo.addEventListener('canplay', playSelectedVideo, { once: true });
+    selectedVideo.muted = false;
+    setSelectedVideoState(true);
   }
 
   if (selectedVideoControl) {

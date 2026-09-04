@@ -66,9 +66,6 @@ const selectedVideoControl = document.querySelector('[data-showcase-video-contro
 const selectedVideoLabel = document.querySelector('[data-showcase-video-label]');
 
 if (selectedVideo) {
-  let mediaUrl;
-  let loadPromise;
-
   const setSelectedVideoState = (paused) => {
     if (!selectedVideoControl || !selectedVideoLabel) return;
     selectedVideoControl.setAttribute('aria-pressed', String(paused));
@@ -81,82 +78,31 @@ if (selectedVideo) {
     selectedVideoStatus.hidden = false;
   };
 
-  const loadSelectedVideo = () => {
-    if (loadPromise) return loadPromise;
-
-    loadPromise = (async () => {
-      try {
-        const parts = JSON.parse(selectedVideo.dataset.videoParts || '[]');
-        if (!parts.length) throw new Error('No video files were configured.');
-
-        if (selectedVideoStatus) {
-          selectedVideoStatus.textContent = 'Loading reel…';
-          selectedVideoStatus.hidden = false;
-        }
-
-        const responses = await Promise.all(parts.map((partUrl) => fetch(partUrl, { cache: 'force-cache' })));
-        if (responses.some((response) => !response.ok)) throw new Error('A video file could not be downloaded.');
-
-        const chunks = await Promise.all(responses.map((response) => response.arrayBuffer()));
-        mediaUrl = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
-        selectedVideo.src = mediaUrl;
-        selectedVideo.muted = true;
-
-        await new Promise((resolve, reject) => {
-          selectedVideo.addEventListener('canplay', resolve, { once: true });
-          selectedVideo.addEventListener('error', reject, { once: true });
-          selectedVideo.load();
-        });
-
-        if (selectedVideoStatus) selectedVideoStatus.hidden = true;
-
-        if (!reduceMotion) {
-          selectedVideo.play().catch(() => setSelectedVideoState(true));
-        } else {
-          setSelectedVideoState(true);
-        }
-      } catch (error) {
-        showVideoError();
-        setSelectedVideoState(true);
-        loadPromise = null;
-        throw error;
-      }
-    })();
-
-    return loadPromise;
+  const playSelectedVideo = () => {
+    selectedVideo.muted = true;
+    selectedVideo.play().catch(() => setSelectedVideoState(true));
   };
 
-  if ('IntersectionObserver' in window) {
-    const videoObserver = new IntersectionObserver((entries, observer) => {
-      if (!entries.some((entry) => entry.isIntersecting)) return;
-      observer.disconnect();
-      loadSelectedVideo().catch(() => {});
-    }, { rootMargin: '1200px 0px' });
-    videoObserver.observe(selectedVideo);
+  if (reduceMotion) {
+    selectedVideo.pause();
+    setSelectedVideoState(true);
   } else {
-    loadSelectedVideo().catch(() => {});
+    playSelectedVideo();
+    selectedVideo.addEventListener('canplay', playSelectedVideo, { once: true });
   }
 
   if (selectedVideoControl) {
-    selectedVideoControl.addEventListener('click', async () => {
-      try {
-        await loadSelectedVideo();
-        if (selectedVideo.paused) {
-          await selectedVideo.play();
-        } else {
-          selectedVideo.pause();
-        }
-      } catch (error) {
-        setSelectedVideoState(true);
+    selectedVideoControl.addEventListener('click', () => {
+      if (selectedVideo.paused) {
+        playSelectedVideo();
+      } else {
+        selectedVideo.pause();
       }
     });
   }
 
+  selectedVideo.addEventListener('error', showVideoError);
   selectedVideo.addEventListener('play', () => setSelectedVideoState(false));
   selectedVideo.addEventListener('pause', () => setSelectedVideoState(true));
   selectedVideo.addEventListener('ended', () => setSelectedVideoState(true));
-
-  window.addEventListener('pagehide', () => {
-    if (mediaUrl) URL.revokeObjectURL(mediaUrl);
-  }, { once: true });
 }

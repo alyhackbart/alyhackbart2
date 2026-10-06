@@ -4,17 +4,14 @@
     "name": "Aly Hackbart",
     "title": "Aly Hackbart | Video Editor in San Diego",
     "description": "San Diego video editor Aly Hackbart creates story-driven television, branded, social, and short-form content.",
-    "socialImage": "assets/og-image.webp",
-    "updated": "2026-09-03",
-    "googleSiteVerification": "",
-    "googleAnalyticsId": ""
+    "socialImage": "/assets/og-image.webp",
+    "updated": "2026-09-03"
   },
   "identity": {
     "name": "Aly Hackbart",
     "role": "Video Editor",
     "location": "San Diego, California",
     "email": "alysonhackbart@gmail.com",
-    "publicEmail": "",
     "availability": "Open to entry-level editing roles, assistant editor opportunities, and select freelance projects"
   },
   "hero": {
@@ -25,8 +22,8 @@
     "introduction": "I shape raw footage into clear, memorable stories for television, branded content, social media, and digital audiences.",
     "primaryAction": "View featured work",
     "secondaryAction": "Contact Aly",
-    "video": "assets/media/hero-background.mp4",
-    "poster": "assets/media/hero-background-poster.webp",
+    "video": "/assets/media/clip3.mp4",
+    "poster": "/assets/media/full-film-sheet.jpg",
     "mediaNote": "Editing in motion. Professional credit featured below.",
     "ticker": [
       "Story editing",
@@ -125,7 +122,10 @@
     "label": "Toolkit",
     "headline": "Creative instinct backed by an organized workflow.",
     "introduction": "Comfortable learning new systems and adapting to the process a production team already uses.",
-    "software": ["DaVinci Resolve", "CapCut"],
+    "software": [
+      "DaVinci Resolve",
+      "CapCut"
+    ],
     "workflow": [
       "Raw-footage review",
       "Selects and story structure",
@@ -138,7 +138,7 @@
   "about": {
     "label": "About Aly",
     "headline": "A creative editor with a strong instinct for what matters on screen.",
-    "portrait": "assets/media/aly-portrait.webp",
+    "portrait": "/assets/media/aly-portrait.webp",
     "portraitAlt": "Portrait of Aly Hackbart",
     "paragraphs": [
       "I am a San Diego-based video editor with hands-on experience in television, branded content, and social media. Editing has been part of my life since I was 13, and I still love the process of turning a large amount of footage into one focused experience.",
@@ -150,16 +150,31 @@
     "label": "What I bring",
     "headline": "Good instincts. Clear communication. Reliable follow-through.",
     "items": [
-      {"title": "A sharp eye", "description": "Notices the reactions and details that give footage emotional weight."},
-      {"title": "A learning mindset", "description": "Takes direction well, asks useful questions, and keeps improving with every project."},
-      {"title": "Dependability", "description": "Stays organized, communicates clearly, and follows work through to delivery."}
+      {
+        "title": "A sharp eye",
+        "description": "Notices the reactions and details that give footage emotional weight."
+      },
+      {
+        "title": "A learning mindset",
+        "description": "Takes direction well, asks useful questions, and keeps improving with every project."
+      },
+      {
+        "title": "Dependability",
+        "description": "Stays organized, communicates clearly, and follows work through to delivery."
+      }
     ]
   },
   "opportunities": {
     "label": "Open to opportunities",
     "headline": "Ready to grow with a creative team.",
     "description": "Aly is seeking entry-level and assistant editor roles where she can contribute immediately, learn from experienced editors, and build strong work with a collaborative team.",
-    "targets": ["Production agencies", "YouTube creators", "Digital media teams", "Branded-content studios", "Post-production teams"],
+    "targets": [
+      "Production agencies",
+      "YouTube creators",
+      "Digital media teams",
+      "Branded-content studios",
+      "Post-production teams"
+    ],
     "primaryAction": "View resume",
     "secondaryAction": "Email Aly"
   },
@@ -167,7 +182,13 @@
     "label": "Freelance",
     "headline": "Need help finishing an edit?",
     "description": "Aly is also available for select projects with clear footage, creative direction, and delivery goals.",
-    "services": ["Short-form social edits", "Branded video editing", "YouTube and digital content", "Footage organization and selects", "Vertical and horizontal cutdowns"],
+    "services": [
+      "Short-form social edits",
+      "Branded video editing",
+      "YouTube and digital content",
+      "Footage organization and selects",
+      "Vertical and horizontal cutdowns"
+    ],
     "action": "Start a conversation"
   },
   "contact": {
@@ -179,8 +200,22 @@
     "thankYouUrl": "https://alyhackbart.com/thanks.html",
     "formSourceUrl": "https://alyhackbart.com/#contact",
     "autoresponse": "Thanks for reaching out to Aly Hackbart. Your message was received, and Aly will reply as soon as possible.",
-    "inquiryTypes": ["Editing role or employment opportunity", "Assistant editor opportunity", "Freelance editing project", "Branded or social content", "YouTube or long-form content", "Other"],
-    "budgetRanges": ["Employment opportunity", "Under $500", "$500 to $1,000", "$1,000 to $2,500", "$2,500+", "Not sure yet"]
+    "inquiryTypes": [
+      "Editing role or employment opportunity",
+      "Assistant editor opportunity",
+      "Freelance editing project",
+      "Branded or social content",
+      "YouTube or long-form content",
+      "Other"
+    ],
+    "budgetRanges": [
+      "Employment opportunity",
+      "Under $500",
+      "$500 to $1,000",
+      "$1,000 to $2,500",
+      "$2,500+",
+      "Not sure yet"
+    ]
   },
   "resume": {
     "headline": "Video editor with hands-on television, branded, and social experience.",
@@ -191,22 +226,44 @@
         "role": "Video Editor",
         "company": "Branded and Built",
         "dates": "Jan 2025 to Jul 2025",
-        "bullets": ["Edited short-form and branded video content for digital and social media use", "Used CapCut and DaVinci Resolve to cut footage, refine pacing, and add transitions, text, music, and visual elements", "Worked with creative direction and feedback to produce polished final videos", "Organized footage and managed edits from raw clips through final delivery"]
+        "bullets": [
+          "Edited short-form and branded video content for digital and social media use",
+          "Used CapCut and DaVinci Resolve to cut footage, refine pacing, and add transitions, text, music, and visual elements",
+          "Worked with creative direction and feedback to produce polished final videos",
+          "Organized footage and managed edits from raw clips through final delivery"
+        ]
       },
       {
         "role": "Server",
         "company": "Red Robin · Del Mar, California",
         "dates": "Aug 2021 to present",
-        "bullets": ["Delivers attentive service in a high-volume environment", "Communicates clearly and supports teammates during peak shifts", "Processes detailed transactions with accuracy and speed"]
+        "bullets": [
+          "Delivers attentive service in a high-volume environment",
+          "Communicates clearly and supports teammates during peak shifts",
+          "Processes detailed transactions with accuracy and speed"
+        ]
       },
       {
         "role": "Cashier and Lead Cashier",
         "company": "Sprouts Farmers Market · Encinitas, California",
         "dates": "Sep 2017 to Dec 2018",
-        "bullets": ["Promoted to Lead Cashier within six months", "Balanced registers and managed daily cash flow", "Delivered customer service in a high-volume setting"]
+        "bullets": [
+          "Promoted to Lead Cashier within six months",
+          "Balanced registers and managed daily cash flow",
+          "Delivered customer service in a high-volume setting"
+        ]
       }
     ],
-    "skills": ["DaVinci Resolve", "CapCut", "Story editing", "Short-form and branded content", "Footage organization", "Pacing and music", "Creative feedback", "Communication and teamwork"]
+    "skills": [
+      "DaVinci Resolve",
+      "CapCut",
+      "Story editing",
+      "Short-form and branded content",
+      "Footage organization",
+      "Pacing and music",
+      "Creative feedback",
+      "Communication and teamwork"
+    ]
   },
   "privacy": {
     "title": "Privacy Notice",
